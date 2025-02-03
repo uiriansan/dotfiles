@@ -33,8 +33,10 @@ glfw
 grub
 htop
 hyprland
+hyprpaper
 hyprpolkitagent
 intel-ucode
+jq
 kitty
 libsixel
 libva-nvidia-driver
@@ -50,6 +52,7 @@ nasm
 neovim
 networkmanager
 npm
+ntfs-3g
 nvidia-dkms
 nvidia-utils
 nwg-look

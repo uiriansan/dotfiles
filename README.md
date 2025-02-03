@@ -2,6 +2,7 @@
 
 - [**Arch Linux**](https://archlinux.org/)
 - [**Hyprland**](https://hyprland.org/)
+- [**Ghostty**](https://ghostty.org/)
 - [**Fish**](https://github.com/fish-shell/fish-shell)
 - [**Starship**](https://github.com/starship/starship)
 - [**Neovim**](https://github.com/neovim/neovim)
@@ -16,3 +17,4 @@ Here's a guide I put together for future reference: [Set up environment](https:/
 
 ## Special thanks
 - [Asthestarsfalll/img2art](https://github.com/Asthestarsfalll/img2art) and [nxtkofi/LightningNvim](https://github.com/nxtkofi/LightningNvim?tab=readme-ov-file#dashboard-images): Neovim dashboard art;
+- [Match-Yang/sddm-deepin](https://github.com/Match-Yang/sddm-deepin): SDDM Theme;
