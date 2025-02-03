@@ -113,3 +113,5 @@ sudo sed -i "s/^Current=.*/Current=deepin/g" /usr/lib/sddm/sddm.conf.d/default.c
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 
 yay -S zen-browser-bin
+
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh

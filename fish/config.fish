@@ -21,6 +21,7 @@ alias nvim=nvim_open_file
 set -U EDITOR /usr/bin/nvim
 
 fish_add_path /home/uirian/.local/bin/
+fish_add_path /home/uirian/.spicetify
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
