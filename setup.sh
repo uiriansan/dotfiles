@@ -16,13 +16,13 @@ sudo pacman --noconfirm -Syu
 echo -e "\e[32m\e[1mSystem upgraded!\e[0m"
 
 # 3. Copy everything into .config/
-cp -r ./* ~/.config/
+cp -r . ~/.config ####### FIX THIS PATH!!!
 echo -e "\e[32m\e[1mConfig copied!\e[0m"
 
 # 4. Install essentials
 echo -e "\e[34m\e[1mInstalling essentials...\e[0m"
 
-sudo pacman --noconfirm -S --needed grub ntfs-3g bottom chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks man-db man-pages nasm qemu-desktop npm openssh python-pip python-pipx ripgrep wofi rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects linux-headers
+sudo pacman --noconfirm -S --needed grub ntfs-3g bottom chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks man-db man-pages nasm qemu-desktop npm openssh python-pip python-pipx ripgrep wofi rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard linux-headers
 
 pipx ensurepath
 pipx install img2art
@@ -50,7 +50,7 @@ echo -e "\e[32m\e[1mDRM kernel mode setting finished!\e[0m"
 # 6. Improve Nvidia\Wayland compatibility
 echo -e "\e[34m\e[1mImproving Nvidia/Wayland compatibility...\e[0m"
 
-sudo pacman --noconfirm -S libva-nvidia-driver
+# sudo pacman --noconfirm -S libva-nvidia-driver
 
 echo -e "\e[31m\e[1mEdit /etc/spotify-launcher.conf and uncomment this line:\nextra_arguments = ["--enable-features=UseOzonePlatform", "--ozone-platform=wayland"]\e[0m"
 
@@ -75,7 +75,7 @@ sudo systemctl enable cronie.service
 sudo systemctl start cronie.service
 
 CRONJOB="*/30 * * * * ${HOME}/.config/scripts/consume_weather.sh >> ${HOME}/.config/scripts/weather_cron.log"
-(crontab -l; echo "$cronjob") | crontab -
+(crontab -l; echo "$CRONJOB") | crontab -
 
 chmod +x ~/.config/scripts/consume_weather.sh
 source $HOME/.config/scripts/consume_weather.sh
@@ -97,8 +97,8 @@ fi
 
 echo -e "\e[32m\e[1mSetup completed!\e[0m"
 
-sudo pacman -S ttf-jetbrains-mono-nerd
-sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-otc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-tw-fonts
+# sudo pacman -S ttf-jetbrains-mono-nerd
+# sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-otc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-tw-fonts
 
 ssh-keygen -t ed25519 -C "uiriansan@gmail.com"
 
@@ -107,8 +107,8 @@ git config --global user.name "uiriansan"
 # Update config repo to use ssh
 git remote set-url origin git@github.com:uiriansan/hyprdots.git
 
-sudo cp -r ~/.config/sddm/themes/deepin/ /usr/share/sddm/themes/
-sudo sed -i "s/^Current=.*/Current=deepin/g" /usr/lib/sddm/sddm.conf.d/default.conf
+# sudo cp -r ~/.config/sddm/themes/deepin/ /usr/share/sddm/themes/
+# sudo sed -i "s/^Current=.*/Current=deepin/g" /usr/lib/sddm/sddm.conf.d/default.conf
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 

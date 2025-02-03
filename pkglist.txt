@@ -16,6 +16,7 @@ clang
 cmake
 cronie
 dhcpcd
+dmidecode
 dunst
 efibootmgr
 egl-wayland
@@ -81,6 +82,7 @@ tree
 ttf-jetbrains-mono-nerd
 unzip
 uwsm
+wl-clipboard
 wofi
 xclip
 xdg-desktop-portal-hyprland
