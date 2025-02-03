@@ -1,3 +1,13 @@
+adobe-source-han-sans-cn-fonts
+adobe-source-han-sans-jp-fonts
+adobe-source-han-sans-kr-fonts
+adobe-source-han-sans-otc-fonts
+adobe-source-han-sans-tw-fonts
+adobe-source-han-serif-cn-fonts
+adobe-source-han-serif-jp-fonts
+adobe-source-han-serif-kr-fonts
+adobe-source-han-serif-otc-fonts
+adobe-source-han-serif-tw-fonts
 base
 base-devel
 bottom
@@ -50,8 +60,9 @@ playerctl
 pulseaudio
 python-pip
 python-pipx
-qemu-base
+qemu-desktop
 qt5-declarative
+qt5-graphicaleffects
 qt5-wayland
 qt6-wayland
 ripgrep
@@ -64,6 +75,7 @@ starship
 sudo
 tmux
 tree
+ttf-jetbrains-mono-nerd
 unzip
 uwsm
 wofi

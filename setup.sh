@@ -22,7 +22,7 @@ echo -e "\e[32m\e[1mConfig copied!\e[0m"
 # 4. Install essentials
 echo -e "\e[34m\e[1mInstalling essentials...\e[0m"
 
-sudo pacman --noconfirm -S --needed grub bottom chafa clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks man-db man-pages nasm qemu npm openssh python-pip python-pipx ripgrep wofi rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland hyprpolkitagent lxappearance nwg-look pulseaudio playerctl linux-headers
+sudo pacman --noconfirm -S --needed grub bottom chafa clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks man-db man-pages nasm qemu-desktop npm openssh python-pip python-pipx ripgrep wofi rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects linux-headers
 
 pipx ensurepath
 pipx install img2art
@@ -102,3 +102,16 @@ read -p "Reboot now? (yes/no): " REBOOT_CONF
 if [[ $REBOOT_CONF =~ ^[Yy]$ ]] then
 	reboot
 fi
+
+sudo pacman -S ttf-jetbrains-mono-nerd
+sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-otc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-tw-fonts
+
+ssh-keygen -t ed25519 -C "uiriansan@gmail.com"
+
+git config --global user.email "uiriansan@gmail.com"
+git config --global user.name "uiriansan"
+# Update config repo to use ssh
+git remote set-url origin git@github.com:uiriansan/hyprdots.git
+
+sudo cp -r ~/.config/sddm/themes/deepin/ /usr/share/sddm/themes/
+sudo sed -i "s/^Current=.*/Current=deepin/g" /usr/lib/sddm/sddm.conf.d/default.conf
