@@ -8,7 +8,7 @@
 
 
 # 1. Create directories
-mkdir -p ~/.config ~/Pictures ~/Documents ~/Code
+mkdir -p ~/.config ~/Pictures ~/Documents ~/Code ~/Sources
 echo -e "\e[32m\e[1mUser directories created!\e[0m"
 
 # 2. Upgrade system
@@ -22,7 +22,7 @@ echo -e "\e[32m\e[1mConfig copied!\e[0m"
 # 4. Install essentials
 echo -e "\e[34m\e[1mInstalling essentials...\e[0m"
 
-sudo pacman --noconfirm -S --needed grub bottom chafa clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks man-db man-pages nasm qemu npm openssh python-pip python-pipx ripgrep wofi rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland hyprpolkitagent lxappearance nwg-look
+sudo pacman --noconfirm -S --needed grub bottom chafa clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks man-db man-pages nasm qemu npm openssh python-pip python-pipx ripgrep wofi rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland hyprpolkitagent lxappearance nwg-look pulseaudio playerctl linux-headers
 
 pipx ensurepath
 pipx install img2art

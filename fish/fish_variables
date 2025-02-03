@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR EDITOR:nvim
+SETUVAR EDITOR:/usr/bin/nvim
 SETUVAR VISUAL:\x1d
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:brblack

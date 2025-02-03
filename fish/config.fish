@@ -1,6 +1,5 @@
 if status is-interactive
 	# Start TMux Session
-	tmux_start_dev
 end
 
 function fish_greeting
@@ -19,18 +18,13 @@ alias vi=nvim_open_file
 alias neovim=nvim_open_file
 alias nvim=nvim_open_file
 
-set -U EDITOR nvim
-
-function fish_title
-    echo Arch » $USER
-end
+set -U EDITOR /usr/bin/nvim
 
 fish_add_path /home/uirian/.local/bin/
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
-
 
 # starship
 starship init fish | source
