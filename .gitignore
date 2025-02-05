@@ -2,3 +2,6 @@ yay/
 tmux/tmux_weather.json
 tmux/cron.log
 go/
+dconf/
+user-dirs.dirs
+user-dirs.locale
