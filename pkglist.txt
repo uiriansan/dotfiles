@@ -27,6 +27,7 @@ feh
 firefox
 fish
 fzf
+fzy
 gdb
 ghostty
 git
@@ -64,6 +65,7 @@ playerctl
 pulseaudio
 python-pip
 python-pipx
+python-virtualenv
 qemu-desktop
 qt5-declarative
 qt5-graphicaleffects
