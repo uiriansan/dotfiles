@@ -74,6 +74,7 @@ qt6-wayland
 ripgrep
 rust-analyzer
 rustup
+sbctl
 sddm
 sof-firmware
 spotify-launcher
