@@ -20,7 +20,6 @@ Rectangle {
         width: parent.width
         height: parent.height
         anchors.centerIn: parent
-		sourceSize: Qt.size(button.width / 2, button.height / 2)
     }
 
     MouseArea {

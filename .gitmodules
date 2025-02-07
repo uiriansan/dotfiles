@@ -1,0 +1,3 @@
+[submodule "sddm/themes/SilentSDDM"]
+	path = sddm/themes/SilentSDDM
+	url = git@github.com:uiriansan/SilentSDDM.git

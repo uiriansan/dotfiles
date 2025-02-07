@@ -37,6 +37,7 @@ htop
 hyprland
 hyprpaper
 hyprpolkitagent
+imagemagick
 intel-ucode
 jq
 kitty
@@ -69,6 +70,8 @@ python-virtualenv
 qemu-desktop
 qt5-declarative
 qt5-graphicaleffects
+qt5-quickcontrols2
+qt5-svg
 qt5-wayland
 qt6-wayland
 ripgrep
@@ -85,6 +88,7 @@ tree
 ttf-jetbrains-mono-nerd
 unzip
 uwsm
+waybar
 wl-clipboard
 wofi
 xclip

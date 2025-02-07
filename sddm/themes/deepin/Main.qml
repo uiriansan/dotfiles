@@ -4,12 +4,11 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import SddmComponents 2.0
 
-
 Rectangle {
     id: root
-    width: 640
-    height: 480
-    state: "stateLogin"
+    width: 1920
+    height: 1080
+    state: "stateLock"
 
     readonly property int hMargin: 40
     readonly property int vMargin: 30
@@ -18,44 +17,28 @@ Rectangle {
 
     TextConstants { id: textConstants }
 
+
     states: [
-        State {
-            name: "statePower"
-            PropertyChanges { target: loginFrame; opacity: 0}
-            PropertyChanges { target: powerFrame; opacity: 1}
-            PropertyChanges { target: sessionFrame; opacity: 0}
-            PropertyChanges { target: userFrame; opacity: 0}
-            PropertyChanges { target: bgBlur; radius: 30}
-        },
-        State {
-            name: "stateSession"
-            PropertyChanges { target: loginFrame; opacity: 0}
-            PropertyChanges { target: powerFrame; opacity: 0}
-            PropertyChanges { target: sessionFrame; opacity: 1}
-            PropertyChanges { target: userFrame; opacity: 0}
-            PropertyChanges { target: bgBlur; radius: 30}
-        },
-        State {
-            name: "stateUser"
-            PropertyChanges { target: loginFrame; opacity: 0}
-            PropertyChanges { target: powerFrame; opacity: 0}
-            PropertyChanges { target: sessionFrame; opacity: 0}
-            PropertyChanges { target: userFrame; opacity: 1}
-            PropertyChanges { target: bgBlur; radius: 30}
-        },
+		State {
+			name: "stateLock"
+			PropertyChanges { target: lockFrame; opacity: 1}
+			PropertyChanges { target: loginFrame; opacity: 0}
+            PropertyChanges { target: bgBlur; radius: 0}
+			PropertyChanges { target: loginFrame; scale: 0.5 }
+		},
         State {
             name: "stateLogin"
+			PropertyChanges { target: lockFrame; opacity: 0}
             PropertyChanges { target: loginFrame; opacity: 1}
-            PropertyChanges { target: powerFrame; opacity: 0}
-            PropertyChanges { target: sessionFrame; opacity: 0}
-            PropertyChanges { target: userFrame; opacity: 0}
-            PropertyChanges { target: bgBlur; radius: 0}
+            PropertyChanges { target: bgBlur; radius: config.blur}
+			PropertyChanges { target: loginFrame; scale: 1 }
         }
 
     ]
     transitions: Transition {
-        PropertyAnimation { duration: 100; properties: "opacity";  }
-        PropertyAnimation { duration: 300; properties: "radius"; }
+        PropertyAnimation { duration: 150; properties: "opacity";  }
+        PropertyAnimation { duration: 400; properties: "radius"; }
+		PropertyAnimation { duration: 200; properties: "scale" }
     }
 
     Repeater {
@@ -80,7 +63,7 @@ Rectangle {
         Image {
             id: mainFrameBackground
             anchors.fill: parent
-            source: "background.jpg"
+            source: config.background
         }
 
         FastBlur {
@@ -97,213 +80,174 @@ Rectangle {
             anchors.top: parent.top
             anchors.topMargin: parent.height / 5
 
-            PowerFrame {
-                id: powerFrame
+			LockFrame {
+                id: lockFrame
+				focus: true
                 anchors.fill: parent
-                enabled: root.state == "statePower"
-                onNeedClose: {
-                    root.state = "stateLogin"
-                    loginFrame.input.forceActiveFocus()
-                }
-                onNeedShutdown: sddm.powerOff()
-                onNeedRestart: sddm.reboot()
-                onNeedSuspend: sddm.suspend()
+                enabled: root.state == "stateLock"
+				onNeedLogin: {
+					root.state = "stateLogin"
+					loginFrame.input.forceActiveFocus()
+				}
             }
-
-            SessionFrame {
-                id: sessionFrame
-                anchors.fill: parent
-                enabled: root.state == "stateSession"
-                onSelected: {
-                    console.log("Selected session:", index)
-                    root.state = "stateLogin"
-                    loginFrame.sessionIndex = index
-                    loginFrame.input.forceActiveFocus()
-                }
-                onNeedClose: {
-                    root.state = "stateLogin"
-                    loginFrame.input.forceActiveFocus()
-                }
-            }
-
-            UserFrame {
-                id: userFrame
-                anchors.fill: parent
-                enabled: root.state == "stateUser"
-                onSelected: {
-                    console.log("Select user:", userName)
-                    root.state = "stateLogin"
-                    loginFrame.userName = userName
-                    loginFrame.input.forceActiveFocus()
-                }
-                onNeedClose: {
-                    root.state = "stateLogin"
-                    loginFrame.input.forceActiveFocus()
-                }
-            }
-
-            LoginFrame {
+			LoginFrame {
                 id: loginFrame
                 anchors.fill: parent
+				anchors.centerIn: parent
                 enabled: root.state == "stateLogin"
                 opacity: 0
-                transformOrigin: Item.Top
-            }
+				onNeedClose: {
+                    root.state = "stateLock"
+					lockFrame.focus = true
+                }
+				scale: 0.5
+			}
+			UserFrame {
+				id: userFrame
+			}
+
+            //PowerFrame {
+            //    id: powerFrame
+            //    anchors.fill: parent
+            //    enabled: root.state == "statePower"
+            //    onNeedClose: {
+            //        root.state = "stateLogin"
+            //        loginFrame.input.forceActiveFocus()
+            //    }
+            //    onNeedShutdown: sddm.powerOff()
+            //    onNeedRestart: sddm.reboot()
+            //    onNeedSuspend: sddm.suspend()
+            //}
+            //
+            //SessionFrame {
+            //    id: sessionFrame
+            //    anchors.fill: parent
+            //    enabled: root.state == "stateSession"
+            //    onSelected: {
+            //        console.log("Selected session:", index)
+            //        root.state = "stateLogin"
+            //        loginFrame.sessionIndex = index
+            //        loginFrame.input.forceActiveFocus()
+            //    }
+            //    onNeedClose: {
+            //        root.state = "stateLogin"
+            //        loginFrame.input.forceActiveFocus()
+            //    }
+            //}
+            //
+            //UserFrame {
+            //    id: userFrame
+            //    anchors.fill: parent
+            //    enabled: root.state == "stateUser"
+            //    onSelected: {
+            //        console.log("Select user:", userName)
+            //        root.state = "stateLogin"
+            //        loginFrame.userName = userName
+            //        loginFrame.input.forceActiveFocus()
+            //    }
+            //    onNeedClose: {
+            //        root.state = "stateLogin"
+            //        loginFrame.input.forceActiveFocus()
+            //    }
+            //}
+
+            
         }
 
-        Item {
-            id: timeArea
-            visible: ! loginFrame.isProcessing
-            anchors {
-                bottom: parent.bottom
-                left: parent.left
-            }
-            width: parent.width / 3
-            height: parent.height / 5
-
-            Text {
-                id: timeText
-                anchors {
-                    left: parent.left
-                    leftMargin: hMargin
-                    bottom: dateText.top
-                    bottomMargin: 5
-                }
-
-                font.pointSize: 50
-                color: textColor
-
-                function updateTime() {
-                    text = new Date().toLocaleString(Qt.locale("en_US"), "hh:mm")
-                }
-            }
-
-            Text {
-                id: dateText
-                anchors {
-                    left: parent.left
-                    leftMargin: hMargin
-                    bottom: parent.bottom
-                    bottomMargin: vMargin
-                }
-
-                font.pointSize: 18
-                color: textColor
-
-                function updateDate() {
-                    text = new Date().toLocaleString(Qt.locale("en_US"), "yyyy-MM-dd dddd")
-                }
-            }
-
-            Timer {
-                interval: 1000
-                repeat: true
-                running: true
-                onTriggered: {
-                    timeText.updateTime()
-                    dateText.updateDate()
-                }
-            }
-
-            Component.onCompleted: {
-                timeText.updateTime()
-                dateText.updateDate()
-            }
-        }
-
-        Item {
-            id: powerArea
-            visible: ! loginFrame.isProcessing
-            anchors {
-                bottom: parent.bottom
-                right: parent.right
-            }
-            width: parent.width / 3
-            height: parent.height / 7
-
-            Row {
-                spacing: 20
-                anchors.right: parent.right
-                anchors.rightMargin: hMargin
-                anchors.verticalCenter: parent.verticalCenter
-
-                ImgButton {
-                    id: sessionButton
-                    width: m_powerButtonSize
-                    height: m_powerButtonSize
-                    visible: sessionFrame.isMultipleSessions()
-                    normalImg: sessionFrame.getCurrentSessionIconIndicator()
-                    onClicked: {
-                        root.state = "stateSession"
-                        sessionFrame.focus = true
-                    }
-                    onEnterPressed: sessionFrame.currentItem.forceActiveFocus()
-
-                    KeyNavigation.tab: loginFrame.input
-                    KeyNavigation.backtab: {
-                        if (userButton.visible) {
-                            return userButton
-                        }
-                        else {
-                            return shutdownButton
-                        }
-                    }
-                }
-
-                ImgButton {
-                    id: userButton
-                    width: m_powerButtonSize
-                    height: m_powerButtonSize
-                    visible: userFrame.isMultipleUsers()
-
-                    normalImg: "icons/switchframe/userswitch_normal.png"
-                    hoverImg: "icons/switchframe/userswitch_hover.png"
-                    pressImg: "icons/switchframe/userswitch_press.png"
-                    onClicked: {
-                        console.log("Switch User...")
-                        root.state = "stateUser"
-                        userFrame.focus = true
-                    }
-                    onEnterPressed: userFrame.currentItem.forceActiveFocus()
-                    KeyNavigation.backtab: shutdownButton
-                    KeyNavigation.tab: {
-                        if (sessionButton.visible) {
-                            return sessionButton
-                        }
-                        else {
-                            return loginFrame.input
-                        }
-                    }
-                }
-
-                ImgButton {
-                    id: shutdownButton
-                    width: m_powerButtonSize
-                    height: m_powerButtonSize
-                    visible: true//sddm.canPowerOff
-
-                    normalImg: "icons/switchframe/powermenu.png"
-                    onClicked: {
-                        console.log("Show shutdown menu")
-                        root.state = "statePower"
-                        powerFrame.focus = true
-                    }
-                    onEnterPressed: powerFrame.shutdown.focus = true
-                    KeyNavigation.backtab: loginFrame.button
-                    KeyNavigation.tab: {
-                        if (userButton.visible) {
-                            return userButton
-                        }
-                        else if (sessionButton.visible) {
-                            return sessionButton
-                        }
-                        else {
-                            return loginFrame.input
-                        }
-                    }
-                }
-            }
-        }
+        //Item {
+        //    id: powerArea
+        //    visible: ! loginFrame.isProcessing
+        //    anchors {
+        //        bottom: parent.bottom
+        //        right: parent.right
+        //    }
+        //    width: parent.width / 3
+        //    height: parent.height / 7
+        //
+        //    Row {
+        //        spacing: 20
+        //        anchors.right: parent.right
+        //        anchors.rightMargin: hMargin
+        //        anchors.verticalCenter: parent.verticalCenter
+        //
+        //        ImgButton {
+        //            id: sessionButton
+        //            width: m_powerButtonSize
+        //            height: m_powerButtonSize
+        //            visible: sessionFrame.isMultipleSessions()
+        //            normalImg: sessionFrame.getCurrentSessionIconIndicator()
+        //            onClicked: {
+        //                root.state = "stateSession"
+        //                sessionFrame.focus = true
+        //            }
+        //            onEnterPressed: sessionFrame.currentItem.forceActiveFocus()
+        //
+        //
+        //            KeyNavigation.tab: loginFrame.input
+        //            KeyNavigation.backtab: {
+        //                if (userButton.visible) {
+        //                    return userButton
+        //                }
+        //                else {
+        //                    return shutdownButton
+        //                }
+        //            }
+        //        }
+        //
+        //        ImgButton {
+        //            id: userButton
+        //            width: m_powerButtonSize
+        //            height: m_powerButtonSize
+        //            visible: userFrame.isMultipleUsers()
+        //
+        //            normalImg: "icons/switchframe/userswitch_normal.png"
+        //            hoverImg: "icons/switchframe/userswitch_hover.png"
+        //            pressImg: "icons/switchframe/userswitch_press.png"
+        //            onClicked: {
+        //                console.log("Switch User...")
+        //                root.state = "stateUser"
+        //                userFrame.focus = true
+        //            }
+        //            onEnterPressed: userFrame.currentItem.forceActiveFocus()
+        //            KeyNavigation.backtab: shutdownButton
+        //            KeyNavigation.tab: {
+        //                if (sessionButton.visible) {
+        //                    return sessionButton
+        //                }
+        //                else {
+        //                    return loginFrame.input
+        //                }
+        //            }
+        //        }
+        //
+        //        ImgButton {
+        //            id: shutdownButton
+        //            width: m_powerButtonSize
+        //            height: m_powerButtonSize
+        //            visible: true//sddm.canPowerOff
+        //
+        //            normalImg: "icons/switchframe/powermenu.png"
+        //            onClicked: {
+        //                console.log("Show shutdown menu")
+        //                root.state = "statePower"
+        //                powerFrame.focus = true
+        //            }
+        //            onEnterPressed: powerFrame.shutdown.focus = true
+        //            KeyNavigation.backtab: loginFrame.button
+        //            KeyNavigation.tab: {
+        //                if (userButton.visible) {
+        //                    return userButton
+        //                }
+        //                else if (sessionButton.visible) {
+        //                    return sessionButton
+        //                }
+        //                else {
+        //                    return loginFrame.input
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         MouseArea {
             z: -1

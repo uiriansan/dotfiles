@@ -14,6 +14,9 @@ Canvas {
         ctx.ellipse(0, 0, width, height)
         ctx.clip()
         ctx.drawImage(source, 0, 0, width, height)
+        ctx.strokeStyle = avatar.m_strokeStyle
+        ctx.lineWidth = 6
+        ctx.stroke()
     }
 
     MouseArea {
