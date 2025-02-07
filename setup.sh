@@ -22,10 +22,14 @@ echo -e "\e[32m\e[1mConfig copied!\e[0m"
 # 4. Install essentials
 echo -e "\e[34m\e[1mInstalling essentials...\e[0m"
 
-sudo pacman --noconfirm -S --needed grub ntfs-3g bottom chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks man-db man-pages nasm qemu-desktop npm openssh python-pip python-pipx ripgrep wofi rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick sbctl linux-headers
+sudo pacman --noconfirm -S --needed grub ntfs-3g bottom chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks man-db man-pages nasm qemu-desktop npm openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick sbctl linux-headers
 
 pipx ensurepath
 pipx install img2art
+
+# Install Rust
+rustup default stable
+
 
 echo -e "\e[32m\e[1mEssentials installed!\e[0m"
 
@@ -121,6 +125,9 @@ sudo cp <image> /usr/share/sddm/faces/username.face.icon
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 
 yay -S zen-browser-bin
+
+# Anyrun
+yay -S anyrun-git
 
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
 

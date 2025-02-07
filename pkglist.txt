@@ -8,6 +8,8 @@ adobe-source-han-serif-jp-fonts
 adobe-source-han-serif-kr-fonts
 adobe-source-han-serif-otc-fonts
 adobe-source-han-serif-tw-fonts
+anyrun-git
+anyrun-git-debug
 base
 base-devel
 bottom
@@ -90,7 +92,6 @@ unzip
 uwsm
 waybar
 wl-clipboard
-wofi
 xclip
 xdg-desktop-portal-hyprland
 yay
