@@ -1,3 +1,6 @@
 [submodule "sddm"]
 	path = sddm
 	url = git@github.com:uiriansan/SilentSDDM.git
+[submodule "grub"]
+	path = grub
+	url = git@github.com:uiriansan/LainGrubTheme.git
