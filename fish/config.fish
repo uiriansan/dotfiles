@@ -10,7 +10,7 @@ alias nf="fastfetch"
 alias ff="fastfetch"
 alias neofetch="fastfetch"
 
-alias ls="eza -l"
+alias ls="ls -l"
 
 alias vim=nvim_open_file
 alias v=nvim_open_file

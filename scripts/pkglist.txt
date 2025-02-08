@@ -9,7 +9,6 @@ adobe-source-han-serif-kr-fonts
 adobe-source-han-serif-otc-fonts
 adobe-source-han-serif-tw-fonts
 anyrun-git
-anyrun-git-debug
 base
 base-devel
 bottom
@@ -90,6 +89,7 @@ tree
 ttf-jetbrains-mono-nerd
 unzip
 uwsm
+walker-bin
 waybar
 wl-clipboard
 xclip

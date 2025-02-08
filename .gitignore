@@ -6,3 +6,4 @@ dconf/
 user-dirs.dirs
 user-dirs.locale
 spotify/
+*.log

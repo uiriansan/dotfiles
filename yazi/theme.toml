@@ -17,7 +17,8 @@ use = ""
 cwd = { fg = "black", bold = true }
 
 # Hovered
-hovered = { bg = "#11111b" }
+# hovered = { bg = "#11111b" }
+hovered = { bg = "black" }
 
 # Border
 border_symbol = " "

@@ -6,4 +6,4 @@ Target = *
 
 [Action]
 When = PostTransaction
-Exec = /bin/sh -c '/bin/pacman -Qqe > /home/uirian/.config/pkglist.txt'
+Exec = /bin/sh -c '/bin/pacman -Qqe > /home/uirian/.config/scripts/pkglist.txt'
