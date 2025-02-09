@@ -7,6 +7,10 @@
             <td><a href="https://archlinux.org/">Arch Linux</a></td>
         </tr>
         <tr>
+            <td>Bootloader</td>
+            <td><a href="https://www.gnu.org/software/grub/">GRUB</a></td>
+        </tr>
+        <tr>
             <td>Window manager</td>
             <td><a href="https://hyprland.org/">Hyprland</a></td>
         </tr>
@@ -57,8 +61,3 @@
 
 ## Installation
 Here's a guide I put together for future reference: [Set up environment](https://github.com/uiriansan/hyprdots/wiki/Environment)
-
-## Special thanks
-- [Asthestarsfalll/img2art](https://github.com/Asthestarsfalll/img2art) and [nxtkofi/LightningNvim](https://github.com/nxtkofi/LightningNvim?tab=readme-ov-file#dashboard-images): Neovim dashboard art;
-- [Match-Yang/sddm-deepin](https://github.com/Match-Yang/sddm-deepin): SDDM Theme;
-
