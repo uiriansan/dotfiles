@@ -11,6 +11,7 @@ adobe-source-han-serif-tw-fonts
 anyrun-git
 base
 base-devel
+bluez-utils
 bottom
 chafa
 clang
@@ -22,6 +23,7 @@ dunst
 efibootmgr
 egl-wayland
 eza
+fabric-cli-git
 fasm
 fastfetch
 feh
@@ -33,15 +35,20 @@ gdb
 ghostty
 git
 glfw
+gnome-bluetooth-3.0
 grub
 htop
+hypridle
 hyprland
+hyprlock
 hyprpaper
+hyprpicker
 hyprpolkitagent
 imagemagick
 intel-ucode
 jq
 kitty
+lazygit
 libsixel
 libva-nvidia-driver
 linux
@@ -52,9 +59,11 @@ luarocks
 lxappearance
 man-db
 man-pages
+meson
 nasm
 neovim
 networkmanager
+ninja
 npm
 ntfs-3g
 nvidia-dkms
@@ -65,8 +74,10 @@ os-prober
 pipewire
 playerctl
 pulseaudio
+python-fabric-git
 python-pip
 python-pipx
+python-setproctitle
 python-virtualenv
 qemu-desktop
 qt5-declarative
@@ -84,6 +95,7 @@ sof-firmware
 spotify-launcher
 starship
 sudo
+swww
 tmux
 tree
 ttf-jetbrains-mono-nerd

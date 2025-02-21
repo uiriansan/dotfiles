@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 function fish_greeting
-	# nf # Run Fastfetch
+	nf # Run Fastfetch
 end
 
 alias nf="fastfetch"

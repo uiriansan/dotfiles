@@ -1,6 +1,6 @@
 -- https://github.com/nvim-lualine/lualine.nvim/blob/master/examples/evil_lualine.lua
 
-local colors = require("catppuccin.palettes").get_palette("mocha")
+local colors = require("mellow.colors").dark
 local mode_color = {
 	n = colors.red,
 	i = colors.green,
@@ -9,11 +9,11 @@ local mode_color = {
 	V = colors.blue,
 	c = colors.magenta,
 	no = colors.red,
-	s = colors.pink,
-	S = colors.pink,
+	s = colors.magenta,
+	S = colors.magenta,
 	ic = colors.yellow,
-	R = colors.violet,
-	Rv = colors.violet,
+	R = colors.magenta,
+	Rv = colors.magenta,
 	cv = colors.red,
 	ce = colors.red,
 	r = colors.cyan,
@@ -48,10 +48,6 @@ local config = {
 		component_separators = "",
 		section_separators = "",
 		globalstatus = true,
-		theme = {
-			normal = { c = { fg = colors.text, bg = "#0a0a0d" } }, -- colors.mantle
-			inactive = { c = { fg = colors.text, bg = "#0a0a0d" } },
-		},
 	},
 	sections = {
 		-- remove defaults
@@ -88,7 +84,10 @@ insert_left({
 		return res:sub(1, 1)
 	end,
 	color = function()
-		return { bg = mode_color[vim.fn.mode()], fg = colors.surface0 }
+		return {
+			bg = mode_color[vim.fn.mode()],
+			fg = colors.bg
+		}
 	end,
 	padding = { right = 1, left = 1 },
 })
@@ -96,25 +95,9 @@ insert_left({
 insert_left({
 	"branch",
 	icon = "",
-	color = { fg = colors.fg, bg = colors.bg, gui = "bold" },
+	color = { fg = colors.fg, gui = "bold" },
 	on_click = function()
 		vim.cmd([[ Neotree git_status position=left ]])
-	end,
-})
-
-insert_left({
-	"diagnostics",
-	sources = { "nvim_diagnostic" },
-	section = { "error", "warn", "info" },
-	symbols = { error = " ", warn = " ", info = " " },
-	diagnostics_color = {
-		color_error = { fg = colors.red },
-		color_warn = { fg = colors.yellow },
-		color_info = { fg = colors.cyan },
-	},
-	always_visible = false,
-	on_click = function()
-		vim.cmd([[ Trouble diagnostics toggle ]])
 	end,
 })
 
@@ -138,14 +121,31 @@ insert_left({
 -- })
 
 insert_right({
+	"diagnostics",
+	sources = { "nvim_diagnostic" },
+	section = { "error", "warn", "info" },
+	symbols = { error = " ", warn = " ", info = " " },
+	diagnostics_color = {
+		color_error = { fg = colors.red },
+		color_warn = { fg = colors.yellow },
+		color_info = { fg = colors.cyan },
+	},
+	always_visible = false,
+	on_click = function()
+		vim.cmd([[ Trouble diagnostics toggle ]])
+	end,
+})
+
+insert_right({
 	function()
-		local color = colors.text
+		local color = colors.fg
 		local msg = ""
 		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 		local buf_fn = vim.api.nvim_buf_get_name(0)
 		local _, c = require("nvim-web-devicons").get_icon_color(buf_fn, buf_ft)
 		color = c
-		vim.cmd("hi! lualine_lsp_name guifg=" .. color .. " guibg=#000000")
+		vim.cmd("hi! lualine_lsp_name guifg=" ..
+			color .. " guibg=" .. vim.fn.synIDattr(vim.api.nvim_get_hl_id_by_name("StatusLine"), "bg", "gui"))
 
 		local clients = vim.lsp.get_active_clients()
 		if next(clients) == nil then
@@ -160,16 +160,6 @@ insert_right({
 		return msg
 	end,
 	color = "lualine_lsp_name",
-})
-
-insert_right({
-	"o:encoding",
-	fmt = string.upper,
-	cond = conditions.hide_in_width,
-})
-
-insert_right({
-	"filesize",
 })
 
 insert_right({
@@ -196,29 +186,8 @@ insert_right({
 
 insert_right({
 	"location",
-	color = { fg = colors.text },
+	color = { fg = colors.fg },
 	cond = conditions.buffer_not_empty and conditions.neo_tree_closed,
-})
-
--- insert_right({
--- 	function()
--- 		local time = os.date("*t")
--- 		return "󰃮 "
--- 			.. string.format("%02d", time.day)
--- 			.. "/"
--- 			.. string.format("%02d", time.month)
--- 			.. "/"
--- 			.. time.year
--- 	end,
--- 	color = { fg = colors.text, gui = "bold" },
--- })
-
-insert_right({
-	function()
-		local time = os.date("*t")
-		return string.format("%02d", time.hour) .. ":" .. string.format("%02d", time.min)
-	end,
-	color = { fg = colors.green, gui = "bold" },
 })
 
 return {

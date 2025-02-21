@@ -80,8 +80,8 @@ return {
 						{ key = "r", hidden = true, action = ":lua Snacks.dashboard.pick('oldfiles')" },
 						{ key = "g", hidden = true, action = ":lua Snacks.dashboard.pick('live_grep')" },
 						{ key = "s", hidden = true, section = "session" },
-						{ key = "L", hidden = true, action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-						{ key = "q", hidden = true, action = ":qa", enabled = package.loaded.lazy ~= nil },
+						{ key = "L", hidden = true, action = ":Lazy",                                  enabled = package.loaded.lazy ~= nil },
+						{ key = "q", hidden = true, action = ":qa",                                    enabled = package.loaded.lazy ~= nil },
 					},
 				},
 			},
@@ -89,10 +89,10 @@ return {
 				key = { "" },
 				file = function(item)
 					return {
-						{ item.key, hl = "key" },
+						{ item.key,                           hl = "key" },
 						{ " " },
 						{ item.file:sub(2):match("^(.*[/])"), hl = "NonText" },
-						{ item.file:match("([^/]+)$"), hl = "Normal" },
+						{ item.file:match("([^/]+)$"),        hl = "Normal" },
 					}
 				end,
 				icon = { "" },
@@ -101,15 +101,16 @@ return {
 				-- hidden
 				{ section = "keys" },
 				-- not hidden
-				{
-					pane = 1,
-					section = "terminal",
-					-- cmd = "chafa ~/Pictures/evilain.gif --align center --stretch --passthrough tmux --polite on --format symbols --symbols vhalf 20x30; sleep .1",
-					cmd = "img2art ~/.config/nvim/lua/plugins/dashboard_img/hq.png --threshold 50 --scale .34 --quant 16 --with-color",
-					height = 27,
-					width = 100,
-					indent = 20,
-				},
+				-- {
+				-- 	pane = 1,
+				-- 	section = "terminal",
+				-- 	-- cmd = "chafa ~/Pictures/evilain.gif --align center --stretch --passthrough tmux --polite on --format symbols --symbols vhalf 20x30; sleep .1",
+				-- 	cmd =
+				-- 	"img2art ~/.config/nvim/lua/plugins/dashboard_img/hq.png --threshold 50 --scale .34 --quant 16 --with-color",
+				-- 	height = 27,
+				-- 	width = 100,
+				-- 	indent = 20,
+				-- },
 				{
 					pane = 2,
 					indent = 21,
@@ -117,38 +118,38 @@ return {
 						{ text = "" },
 						{
 							text = {
-								{ "n ", hl = "key" },
-								{ "New file", hl = "Normal" },
-								{ "", width = 10 },
-								{ "r ", hl = "key" },
+								{ "n ",           hl = "key" },
+								{ "New file",     hl = "Normal" },
+								{ "",             width = 10 },
+								{ "r ",           hl = "key" },
 								{ "Recent files", hl = "Normal" },
 							},
 						},
 						{ text = "", padding = 1 },
 						{
 							text = {
-								{ "o ", hl = "key" },
+								{ "o ",        hl = "key" },
 								{ "Open file", hl = "Normal" },
-								{ "", width = 9 },
-								{ "g ", hl = "key" },
+								{ "",          width = 9 },
+								{ "g ",        hl = "key" },
 								{ "Grep text", hl = "Normal" },
 							},
 						},
 						{ text = "", padding = 1 },
 						{
 							text = {
-								{ "f ", hl = "key" },
-								{ "Find files", hl = "Normal" },
-								{ "", width = 8 },
-								{ "s ", hl = "key" },
+								{ "f ",              hl = "key" },
+								{ "Find files",      hl = "Normal" },
+								{ "",                width = 8 },
+								{ "s ",              hl = "key" },
 								{ "Restore session", hl = "Normal" },
 							},
 						},
 					},
-					{ text = "", padding = 2 },
-					{ title = "Projects", padding = 1, indent = 21 },
-					{ section = "projects", limit = 5, padding = 2, indent = 20 },
-					{ title = "TODO List", padding = 1, indent = 21 },
+					{ text = "",            padding = 2 },
+					{ title = "Projects",   padding = 1, indent = 21 },
+					{ section = "projects", limit = 5,   padding = 2, indent = 20 },
+					{ title = "TODO List",  padding = 1, indent = 21 },
 					{
 						indent = 21,
 						function()
@@ -165,7 +166,7 @@ return {
 								return {
 									autokey = true,
 									text = {
-										{ tostring(todo.index) .. " ", hl = "key" },
+										{ tostring(todo.index) .. " ",                  hl = "key" },
 										{ todo.sign .. string.rep(" ", 7 - #todo.sign), hl = "NonText" },
 										{
 											(todo.desc:len() > 35) and todo.desc:sub(1, 35) .. "" or todo.desc,
@@ -175,7 +176,7 @@ return {
 									action = function()
 										vim.fn.chdir(todo.file:match("^(.*[\\/])[^\\/]+$")) -- :cd into dir
 										vim.cmd("edit " .. todo.file) -- open file
-										vim.cmd(todo.line) -- go to line
+										vim.cmd(todo.line)    -- go to line
 									end,
 								}
 							end, todos)
@@ -185,14 +186,35 @@ return {
 			},
 		},
 		bigfile = { enabled = true },
-		indent = { enabled = true },
+		indent = {
+			enabled = true,
+			indent = {
+				only_scope = true,
+				hl = "EndOfBuffer"
+			},
+			scope = {
+				enabled = true,
+				priority = 200,
+				char = "│",
+				underline = false,
+				only_current = false,
+				hl = "FoldColumn",
+			},
+			chunk = {
+				enabled = false,
+			},
+			animate = {
+				enabled = false,
+			},
+		},
 		input = { enabled = true },
 		lazygit = { enabled = true },
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
 		scroll = { enabled = true },
-		statuscolumn = { enabled = true },
+		statuscolumn = { enabled = false },
 		words = { enabled = true },
+		win = { enabled = true },
 	},
 	config = function(_, opts)
 		require("snacks").setup(opts)

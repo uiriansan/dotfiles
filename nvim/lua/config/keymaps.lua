@@ -34,5 +34,4 @@ vim.keymap.set("n", "<M-w>", "<cmd>close<CR>", { desc = "Close split" })
 -- cokeline.nvim
 vim.keymap.set("n", "<C-q>", "<Plug>(cokeline-focus-prev)", { desc = "Previous buffer" })
 vim.keymap.set("n", "<C-e>", "<Plug>(cokeline-focus-next)", { desc = "Next buffer" })
--- vim.keymap.set("n", "<C-w>", "<Plug>(cokeline-pick-close)", { desc = "Close buffer" })
 vim.keymap.set("n", "<C-w>", "<cmd>bn<bar>sp<bar>bp<bar>bd<CR>", { desc = "Close buffer" })

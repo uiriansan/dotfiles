@@ -46,7 +46,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "no"
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -63,7 +63,9 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = "▏ ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" }
+-- Remove "~" from line numbers after end of buffer
+vim.opt.fillchars = { eob = " " }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -75,6 +77,7 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 -- remove cmdline when its not in use
 vim.o.cmdheight = 0
+vim.diagnostic.config({ virtual_text = false })
 
 vim.g["neo_tree_opened"] = false
 vim.g.mkdp_open_to_the_world = 1

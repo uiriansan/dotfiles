@@ -21,7 +21,9 @@
 # # separated by equals signs.
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 10
-# window-padding-x = 2
+window-padding-x = 8
+window-padding-y = 8
+window-padding-balance = true
 #
 # # Spacing around the equals sign does not matter.
 # # All of these are identical:
@@ -33,8 +35,9 @@ font-size = 10
 # # Any line beginning with a # is a comment. It's not possible to put
 # # a comment after a config option, since it would be interpreted as a
 # # part of the value. For example, this will have a value of "#123abc":
-theme = catppuccin-mocha
-background = #14161B
+# theme = catppuccin-mocha
+theme = mellow
+# background = #14161B
 #
 # # Empty values are used to reset config keys to default.
 # key =
