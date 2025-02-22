@@ -22,13 +22,15 @@
 # # 4. Install essentials
 # echo -e "\e[34m\e[1mInstalling essentials...\e[0m"
 #
-# sudo pacman --noconfirm -S --needed grub ntfs-3g bottom chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel lua luarocks lazygit man-db man-pages nasm qemu-desktop npm openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick sbctl bluez-utils linux-headers
+# sudo pacman --noconfirm -S --needed grub ntfs-3g bottom chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel fd lua luarocks lazygit man-db man-pages nasm qemu-desktop npm openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick sbctl bluez-utils linux-headers
 #
 # # fabric 
 # sudo pacman -S gtk3 cairo gtk-layer-shell libgirepository gobject-introspection gobject-introspection-runtime python python-pip python-gobject python-cairo python-loguru pkgconf
 #
 # yay -S python-fabric-git
 #
+# yay -S rose-pine-hyprcursor
+# yay -S hyprshot
 #
 # pipx ensurepath
 # pipx install img2art

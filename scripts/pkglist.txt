@@ -26,6 +26,7 @@ eza
 fabric-cli-git
 fasm
 fastfetch
+fd
 feh
 firefox
 fish
@@ -44,6 +45,7 @@ hyprlock
 hyprpaper
 hyprpicker
 hyprpolkitagent
+hyprshot
 imagemagick
 intel-ucode
 jq
@@ -87,6 +89,7 @@ qt5-svg
 qt5-wayland
 qt6-wayland
 ripgrep
+rose-pine-hyprcursor
 rust-analyzer
 rustup
 sbctl
