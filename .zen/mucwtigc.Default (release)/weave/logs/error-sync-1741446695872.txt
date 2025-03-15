@@ -1,0 +1,192 @@
+1741446095721	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=schedule)
+1741446099155	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446099163	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446099610	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446104178	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446104178	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446104190	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446104195	Sync.Engine.Tabs	INFO	Posting 1 records of 3331 bytes with batch=true
+1741446104196	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446104197	Sync.Collection	DEBUG	POST Length: 3331
+1741446104435	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446104446	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446119942	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446123691	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446125041	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446125041	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446125049	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446125050	Sync.Engine.Tabs	INFO	Posting 1 records of 3671 bytes with batch=true
+1741446125051	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446125051	Sync.Collection	DEBUG	POST Length: 3671
+1741446125278	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446125287	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446181593	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446181607	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446186606	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446186606	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446186616	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446186618	Sync.Engine.Tabs	INFO	Posting 1 records of 3543 bytes with batch=true
+1741446186619	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446186621	Sync.Collection	DEBUG	POST Length: 3543
+1741446186869	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446186881	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446190791	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446190798	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446192892	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446192901	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446195873	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446195873	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446195886	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446195889	Sync.Engine.Tabs	INFO	Posting 1 records of 3415 bytes with batch=true
+1741446195890	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446195892	Sync.Collection	DEBUG	POST Length: 3415
+1741446196127	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446196138	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446372976	Sync.RemoteTabs	INFO	Generating tab list with filter
+1741446372978	Sync.RemoteTabs	DEBUG	Processing client: {"id":"r49uCA6_YTV7","type":"client","name":"uiria’s Zen on UiriansanW11","clientType":"desktop","lastModified":1740974639290,"tabs":[]}
+1741446372978	Sync.RemoteTabs	INFO	Final tab list has 1 clients with 2 tabs.
+1741446380802	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446380809	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446380999	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446381587	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446381598	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446382004	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446382065	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446385848	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446385848	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446385856	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446385857	Sync.Engine.Tabs	INFO	Posting 1 records of 3671 bytes with batch=true
+1741446385857	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1741446385857	FirefoxAccounts	DEBUG	getOAuthToken enter
+1741446385858	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1741446385858	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1741446385858	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1741446385859	Sync.Collection	DEBUG	POST Length: 3671
+1741446386080	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1741446386191	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446386202	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446387850	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446388720	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446389037	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446389106	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446389547	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446392887	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446392887	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446392895	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446392897	Sync.Engine.Tabs	INFO	Posting 1 records of 3715 bytes with batch=true
+1741446392897	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446392897	Sync.Collection	DEBUG	POST Length: 3715
+1741446393125	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446393137	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446521341	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446521418	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446521643	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446521651	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446526408	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446526408	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446526416	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446526416	Sync.Engine.Tabs	INFO	Posting 1 records of 3715 bytes with batch=true
+1741446526417	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1741446526417	FirefoxAccounts	DEBUG	getOAuthToken enter
+1741446526417	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1741446526417	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1741446526417	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1741446526417	Sync.Collection	DEBUG	POST Length: 3715
+1741446526664	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446526676	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446526689	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1741446582246	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446583094	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446583109	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446584833	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446585768	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446586101	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446586171	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446586522	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446586954	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446586959	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446587262	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446587263	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446587275	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446587278	Sync.Engine.Tabs	INFO	Posting 1 records of 3671 bytes with batch=true
+1741446587279	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446587280	Sync.Collection	DEBUG	POST Length: 3671
+1741446587513	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446587525	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446588691	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446589604	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446589904	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446589969	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446590144	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446593722	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446593722	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446593732	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446593734	Sync.Engine.Tabs	INFO	Posting 1 records of 3627 bytes with batch=true
+1741446593735	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446593736	Sync.Collection	DEBUG	POST Length: 3627
+1741446593978	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446593989	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446594950	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446594961	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446596607	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446597280	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446597514	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446597614	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446597846	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446599976	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446599976	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446599984	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446599986	Sync.Engine.Tabs	INFO	Posting 1 records of 3691 bytes with batch=true
+1741446599987	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446599987	Sync.Collection	DEBUG	POST Length: 3691
+1741446600215	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446600226	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446620864	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446620876	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446625897	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446625898	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446625905	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446625907	Sync.Engine.Tabs	INFO	Posting 1 records of 3671 bytes with batch=true
+1741446625907	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446625907	Sync.Collection	DEBUG	POST Length: 3671
+1741446626133	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446626144	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446644909	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446647570	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446647654	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446648396	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446649933	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446649933	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446649940	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446649941	Sync.Engine.Tabs	INFO	Posting 1 records of 3671 bytes with batch=true
+1741446649941	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1741446649941	FirefoxAccounts	DEBUG	getOAuthToken enter
+1741446649941	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1741446649941	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1741446649942	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1741446649942	Sync.Collection	DEBUG	POST Length: 3671
+1741446650164	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446650175	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446650185	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1741446656360	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1741446656620	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446656691	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446657238	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1741446661453	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741446661454	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741446661464	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1741446661468	Sync.Engine.Tabs	INFO	Posting 1 records of 3691 bytes with batch=true
+1741446661475	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446661476	Sync.Collection	DEBUG	POST Length: 3691
+1741446661705	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/storage/tabs?batch=true&commit=true
+1741446661718	Sync.Telemetry	INFO	Observed notification weave:engine:sync:uploaded but no current sync is being recorded.
+1741446695807	Sync.Service	DEBUG	User-Agent: Zen/1.8.2b (Linux x86_64) FxSync/1.137.0.20250225090320.desktop
+1741446695807	Sync.Service	INFO	Starting sync at 2025-03-08 12:11:35 in browser session bCS5dT4ehxhi
+1741446695813	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1741446695814	Sync.Status	INFO	Resetting Status.
+1741446695814	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1741446695816	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741446695869	Sync.Resource	WARN	GET request to https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/213116256/info/collections failed: [Exception... "Abort"  nsresult: "0x80004004 (NS_ERROR_ABORT)"  location: "<unknown>"  data: no] No traceback available
+1741446695871	Sync.ErrorHandler	ERROR	Sync encountered an error: [Exception... "Abort"  nsresult: "0x80004004 (NS_ERROR_ABORT)"  location: "<unknown>"  data: no] No traceback available
+1741446695871	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=reschedule)
+1741446695872	Sync.Service	DEBUG	Exception calling anonymous function: [Exception... "Abort"  nsresult: "0x80004004 (NS_ERROR_ABORT)"  location: "<unknown>"  data: no] No traceback available

@@ -1,0 +1,89 @@
+1741039790820	Sync.Status	INFO	Resetting Status.
+1741039790820	Sync.Status	DEBUG	Status.service: undefined => success.status_ok
+1741039790820	FirefoxAccounts	TRACE	initializing new storage manager
+1741039790820	FirefoxAccounts	TRACE	starting fetch of json user data
+1741039790820	Sync.SyncScheduler	TRACE	Setting SyncScheduler policy values to defaults.
+1741039790821	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1741039790821	Sync.Service	INFO	Loading Weave 1.137.0
+1741039790821	Sync.Engine.Clients	DEBUG	Engine constructed
+1741039790821	Sync.Engine.Clients	DEBUG	Resetting clients last sync time
+1741039790822	Sync.Engine.Workspaces	DEBUG	Engine constructed
+1741039790823	Sync.Engine.Addons	DEBUG	Engine constructed
+1741039790829	FirefoxAccounts	TRACE	finished fetch of json user data - took: 9
+1741039790829	FirefoxAccounts	DEBUG	reading secure storage with existing: []
+1741039790829	FirefoxAccounts	TRACE	starting fetch of user data from the login manager
+1741039790842	FirefoxAccounts	DEBUG	secure read fetched items: ["scopedKeys"]
+1741039790842	FirefoxAccounts	TRACE	initializing of new storage manager done
+1741039790844	Sync.Engine.Workspaces	DEBUG	SyncEngine initialized: workspaces
+1741039790844	Sync.Engine.Addons	DEBUG	SyncEngine initialized: addons
+1741039790874	Sync.Engine.Passwords	DEBUG	Engine constructed
+1741039790890	Sync.Engine.Passwords	DEBUG	SyncEngine initialized: passwords
+1741039790890	Sync.Engine.Prefs	DEBUG	Engine constructed
+1741039790893	Sync.Engine.Prefs	DEBUG	SyncEngine initialized: prefs
+1741039790894	Sync.Engine.Bookmarks	DEBUG	Engine constructed
+1741039790895	Sync.Engine.Bookmarks	DEBUG	SyncEngine initialized: bookmarks
+1741039790895	Sync.Engine.Forms	DEBUG	Engine constructed
+1741039791189	Sync.Engine.Forms	DEBUG	SyncEngine initialized: forms
+1741039791190	Sync.Engine.History	DEBUG	Engine constructed
+1741039791207	Sync.Engine.History	DEBUG	SyncEngine initialized: history
+1741039791208	Sync.Engine.Tabs	DEBUG	Engine constructed
+1741039791211	Sync.Engine.Tabs	DEBUG	SyncEngine initialized: tabs
+1741039791260	Sync.Engine.Tabs	INFO	Got a bridged engine!
+1741039791261	Sync.Engine.CreditCards	DEBUG	Engine constructed
+1741039791475	Sync.Engine.CreditCards	DEBUG	SyncEngine initialized: creditcards
+1741039791476	Sync.Engine.Extension-Storage	DEBUG	Engine constructed
+1741039791579	Sync.Engine.Extension-Storage	DEBUG	SyncEngine initialized: extension-storage
+1741039791653	Sync.Engine.Extension-Storage	INFO	Got a bridged engine!
+1741039791653	Sync.Service	INFO	Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0
+1741039791656	Sync.AddonsReconciler	INFO	Registering as Add-on Manager listener.
+1741039791656	Sync.AddonsReconciler	DEBUG	Adding change listener.
+1741039791656	Sync.Engine.History.Tracker	INFO	Adding Places observer.
+1741039791693	FirefoxAccounts	TRACE	Command queue observer created
+1741039791694	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741039791695	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Initialized
+1741039791695	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1741039791695	FirefoxAccounts	DEBUG	getOAuthToken enter
+1741039791695	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741039791695	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1741039791695	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1741039791696	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1741039791752	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1741039791752	FirefoxAccounts	ERROR	Background refresh of profile failed: {"name":"FxAccountsProfileClientError","code":null,"errno":998,"error":"NETWORK_ERROR","message":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]"}
+1741039791903	Sync.Service	DEBUG	User-Agent: Zen/1.8.2b (Linux x86_64) FxSync/1.137.0.20250225090320.desktop
+1741039791904	Sync.Service	INFO	Starting sync at 2025-03-03 19:09:51 in browser session Oqlabr2e291y
+1741039791904	Sync.Service	DEBUG	In sync: should login.
+1741039791904	Sync.Service	INFO	User logged in successfully - verifying login.
+1741039791904	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741039791904	Sync.SyncAuthManager	DEBUG	unlockAndVerifyAuthState already has (or can fetch) sync keys
+1741039791904	Sync.Status	DEBUG	Status.login: success.login => success.status_ok
+1741039791904	Sync.Status	DEBUG	Status.service: success.status_ok => error.login.failed
+1741039791904	Sync.Service	DEBUG	Fetching unlocked auth state returned success.status_ok
+1741039791905	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741039791905	Sync.SyncAuthManager	INFO	Getting sync key
+1741039791905	FirefoxAccounts	DEBUG	getOAuthToken enter
+1741039791905	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1741039791905	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1741039791905	Sync.SyncAuthManager	INFO	Getting a sync token from: https://token.services.mozilla.com/1.0/sync/1.5
+1741039791905	Sync.SyncAuthManager	DEBUG	Getting a token using OAuth
+1741039791905	Services.Common.TokenServerClient	DEBUG	Beginning OAuth token exchange: https://token.services.mozilla.com/1.0/sync/1.5
+1741039791905	Services.Common.RESTRequest	DEBUG	GET request to https://token.services.mozilla.com/1.0/sync/1.5
+1741039791915	Services.Common.RESTRequest	DEBUG	GET https://token.services.mozilla.com/1.0/sync/1.5 failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1741039791915	Sync.SyncAuthManager	ERROR	Non-authentication error in _fetchTokenForUser: TokenServerClientNetworkError({"error":{}})(resource://services-common/tokenserverclient.sys.mjs:28:36) JS Stack trace: TokenServerClientNetworkError@tokenserverclient.sys.mjs:51:16
+_tokenServerExchangeRequest@tokenserverclient.sys.mjs:235:13
+1741039791915	Sync.Status	DEBUG	Status.login: success.status_ok => error.login.reason.network
+1741039791915	Sync.Status	DEBUG	Status.service: error.login.failed => error.login.failed
+1741039791916	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1741039791916	Sync.SyncAuthManager	INFO	Failed to fetch the cluster URL: TokenServerClientNetworkError({"error":{}})(resource://services-common/tokenserverclient.sys.mjs:28:36) JS Stack trace: TokenServerClientNetworkError@tokenserverclient.sys.mjs:51:16
+_tokenServerExchangeRequest@tokenserverclient.sys.mjs:235:13
+1741039791916	Sync.Service	DEBUG	verifyLogin failed: TokenServerClientNetworkError({"error":{}})(resource://services-common/tokenserverclient.sys.mjs:28:36) JS Stack trace: TokenServerClientNetworkError@tokenserverclient.sys.mjs:51:16
+_tokenServerExchangeRequest@tokenserverclient.sys.mjs:235:13
+1741039791916	Sync.Status	DEBUG	Status.login: error.login.reason.network => error.login.reason.network
+1741039791916	Sync.Status	DEBUG	Status.service: error.login.failed => error.login.failed
+1741039791916	Sync.ErrorHandler	ERROR	Sync encountered a login error
+1741039791916	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1741039791917	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=schedule)
+1741039791917	Sync.Service	DEBUG	Exception calling WrappedLock: Error: Login failed: error.login.reason.network(resource://services-sync/service.sys.mjs:1041:15) JS Stack trace: onNotify@service.sys.mjs:1041:15
+1741039791917	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1741039791917	Sync.Service	DEBUG	Not syncing: login returned false.
+1741039791918	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1741039791918	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent

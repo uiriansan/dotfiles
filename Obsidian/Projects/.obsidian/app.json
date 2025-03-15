@@ -1,0 +1,13 @@
+{
+  "showInlineTitle": true,
+  "promptDelete": false,
+  "vimMode": true,
+  "readableLineLength": true,
+  "strictLineBreaks": false,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showLineNumber": false,
+  "propertiesInDocument": "visible",
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "./attachments"
+}
