@@ -1,19 +1,8 @@
+# Ignore everything...
 *
 
+# ...except:
 !.config/
-.config/yay/
-.config/tmux/tmux_weather.json
-.config/tmux/cron.log
-.config/go/
-.config/QtProject.conf
-.config/qBittorrent
-.config/dconf/
-.config/spotify/
-.config/*.log
-.config/pulse
-.config/Electron
-.config/discord
-
 !.themes/
 !.zen/
 .zen/firefox-mpris/
@@ -27,3 +16,18 @@
 !.gtkrc-2.0
 !README.md
 !setup.sh
+
+# Ignore these as well
+.config/yay/
+.config/tmux/tmux_weather.json
+.config/tmux/cron.log
+.config/go/
+.config/QtProject.conf
+.config/qBittorrent
+.config/dconf/
+.config/spotify/
+.config/*.log
+.config/pulse
+.config/Electron
+.config/discord
+
