@@ -21,7 +21,9 @@
 !scripts/
 !.bash_profile
 !.bashrc
+!.gitignore
 !.gitmodules
+!.gitconfig
 !.gtkrc-2.0
 !README.md
 !setup.sh
