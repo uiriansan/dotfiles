@@ -8,7 +8,7 @@
 #
 #
 # # 1. Create directories
-# mkdir -p ~/.config ~/Pictures ~/Documents ~/Code ~/Sources
+# mkdir -p ~/.config ~/Pictures/Screenshots ~/Documents ~/Code ~/Sources
 # echo -e "\e[32m\e[1mUser directories created!\e[0m"
 #
 # # 2. Upgrade system
@@ -22,15 +22,26 @@
 # # 4. Install essentials
 # echo -e "\e[34m\e[1mInstalling essentials...\e[0m"
 #
-# sudo pacman --noconfirm -S --needed grub ntfs-3g bottom chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel fd lua luarocks lazygit man-db man-pages nasm qemu-desktop npm openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire dunst qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick sbctl bluez-utils linux-headers
+# sudo pacman --noconfirm -S --needed grub ntfs-3g bottom cpio gtk-engine-murrine meson pkg-config obsidian chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel fd bat wget lua luarocks dart-sass cava wf-recorder hypridle slurp lazygit man-db man-pages nasm qemu-desktop npm inkscape blender openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree xdg-desktop-portal-gtk xdg-desktop-portal-hyprland hyprpolkitagent weston hyprwayland-scanner unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire wireplumber dunst qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick zoxide sbctl bluez-utils linux-headers
 #
-# # fabric 
-# sudo pacman -S gtk3 cairo gtk-layer-shell libgirepository gobject-introspection gobject-introspection-runtime python python-pip python-gobject python-cairo python-loguru pkgconf
+# # Astal
+# sh -c yay -S libastal-io-git libastal-git aylurs-gtk-shell-git
+# sudo pacman -Syu meson vala valadoc gvfs json-glib gobject-introspection
 #
-# yay -S python-fabric-git
+# # Fabric
+# sudo pacman -S --noconfirm --needed pipewire playerctl dart-sass power-profiles-daemon networkmanager brightnessctl pkgconf wf-recorder kitty python pacman-contrib gtk3 cairo gtk-layer-shell libgirepository gobject-introspection gobject-introspection-runtime python-pip python-gobject python-psutil python-dbus python-cairo python-loguru python-setproctitle
+#
+# yay -S --needed gray-git python-fabric gnome-bluetooth-3.0 python-rlottie-python python-pytomlpp slurp imagemagick tesseract tesseract-data-eng
 #
 # yay -S rose-pine-hyprcursor
 # yay -S hyprshot
+# yay -S hyprsunset
+# yay -S hyprswitch
+# yay -S hyprmag-git
+#
+# GTK Cursor:
+# wget -O ~/Downloads/BreezeXDark.tar.xz "https://github.com/ful1e5/BreezeX_Cursor/releases/latest/download/BreezeX-Dark.tar.xz" | tar -xvf BreezeX-Dark.tar.xz
+# sudo tar -xvf ~/Downloads/BreezeXDark.tar.xz -C /usr/share/icons/
 #
 # pipx ensurepath
 # pipx install img2art
@@ -110,7 +121,7 @@
 # echo -e "\e[32m\e[1mSetup completed!\e[0m"
 #
 # # sudo pacman -S ttf-jetbrains-mono-nerd
-# # sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-otc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-tw-fonts
+# # sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-otc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-tw-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji
 #
 # ssh-keygen -t ed25519 -C "uiriansan@gmail.com"
 #
@@ -166,3 +177,20 @@
 #
 # sudo grub-mkconfig -o /boot/grub/grub.cfg
 # # /etc/grub.d/
+
+
+# Unzip ~/config/gtk/Kanagawa....zip
+# Move the extracted files to the following paths:
+
+    # For GTK3: ~/.themes In this path you must move the entire theme folder.
+    # For GTK4: ~/.config/gtk-4.0 The files to move to this path can be found inside the theme directory in the gtk-4.0 folder, copy only the assets, gtk.css and gtk-dark.css files or create a symlinks.
+
+#          
+
+# Applying the themes
+    #
+    # For GTK3, apply themes from Gnome Tweaks.
+    # For GTK4 applications it is only necessary to have moved the assets, gtk.css and gtk-dark.css files to the ~/.config/gtk-4.0 path, and if you notice that the theme has not been applied, just close and reopen the application.
+    #
+# https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme?tab=readme-ov-file
+
