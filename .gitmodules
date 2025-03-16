@@ -1,6 +1,6 @@
 [submodule "SilentSDDM"]
-	path = .config/sddm
+	path = sddm
 	url = git@github.com:uiriansan/SilentSDDM.git
 [submodule "LainGrubTheme"]
-	path = .config/grub
+	path = grub
 	url = git@github.com:uiriansan/LainGrubTheme.git
