@@ -3,7 +3,6 @@
 
 # ...except:
 !.config/
-!.themes/
 !Obsidian/
 !scripts/
 !.bash_profile
@@ -16,6 +15,7 @@
 !setup.sh
 
 # Ignore these as well
+# .config/...
 **/yay/
 **/tmux/tmux_weather.json
 **/tmux/cron.log
@@ -30,4 +30,7 @@
 **/discord/
 **/gtk-*
 **/obsidian/
+
+Obsidian/*/.obsidian/plugins/
+Obsidian/*/.obsidian/themes/
 
