@@ -1,9 +1,0 @@
-[Trigger]
-Operation = Install
-Operation = Remove
-Type = Package
-Target = *
-
-[Action]
-When = PostTransaction
-Exec = /bin/sh -c '/bin/pacman -Qqe > /home/uirian/.config/scripts/pkglist.txt'

@@ -1,37 +1,17 @@
-# Ignore everything...
-/*
-
-# ...except:
-!.config/
-!Obsidian/
-!scripts/
-!.bash_profile
-!.bashrc
-!.gitignore
-!.gitmodules
-!.gitconfig
-!.gtkrc-2.0
-!README.md
-!setup.sh
-
-# Ignore these as well
-# .config/...
-**/yay/
-**/tmux/tmux_weather.json
-**/tmux/cron.log
-**/go/
-**/QtProject.conf
-**/qBittorrent/
-**/dconf/
-**/spotify/
-**/*.log
-**/pulse/
-**/Electron/
-**/discord/
-**/gtk-*
-**/obsidian/
-Obsidian/*/.obsidian/plugins/
-Obsidian/*/.obsidian/themes/
-**/hydepanel/
-**/systemd
+yay/
+tmux/tmux_weather.json
+tmux/cron.log
+go/
+QtProject.conf
+qBittorrent/
+dconf/
+spotify/
+*.log
+pulse/
+Electron/
+discord/
+gtk-*
+obsidian/
+hydepanel/
+systemd/
 
