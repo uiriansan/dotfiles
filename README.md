@@ -1,5 +1,8 @@
 ## Software
 
+> [!WARNING]
+> This is my personal config. It is not meant to work for you, and probably won't.
+
 <table>
     <tbody>
         <tr>
