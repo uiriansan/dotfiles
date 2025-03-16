@@ -30,7 +30,7 @@
 **/discord/
 **/gtk-*
 **/obsidian/
-
 Obsidian/*/.obsidian/plugins/
 Obsidian/*/.obsidian/themes/
+**/hydepanel/
 
