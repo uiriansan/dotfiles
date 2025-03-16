@@ -4,8 +4,6 @@
 # ...except:
 !.config/
 !.themes/
-!.zen/
-.zen/firefox-mpris/
 !Obsidian/
 !scripts/
 !.bash_profile
@@ -18,16 +16,17 @@
 !setup.sh
 
 # Ignore these as well
-.config/yay/
-.config/tmux/tmux_weather.json
-.config/tmux/cron.log
-.config/go/
-.config/QtProject.conf
-.config/qBittorrent
-.config/dconf/
-.config/spotify/
-.config/*.log
-.config/pulse
-.config/Electron
-.config/discord
+**/yay/
+**/tmux/tmux_weather.json
+**/tmux/cron.log
+**/go/
+**/QtProject.conf
+**/qBittorrent/
+**/dconf/
+**/spotify/
+**/*.log
+**/pulse/
+**/Electron/
+**/discord/
+**/gtk-*
 
