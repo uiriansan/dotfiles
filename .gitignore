@@ -33,4 +33,5 @@
 Obsidian/*/.obsidian/plugins/
 Obsidian/*/.obsidian/themes/
 **/hydepanel/
+**/systemd
 
