@@ -1,5 +1,5 @@
-import { App } from "astal/gtk3"
-import { Variable, GLib, bind, exec } from "astal"
+import { App } from "astal/gtk4"
+import { Variable, GLib, bind, exec, timeout } from "astal"
 import { Astal, Gtk, Gdk } from "astal/gtk3"
 import Hyprland from "gi://AstalHyprland"
 import Mpris from "gi://AstalMpris"
@@ -14,6 +14,7 @@ function SysTray() {
 	return <box className="SysTray">
 		{bind(tray, "items").as(items => items.map(item => (
 			<menubutton
+				cursor="pointer"
 				tooltipMarkup={bind(item, "tooltipMarkup")}
 				usePopover={false}
 				actionGroup={bind(item, "actionGroup").as(ag => ["dbusmenu", ag])}
@@ -22,6 +23,10 @@ function SysTray() {
 			</menubutton>
 		)))}
 	</box>
+}
+
+function SystemIcon() {
+	return <icon className="SystemIcon" icon="arch-symbolic" />
 }
 
 function Wifi() {
@@ -57,21 +62,19 @@ function Media() {
 	return <box className="Media">
 		{bind(mpris, "players").as(ps => ps[0] ? (
 			<box>
-				<box
-					className="Cover"
-					valign={Gtk.Align.CENTER}
-					css={bind(ps[0], "coverArt").as(cover =>
-						`background-image: url('${cover}');`
-					)}
-				/>
-				<label
-					label={bind(ps[0], "metadata").as(() =>
-						`${ps[0].title} - ${ps[0].artist}`
-					)}
-				/>
+				{bind(ps[0], "metadata").as(() => (
+					<revealer
+						setup={self => timeout(0, () => self.revealChild = true)}
+						transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}>
+						<label
+							className="mpris-data"
+							label={`${ps[0].title}`}
+						/>
+					</revealer>
+				))}
 			</box>
 		) : (
-			<label label="Nothing Playing" />
+			<label label="Nothing playing" />
 		))}
 	</box>
 }
@@ -144,19 +147,16 @@ const correct_title = (title: string, ititle = false) => {
 function FocusedClient() {
 	const hypr = Hyprland.get_default()
 	const focused = bind(hypr, "focusedClient")
-
-	return <box
-		className="Focused"
-		visible={focused.as(Boolean)}>
+	return <box>
 		{focused.as(client => (
-			client && <label label={bind(client, "title").as(
+			client && <label className="Focused" label={bind(client, "title").as(
 				title => correct_title(hypr.get_focused_client().initialTitle, true) || correct_title(hypr.get_focused_client().title))} />
 		))}
 	</box>
 
 }
 
-function Time({ format = "%H:%M" }) {
+function Time({ format = "%b - %H:%M" }) {
 	const time = Variable<string>("").poll(1000, () =>
 		GLib.DateTime.new_now_local().format(format)!)
 
@@ -180,20 +180,24 @@ export default function Bar(monitor: Gdk.Monitor) {
 
 	return <window
 		className="Bar"
+		namespace="topbar"
 		gdkmonitor={monitor}
 		exclusivity={Astal.Exclusivity.EXCLUSIVE}
-		anchor={TOP | LEFT | RIGHT}>
+		anchor={TOP | LEFT | RIGHT
+		}>
 		<centerbox>
 			<box hexpand halign={Gtk.Align.START}>
+				<SystemIcon />
 				<Workspaces />
 				<FocusedClient />
+				<SysTray />
 			</box>
 			<box>
-				<Media />
-			</box>
-			<box hexpand halign={Gtk.Align.END} >
 				<Time />
 			</box>
+			<box hexpand halign={Gtk.Align.END} >
+				<Media />
+			</box>
 		</centerbox>
-	</window>
+	</window >
 }

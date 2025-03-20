@@ -1,5 +1,5 @@
 > [!WARNING]
-> This is my personal config. It is not meant to work for you, and probably won't.
+> This is my personal config. A lot of things are hard coded and it probably won't work on your machine.
 
 <!--## Software-->
 <!---->

@@ -5,14 +5,18 @@ function nvim_open_file
 
 	# if server file existis and Neovim is running, remote attach to it
 	if test -e ~/.cache/nvim/server.pipe && pgrep -f /usr/bin/nvim > /dev/null
-		set nvim_command "<C-\><C-N>:e $file_path<CR>"
-
 		# if path is provided and a directory, change nvim's working dir
 		if test -d $file_path && count $argv > /dev/null
 			set nvim_command "<C-\><C-N>:cd $file_path<CR>"
-		end
+			/usr/bin/nvim --server ~/.cache/nvim/server.pipe --remote-send $nvim_command
+		else if test -e $file_path
+			set nvim_command "<C-\><C-N>:e $file_path<CR>"
+			/usr/bin/nvim --server ~/.cache/nvim/server.pipe --remote-send $nvim_command
+		#else if test -n string match "<C-*" $argv
 
-		/usr/bin/nvim --server ~/.cache/nvim/server.pipe --remote-send $nvim_command
+		else
+			/usr/bin/nvim $argv
+		end
 	else
 		# Delete Neovim's server.pipe in case it exists (e.g. the session was killed with nvim running)
 		rm -f ~/.cache/nvim/server.pipe

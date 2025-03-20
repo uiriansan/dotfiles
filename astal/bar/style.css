@@ -1,0 +1,34 @@
+.Bar centerbox {
+	color: white;
+	background-color: rgba(16, 16, 17, .9);
+	min-height: 30px;
+	margin: 10px 20px 0px 20px;
+	border-radius: 10px;
+	padding: 0 10px;
+}
+
+.SysTray {
+	margin-left: 10px;
+}
+
+button {
+	all: unset;
+	background: transparent;
+	outline: none;
+	border: none;
+}
+
+.Workspaces {
+	margin-right: 10px;
+}
+
+.SystemIcon {
+	color: white;
+	font-size: 15px;
+	margin-right: 10px;
+}
+
+.Time {
+	font-weight: bold;
+	font-family: "Inter";
+}

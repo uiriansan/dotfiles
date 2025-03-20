@@ -15,6 +15,11 @@ function search_man_pages
 	 apropos $argv | fzf -q $argv | awk '{print $1}' | xargs man
 end
 
+function open_manpage_in_nvim
+	set manvim_tmp /tmp/$argv
+	man $argv > $manvim_tmp
+end
+
 alias nf="fastfetch"
 alias ff="fastfetch"
 alias neofetch="fastfetch"
