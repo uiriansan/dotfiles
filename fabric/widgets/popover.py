@@ -66,7 +66,7 @@ class PopoverWindow(WaylandWindow):
 
         return None
 
-    def set_pointing_top(self, widget: Gtk.Widget | None):
+    def set_pointing_to(self, widget: Gtk.Widget | None):
         if self._pointing_widget:
             with contextlib.suppress(Exception):
                 self._pointing_widget.disconnect_by_func(self.do_handle_size_allocate)
