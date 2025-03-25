@@ -1,0 +1,33 @@
+#status-bar-container {
+	min-height: 27px;
+	padding: 5px;
+	background-color: alpha(var(--background), 0.9);
+	border-radius: 10px;
+}
+
+menu {
+	background: #161617;
+	padding: 5px;
+	border-radius: 10px;
+	color: white;
+	font-size: 1rem;
+	border: .5px solid rgba(255, 255, 255, .5);
+}
+
+menu menuitem {
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+menu menuitem:hover {
+	color: #C8B8AD;
+	background: rgba(255, 255, 255, .15);
+}
+
+menu menuitem:disabled {
+	color: grey;
+}
+
+#datetime {
+	font-weight: 900;
+}

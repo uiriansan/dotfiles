@@ -1,0 +1,22 @@
+bcrypt==4.3.0
+certifi==2025.1.31
+cffi==1.17.1
+chardet==3.0.4
+click==8.1.8
+cryptography==44.0.2
+decorator==5.2.1
+Deprecated==1.2.18
+fabric @ git+https://github.com/Fabric-Development/fabric.git@2e910066c3bbf0139d7f532cf17a0e0c9294f363
+idna==2.10
+invoke==2.2.0
+kids.cache==0.0.7
+loguru==0.7.3
+paramiko==3.5.1
+pycairo==1.27.0
+pycparser==2.22
+PyGObject==3.50.0
+PyNaCl==1.5.0
+requests==2.23.0
+typing==3.7.4
+urllib3==1.25.11
+wrapt==1.17.2

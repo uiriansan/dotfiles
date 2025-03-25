@@ -156,15 +156,10 @@ class ActiveWindow(Button):
 
         print(workspace)
 
-        # FIXME: Not properly updating when switching to an empty workspace
-        try:
-            return self.set_label(
-                # self.formatter.format(win_title=event.data[0], initial_title=event.data[1])
-                workspace.get("name").replace("special:", "") + " " + initial_title
-            )
-        except Exception as e:
-            # "j/activeworkspace"?????????
-            return self.set_label("Whatever")
+        return self.set_label(
+            # self.formatter.format(win_title=event.data[0], initial_title=event.data[1])
+            workspace.get("name").replace("special:", "") + " " + initial_title or initial_title
+        )
 
     def do_initialize(self):
         win_data: dict = json.loads(
@@ -264,7 +259,6 @@ class StatusBar(Window):
         self.ram_progress_bar.value = psutil.virtual_memory().percent / 100
         self.cpu_progress_bar.value = psutil.cpu_percent() / 100
         return True
-
 
 if __name__ == "__main__":
     # Where to display the system tray:
