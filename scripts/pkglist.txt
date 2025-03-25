@@ -41,6 +41,7 @@ feh
 fish
 fzf
 fzy
+galculator
 gdb
 ghostty
 git
@@ -121,6 +122,7 @@ qt5-quickcontrols2
 qt5-svg
 qt5-wayland
 qt6-wayland
+reflector
 ripgrep
 rose-pine-hyprcursor
 rust-analyzer

@@ -33,6 +33,12 @@
 #
 # yay -S --needed gray-git python-fabric gnome-bluetooth-3.0 python-rlottie-python python-pytomlpp slurp imagemagick tesseract tesseract-data-eng
 #
+# We may need to source the virtual environment for the Frabric config:
+# cd ~/.config/fabric/
+# source venv/bin/activate.fish # Since this script uses Bash, this might be a problem
+# pip install -r 'requirements.txt'
+# -----------------------------------------------------
+#
 # yay -S rose-pine-hyprcursor
 # yay -S hyprshot
 # yay -S hyprsunset
@@ -48,7 +54,6 @@
 #
 # # Install Rust
 # rustup default stable
-#
 #
 # echo -e "\e[32m\e[1mEssentials installed!\e[0m"
 #

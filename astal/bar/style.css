@@ -1,21 +1,60 @@
+* {
+	all: unset;
+	font-family: "Inter";
+	font-size: 12px;
+}
+
 .Bar centerbox {
 	color: white;
 	background-color: rgba(16, 16, 17, .9);
-	min-height: 30px;
+	min-height: 27px;
 	margin: 10px 20px 0px 20px;
 	border-radius: 10px;
-	padding: 0 10px;
+	padding: 5px 5px 5px 5px;
 }
 
-.SysTray {
-	margin-left: 10px;
+.SysTray icon {
+	font-size: 16px;
+}
+
+.SysTray menu {
+	background: #161617;
+	padding: 5px;
+	border-radius: 10px;
+	color: white;
+	font-size: 1rem;
+	border: .5px solid rgba(255, 255, 255, .5);
+}
+
+.SysTray menu menuitem {
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.SysTray menu menuitem:hover {
+	color: #C8B8AD;
+	background: rgba(255, 255, 255, .15);
+}
+
+.SysTray menu menuitem:disabled {
+	color: grey;
 }
 
 button {
-	all: unset;
 	background: transparent;
-	outline: none;
-	border: none;
+	padding: 0 8px;
+	border-radius: 5px;
+	transition: color .5s, background .5s;
+}
+
+icon {
+	font-size: 16px;
+}
+
+button:hover,
+button.pressed {
+	color: #C8B8AD;
+	background: rgba(255, 255, 255, .15);
 }
 
 .Workspaces {
@@ -24,11 +63,24 @@ button {
 
 .SystemIcon {
 	color: white;
-	font-size: 15px;
-	margin-right: 10px;
+	font-size: 14px;
 }
+
+.SystemIcon:hover,
+.SystemIcon.pressed {}
 
 .Time {
 	font-weight: bold;
-	font-family: "Inter";
+}
+
+.separator {
+	margin: 0 5px;
+	border-right: .5px solid rgba(255, 255, 255, .3);
+	/*border-image: linear-gradient(to bottom, #161617 0%, rgba(255, 255, 255, .3) 50%, #161617 100%) 1;*/
+	/*border-width: 0 .5px 0 0;*/
+	/*border-style: solid;*/
+}
+
+.Focused {
+	font-weight: bold;
 }
