@@ -1,6 +1,10 @@
 from typing import Literal
 
-from gi.repository import Gdk
+import gi
+
+gi.require_versions({"Gtk": "3.0", "Gdk": "3.0"})
+
+from gi.repository import Gdk, Gtk
 
 from fabric.utils.helpers import bulk_connect
 
@@ -28,3 +32,24 @@ def setup_cursor_hover(
     )
 
     return widget
+
+
+def get_widget_geometry(widget: Gtk.Widget) -> tuple[int, ...]:
+    pass
+
+
+def get_widget_screen_position(widget: Gtk.Widget) -> tuple[int, int]:
+    toplevel = widget.get_toplevel()
+    if not toplevel and toplevel.is_toplevel():
+        return 0, 0
+
+    allocation = widget.get_allocation()
+    x, y = widget.translate_coordinates(toplevel, allocation.x, allocation.y) or (
+        0,
+        0,
+    )
+    return round(x / 2), round(y / 2)
+
+
+def get_widget_position(widget: Gtk.Widget) -> tuple[int, ...]:
+    pass

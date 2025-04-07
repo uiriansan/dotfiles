@@ -1,31 +1,29 @@
+@import url("./colors.css");
 @import url("./status_bar.css");
 @import url("./launcher.css");
-
-:vars {
-	--foreground: white;
-	--accent: #C8B8AD;
-	--background: #161617;
-	--active-background: rgba(255, 255, 255, .15);
-}
 
 * {
 	all: unset;
 	color: var(--foreground);
-	/*font-family: Inter;*/
-	font-size: 12px;
+	font-family: Inter, "Ubuntu Nerd Font";
+	font-size: 10px;
+	padding: 0px;
+	min-width: 0px;
+	min-height: 0px;
+	margin: 0px;
 	-gtk-icon-style: symbolic;
 }
 
 separator {
 	margin: 0 5px;
 	padding: 0;
-	border-right: .5px solid rgba(255, 255, 255, .4);
+	border-right: .5px solid alpha(var(--foreground), .5);
 }
 
 tooltip {
-	border: none;
-	border-color: var(--border-color);
-	background-color: var(--window-bg);
+	border: .5px solid alpha(var(--foreground), .5);
+	border-radius: 10px;
+	background-color: var(--background);
 }
 
 tooltip>* {
@@ -33,15 +31,25 @@ tooltip>* {
 }
 
 button {
-	padding: 0 6px;
+	padding: 5px 6px;
 	border-radius: 5px;
 	background-color: transparent;
 	transition: background-color .5s;
 }
 
+label {
+	padding-top: 1px;
+	transition: color .5s;
+}
+
 button:hover,
 button.pressed {
 	background-color: var(--active-background);
+}
+
+button:hover label,
+button.pressed label {
+	color: var(--accent);
 }
 
 button.icon-button image.icon {
@@ -55,11 +63,6 @@ button.icon-button.pressed image.icon {
 	-gtk-icon-transform: scale(.92);
 }
 
-.popover {}
-
-.popover-box {
-	padding: 20px;
-	background-color: var(--background);
-	border-radius: 10px;
-	border: .5px solid rgba(255, 255, 255, .5);
+.popover {
+	background-color: red;
 }

@@ -1,17 +1,17 @@
 #status-bar-container {
-	min-height: 27px;
+	min-height: 20px;
 	padding: 5px;
 	background-color: alpha(var(--background), 0.9);
-	border-radius: 10px;
+	border-radius: 0px;
 }
 
 menu {
 	background: #161617;
 	padding: 5px;
 	border-radius: 10px;
-	color: white;
+	color: var(--foreground);
 	font-size: 1rem;
-	border: .5px solid rgba(255, 255, 255, .5);
+	border: .5px solid alpha(var(--foreground), .5);
 }
 
 menu menuitem {
@@ -21,7 +21,7 @@ menu menuitem {
 
 menu menuitem:hover {
 	color: #C8B8AD;
-	background: rgba(255, 255, 255, .15);
+	background: alpha(var(--foreground), .15);
 }
 
 menu menuitem:disabled {
@@ -29,5 +29,29 @@ menu menuitem:disabled {
 }
 
 #datetime {
-	font-weight: 900;
+	font-weight: bold;
+}
+
+#status-bar-corners {
+	min-height: 20px;
+	border-radius: 20px 20px 0 0;
+	background-color: transparent;
+}
+
+#status-bar-corner-left,
+#status-bar-corner-right {
+	min-height: 20px;
+	min-width: 20px;
+}
+
+#status-bar-corner-left {
+	background-image: radial-gradient(21px circle at 100% 100%, transparent 19px, alpha(var(--background), 0.9) 19px);
+}
+
+#status-bar-corner-right {
+	background-image: radial-gradient(21px circle at 0% 100%, transparent 19px, alpha(var(--background), 0.9) 19px);
+}
+
+#active-window {
+	font-weight: bold;
 }
