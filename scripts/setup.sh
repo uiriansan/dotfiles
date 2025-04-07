@@ -24,10 +24,6 @@
 #
 # sudo pacman --noconfirm -S --needed grub ntfs-3g bottom cpio gtk-engine-murrine meson pkg-config obsidian chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel fd bat wget lua luarocks dart-sass cava wf-recorder hypridle slurp lazygit man-db man-pages nasm qemu-desktop npm inkscape blender openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree xdg-desktop-portal-gtk xdg-desktop-portal-hyprland hyprpolkitagent weston hyprwayland-scanner unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire wireplumber qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick zoxide sbctl xdg-desktop-portal-wlr bluez-utils linux-headers
 #
-# # Astal
-# sh -c yay -S libastal-io-git libastal-git aylurs-gtk-shell-git
-# sudo pacman -Syu meson vala valadoc gvfs json-glib gobject-introspection
-#
 # # Fabric
 # sudo pacman -S --noconfirm --needed pipewire playerctl dart-sass power-profiles-daemon networkmanager brightnessctl pkgconf wf-recorder kitty python pacman-contrib gtk3 cairo gtk-layer-shell libgirepository gobject-introspection gobject-introspection-runtime python-pip python-gobject python-psutil python-dbus python-cairo python-loguru python-setproctitle
 #
