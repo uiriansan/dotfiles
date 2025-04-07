@@ -9,7 +9,6 @@ keybind = unconsumed:shift+up=scroll_page_up
 keybind = unconsumed:shift+down=scroll_page_down
 
 # background = #161617 
-# background-opacity = 0.95
-# background-blur = 20
-
-class=ghostty
+background-opacity = 1.0
+background-blur = 100
+resize-overlay = never

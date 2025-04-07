@@ -29,7 +29,6 @@ dart-sass
 dhcpcd
 discord
 dmidecode
-dunst
 efibootmgr
 egl-wayland
 eza
@@ -99,6 +98,7 @@ nvidia-dkms
 nvidia-utils
 nwg-look
 obsidian
+odin
 openssh
 os-prober
 pacman-contrib
@@ -141,6 +141,8 @@ testdisk
 tmux
 tree
 ttf-jetbrains-mono-nerd
+ttf-ubuntu-mono-nerd
+ttf-ubuntu-nerd
 units
 unzip
 uwsm
@@ -156,6 +158,7 @@ wl-clipboard
 xclip
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
+xdg-desktop-portal-wlr
 yay
 yay-debug
 yazi

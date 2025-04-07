@@ -1,0 +1,24 @@
+   Frame 1.png
+Mapping ▸ Vector
+Texture Coordinate ▸ Generated
+   Exterior_Windows
+   Glass_Lights_0
+ 0 Glass_Lights
+   Interior_Leather
+   Interior_Leather_0
+   Chrome_baseColor.png
+ 0 Body_Main_2.001
+   rims
+   Lip_Chrome
+   Body_Main_2.001
+   ambergls
+   istockphoto-172726682-612x612.jpg
+   8558-1-1024x575.jpg
+   ext_chrome
+   Glass_Lights_2
+   CARBON1
+   Digital_Screen
+   Calipers
+   Body_Main_2
+Generate ▸ Mirror
+Composite Rubber

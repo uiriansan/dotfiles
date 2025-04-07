@@ -44,3 +44,6 @@ vim.cmd([[ colorscheme mellow ]])
 
 -- Fix some highlight groups
 vim.cmd([[ hi CursorLineNR guifg=#ffffff gui=bold ]])
+
+-- Transparent background
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })

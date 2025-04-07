@@ -22,7 +22,7 @@
 # # 4. Install essentials
 # echo -e "\e[34m\e[1mInstalling essentials...\e[0m"
 #
-# sudo pacman --noconfirm -S --needed grub ntfs-3g bottom cpio gtk-engine-murrine meson pkg-config obsidian chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel fd bat wget lua luarocks dart-sass cava wf-recorder hypridle slurp lazygit man-db man-pages nasm qemu-desktop npm inkscape blender openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree xdg-desktop-portal-gtk xdg-desktop-portal-hyprland hyprpolkitagent weston hyprwayland-scanner unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire wireplumber dunst qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick zoxide sbctl bluez-utils linux-headers
+# sudo pacman --noconfirm -S --needed grub ntfs-3g bottom cpio gtk-engine-murrine meson pkg-config obsidian chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel fd bat wget lua luarocks dart-sass cava wf-recorder hypridle slurp lazygit man-db man-pages nasm qemu-desktop npm inkscape blender openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree xdg-desktop-portal-gtk xdg-desktop-portal-hyprland hyprpolkitagent weston hyprwayland-scanner unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire wireplumber qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick zoxide sbctl xdg-desktop-portal-wlr bluez-utils linux-headers
 #
 # # Astal
 # sh -c yay -S libastal-io-git libastal-git aylurs-gtk-shell-git
@@ -38,6 +38,18 @@
 # source venv/bin/activate.fish # Since this script uses Bash, this might be a problem
 # pip install -r 'requirements.txt'
 # -----------------------------------------------------
+#
+# Hyprland plugins:
+# hyprpm update
+# hyprpm add https://github.com/Duckonaut/split-monitor-workspaces
+# hyprpm add https://github.com/pyt0xic/hyprfocus
+#
+# hyprpm enable split-monitor-workspaces hyprfocus
+# hyprpm reload
+#
+# git clone https://github.com/coffeeispower/woomer.git ~/Sources/woomer/
+# cd ~/Sources/woomer/
+# cargo b
 #
 # yay -S rose-pine-hyprcursor
 # yay -S hyprshot
@@ -125,7 +137,7 @@
 #
 # echo -e "\e[32m\e[1mSetup completed!\e[0m"
 #
-# # sudo pacman -S ttf-jetbrains-mono-nerd
+# # sudo pacman -S ttf-jetbrains-mono-nerd ttf-ubuntu-mono-nerd ttf-ubuntu-nerd
 # # sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-otc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-tw-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji inter-font
 #
 # ssh-keygen -t ed25519 -C "uiriansan@gmail.com"
