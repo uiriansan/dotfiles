@@ -26,7 +26,6 @@ alias neofetch="fastfetch"
 
 alias ls="lsd -A"
 
-alias vim=nvim_open_file
 alias v=nvim_open_file
 alias vi=nvim_open_file
 alias neovim=nvim_open_file

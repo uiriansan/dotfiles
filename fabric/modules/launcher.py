@@ -24,11 +24,11 @@ from fabric.utils.helpers import get_relative_path
 class Launcher(Window):
     def __init__(self, **kwargs):
         super().__init__(
+            name="launcher",
             layer="top",
             anchor="center",
             exclusivity="none",
             keyboard_mode="on-demand",
-            style="background-color: black;",
             visible=False,
             all_visible=False,
             **kwargs,
@@ -73,6 +73,8 @@ class Launcher(Window):
             )
         )
         self.show_all()
+
+        self.search_entry.grab_focus_without_selecting()
         self.hide()
 
     def arrange_viewport(self, query: str = ""):
@@ -139,9 +141,15 @@ class Launcher(Window):
                 ],
             ),
             tooltip_text=app.description,
-            on_clicked=lambda *_: (app.launch(), self.hide()),
+            on_clicked=lambda *_: (
+                app.launch(),
+                self.hide(),
+                self.search_entry.set_text(""),
+            ),
             **kwargs,
         )
 
     def toggle(self):
+        self.search_entry.set_text(""),
+        self.search_entry.grab_focus_without_selecting()
         return self.set_visible(not self.get_visible())

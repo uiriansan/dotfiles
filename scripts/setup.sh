@@ -49,6 +49,7 @@
 #
 # yay -S rose-pine-hyprcursor
 # yay -S hyprshot
+# yay -S hyprshade-git
 # yay -S hyprsunset
 # yay -S hyprswitch
 # yay -S hyprmag-git

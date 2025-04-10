@@ -8,20 +8,22 @@ from fabric.widgets.box import Box
 from fabric.widgets.wayland import WaylandWindow
 
 
-class LayerShellOverlay(WaylandWindow):
+class Popover(WaylandWindow):
     def __init__(self, monitor, **kwargs):
         super().__init__(
             name="layer-shell-overlay",
             style_classes="layer-shell-overlay",
             monitor=monitor,
-            pass_through=True,
+            title="brightness-overlay",
+            pass_through=False,
             anchor="left top right bottom",
-            margin="0 0 0 0",
-            exclusivity="none",
+            margin="-50px 0px 0px 0px",
+            exclusivity="auto",
             layer="overlay",
             type="top-level",
             visible=False,
             all_visible=False,
+            style="background-color: rgba(0,0,0,.8);",
             **kwargs,
         )
 

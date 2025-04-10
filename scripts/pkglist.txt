@@ -58,6 +58,7 @@ hyprmag-git
 hyprpaper
 hyprpicker
 hyprpolkitagent
+hyprshade-git
 hyprshot
 hyprsunset
 hyprswitch
