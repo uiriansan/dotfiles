@@ -52,13 +52,13 @@ button.pressed label {
 	color: var(--accent);
 }
 
-button.icon-button image.icon {
+button.common-button box image.common-button-icon {
 	transition: color .5s, -gtk-icon-transform .5s;
 	-gtk-icon-transform: scale(1);
 }
 
-button.icon-button:hover image.icon,
-button.icon-button.pressed image.icon {
+button.common-button:hover box image.common-button-icon,
+button.common-button.pressed box image.common-button-icon {
 	color: var(--accent);
 	-gtk-icon-transform: scale(.92);
 }
@@ -68,7 +68,8 @@ button.icon-button.pressed image.icon {
 }
 
 .popover-content {
-	background-color: red;
+	background-color: alpha(var(--background), 0.9);
 	padding: 10px;
 	border-radius: 10px;
+	border: .5px solid alpha(var(--foreground), .5);
 }

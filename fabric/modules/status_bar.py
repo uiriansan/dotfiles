@@ -1,5 +1,7 @@
 import gi
 
+from widgets.common_button import CommonButton
+
 gi.require_versions({"Gtk": "3.0", "Gdk": "3.0", "GtkLayerShell": "0.1"})
 import time
 
@@ -43,7 +45,15 @@ class StatusBar(Window):
 
         self._main_monitor_id = main_monitor_id
 
-        self.system_button = IconButton(icon="arch", title="Arch Linux")
+        self.system_button = CommonButton(
+            icon="arch",
+            title="Arch Linux",
+            l_popover_factory=lambda: Button(child=Label(label="This is a label!!")),
+            r_popover_factory=lambda: Button(
+                child=Label(label="This is a label on the right click!!")
+            ),
+        )
+
         self.layout = setup_cursor_hover(
             Button(
                 child=Box(
@@ -60,11 +70,6 @@ class StatusBar(Window):
             )
         )
         self.active_window = ActiveWindow()
-
-        self.btn_t = PopoverButton(
-            label="Test button",
-            content_factory=lambda: Button(child=Label(label="This is a label!!")),
-        )
 
         self.system_tray = (
             SystemTray(name="system-tray", spacing=0, icon_size=16)
@@ -94,7 +99,6 @@ class StatusBar(Window):
                             # self.layout,
                             # Gtk.Separator(),
                             self.active_window,
-                            self.btn_t,
                         ],
                     ),
                     center_children=Box(

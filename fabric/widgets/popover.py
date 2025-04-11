@@ -37,7 +37,7 @@ class PopoverManager:
             type="top-level",
             visible=False,
             all_visible=False,
-            style="background-color: rgba(0,0,0,.6);",
+            style="background-color: rgba(0,0,0,0.0);",
         )
 
         # Add empty box so GTK doesn't complain
@@ -161,23 +161,28 @@ class Popover:
             self._visible = True
 
     def _create_popover(self):
-        # Get position relative to the button
-        allocation = self._point_to.get_allocation()
-        x = allocation.x - (allocation.width / 2)
-        y = allocation.y
+        if not self._content and self._content_factory:
+            self._content = self._content_factory()
 
         # Get a window from the pool
         self._content_window = self._manager.get_popover_window()
-        self._content_window.set_margin([y, 0, 0, x])
-
-        # Create content only when needed
-        if not self._content and self._content_factory:
-            self._content = self._content_factory()
 
         # Add content to window
         self._content_window.add(
             Box(style_classes="popover-content", children=self._content)
         )
+
+        widget_allocation = self._point_to.get_allocation()
+        popover_size = self._content_window.get_size()
+
+        x = (
+            widget_allocation.x
+            + (widget_allocation.width / 2)
+            - (popover_size.width / 2)
+        )
+        y = widget_allocation.y - 5
+
+        self._content_window.set_margin([y, 0, 0, x])
 
         self._content_window.connect("focus-out-event", self._on_popover_focus_out)
         self._manager.activate_popover(self)

@@ -4,12 +4,13 @@ from gi.repository import GLib
 
 from fabric.core.service import Property
 from fabric.utils.helpers import invoke_repeater
-from fabric.widgets.button import Button
+from fabric.widgets.label import Label
 from utils.styling import int_to_ordinal
 from utils.widgets import setup_cursor_hover
+from widgets.common_button import CommonButton
 
 
-class DateTime(Button):
+class DateTime(CommonButton):
     @Property(int, "read-write")
     def interval(self):
         return self._interval
@@ -24,7 +25,9 @@ class DateTime(Button):
         return
 
     def __init__(self, interval: int = 1000, **kwargs):
-        super().__init__(name="datetime", **kwargs)
+        super().__init__(
+            name="datetime", l_popover_factory=lambda: Label(label="CALENDAR"), **kwargs
+        )
 
         self._interval: int = interval
         self._repeater_id: int | None = None
