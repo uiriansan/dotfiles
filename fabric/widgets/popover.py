@@ -1,3 +1,5 @@
+# Claude.ai's so called "memory-efficient" popover. I don't fully understand this code, but it works :)
+
 import gi
 
 from fabric.widgets.wayland import WaylandWindow
@@ -148,6 +150,11 @@ class Popover:
         # Use weak reference to avoid circular reference issues
         self._manager = PopoverManager.get_instance()
 
+    def _on_key_press(self, widget, event):
+        if event.keyval == Gdk.KEY_Escape:
+            if self._manager.active_popover:
+                self._manager.active_popover.hide_popover()
+
     def open(self):
         if self._destroy_timeout is not None:
             GLib.source_remove(self._destroy_timeout)
@@ -158,6 +165,7 @@ class Popover:
         else:
             self._manager.activate_popover(self)
             self._content_window.show_all()
+            self._content_window.steal_input()
             self._visible = True
 
     def _calculate_margins(self):
@@ -198,8 +206,10 @@ class Popover:
         self._content_window.set_margin(self._calculate_margins())
 
         self._content_window.connect("focus-out-event", self._on_popover_focus_out)
+        self._content_window.connect("key-press-event", self._on_key_press)
         self._manager.activate_popover(self)
         self._content_window.show_all()
+        self._content_window.steal_input()
         self._visible = True
 
     def _on_popover_focus_out(self, widget, event):
