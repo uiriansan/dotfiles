@@ -15,7 +15,7 @@ from utils.widgets import setup_cursor_hover
 from widgets.active_window import ActiveWindow
 from widgets.datetime import DateTime
 from widgets.icon_button import IconButton
-from widgets.popover import Popover
+from widgets.popover import Popover, PopoverButton
 from widgets.system_tray import SystemTray
 from widgets.toolbar import Toolbar
 
@@ -61,6 +61,11 @@ class StatusBar(Window):
         )
         self.active_window = ActiveWindow()
 
+        self.btn_t = PopoverButton(
+            label="Test button",
+            content_factory=lambda: Button(child=Label(label="This is a label!!")),
+        )
+
         self.system_tray = (
             SystemTray(name="system-tray", spacing=0, icon_size=16)
             if monitor == main_monitor_id
@@ -68,10 +73,10 @@ class StatusBar(Window):
         )
 
         self.datetime = DateTime()
-        self.datetime_popover = Popover(
-            content=Label(label="Just some text!!!"), point_to=self.datetime
-        )
-        self.datetime.connect("button-press-event", self.open_popover)
+        # self.datetime_popover = Popover(
+        #     content=Label(label="Just some text!!!"), point_to=self.datetime
+        # )
+        # self.datetime.connect("button-press-event", self.open_popover)
 
         self.toolbar = Toolbar()
 
@@ -89,6 +94,7 @@ class StatusBar(Window):
                             # self.layout,
                             # Gtk.Separator(),
                             self.active_window,
+                            self.btn_t,
                         ],
                     ),
                     center_children=Box(

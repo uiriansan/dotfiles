@@ -3,16 +3,30 @@ import gi
 from fabric.widgets.wayland import WaylandWindow
 
 gi.require_versions({"Gtk": "3.0", "Gdk": "3.0", "GtkLayerShell": "0.1"})
+import weakref
+
 from gi.repository import Gdk, GLib, Gtk, GtkLayerShell
 
 from fabric.hyprland.service import Hyprland
 from fabric.widgets.box import Box
+from fabric.widgets.button import Button
 from fabric.widgets.wayland import WaylandWindow
 
 
-class Popover(WaylandWindow):
-    def __init__(self, content: Gtk.Widget, point_to: Gtk.Widget, **kwargs):
-        super().__init__(
+class PopoverManager:
+    """Singleton manager to handle shared resources for popovers."""
+
+    _instance = None
+
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = cls()
+        return cls._instance
+
+    def __init__(self):
+        # Shared overlay window for all popovers
+        self.overlay = WaylandWindow(
             name="popover-overlay",
             style_classes="popover-overlay",
             title="fabric-shell-popover-overlay",
@@ -24,93 +38,181 @@ class Popover(WaylandWindow):
             visible=False,
             all_visible=False,
             style="background-color: rgba(0,0,0,.6);",
-            **kwargs,
         )
 
-        self._content = content
-        self._point_to = point_to
+        # Add empty box so GTK doesn't complain
+        self.overlay.add(Box())
 
-        self._content_window = None
-        self._visible = False
+        # Keep track of active popovers
+        self.active_popover = None
+        self.available_windows = []
 
-        # destroy popover if it stays hidden for 5 seconds
-        self._destroy_timeout = None
+        # Close popover when clicking overlay
+        self.overlay.connect("button-press-event", self._on_overlay_clicked)
 
-        # Shut up, Gtk!
-        self.add(Box())
+    def _on_overlay_clicked(self, widget, event):
+        if self.active_popover:
+            self.active_popover.hide_popover()
+        return True
 
-    def open(self):
-        if not self._content_window:
-            self.create_popover()
-        else:
-            if self._destroy_timeout is not None:
-                GLib.source_remove(self._destroy_timeout)
-                self._destroy_timeout = None
+    def get_popover_window(self):
+        """Get an available popover window or create a new one."""
+        if self.available_windows:
+            return self.available_windows.pop()
 
-            self.show_all()
-            self._content_window.show_all()
-            self._visible = True
-
-    def create_popover(self):
-        allocation = self._point_to.get_allocation()
-        x = allocation.x
-        y = allocation.y
-
-        self._content_window = WaylandWindow(
+        window = WaylandWindow(
             type="popup",
             layer="overlay",
             name="popover-window",
             anchor="left top",
             visible=False,
             all_visible=False,
-            margin=[y, 0, 0, x],
         )
+        GtkLayerShell.set_keyboard_interactivity(window, True)
+        window.set_keep_above(True)
+        return window
 
-        GtkLayerShell.set_keyboard_interactivity(self._content_window, True)
+    def return_popover_window(self, window):
+        """Return a popover window to the pool."""
+        # Remove any children
+        for child in window.get_children():
+            window.remove(child)
 
-        self._content_window.set_keep_above(True)
+        window.hide()
+        # Only keep a reasonable number of windows in the pool
+        if len(self.available_windows) < 5:
+            self.available_windows.append(window)
+        else:
+            # Let the window be garbage collected
+            window.destroy()
 
+    def activate_popover(self, popover):
+        """Set the active popover and show overlay."""
+        if self.active_popover and self.active_popover != popover:
+            self.active_popover.hide_popover()
+
+        self.active_popover = popover
+        self.overlay.show_all()
+
+
+class PopoverButton(Button):
+    """A button that manages its own popover with lazy initialization."""
+
+    def __init__(self, label=None, content_factory=None, **kwargs):
+        """
+        Initialize a button with popover support.
+
+        Args:
+            label: Button label
+            content_factory: Function that returns the content widget when called
+                             (allows lazy initialization)
+            **kwargs: Additional arguments for Button
+        """
+        super().__init__(label=label, **kwargs)
+        self._popover = None
+        self._content_factory = content_factory
+        self.connect("button-press-event", self._on_button_press)
+
+    def _on_button_press(self, widget, event):
+        if not self._popover:
+            self._popover = Popover(self._content_factory, self)
+
+        self._popover.open()
+        return True
+
+    @property
+    def popover(self):
+        """Lazy create the popover if accessed."""
+        if not self._popover and self._content_factory:
+            self._popover = Popover(self._content_factory, self)
+        return self._popover
+
+
+class Popover:
+    """Memory-efficient popover implementation."""
+
+    def __init__(self, content_factory, point_to):
+        """
+        Initialize a popover.
+
+        Args:
+            content_factory: Function that returns content widget when called
+            point_to: Widget to position the popover next to
+        """
+        self._content_factory = content_factory
+        self._point_to = point_to
+        self._content_window = None
+        self._content = None
+        self._visible = False
+        self._destroy_timeout = None
+        # Use weak reference to avoid circular reference issues
+        self._manager = PopoverManager.get_instance()
+
+    def open(self):
+        if self._destroy_timeout is not None:
+            GLib.source_remove(self._destroy_timeout)
+            self._destroy_timeout = None
+
+        if not self._content_window:
+            self._create_popover()
+        else:
+            self._manager.activate_popover(self)
+            self._content_window.show_all()
+            self._visible = True
+
+    def _create_popover(self):
+        # Get position relative to the button
+        allocation = self._point_to.get_allocation()
+        x = allocation.x - (allocation.width / 2)
+        y = allocation.y
+
+        # Get a window from the pool
+        self._content_window = self._manager.get_popover_window()
+        self._content_window.set_margin([y, 0, 0, x])
+
+        # Create content only when needed
+        if not self._content and self._content_factory:
+            self._content = self._content_factory()
+
+        # Add content to window
         self._content_window.add(
             Box(style_classes="popover-content", children=self._content)
         )
 
-        self._content_window.connect("focus-out-event", self.on_popover_focus_out)
-        self.connect("button-press-event", self.on_overlay_clicked)
-
-        self.show_all()
+        self._content_window.connect("focus-out-event", self._on_popover_focus_out)
+        self._manager.activate_popover(self)
         self._content_window.show_all()
         self._visible = True
 
-    def on_overlay_clicked(self, widget, event):
-        self.hide_popover()
-        return True
-
-    def on_popover_focus_out(self, widget, event):
+    def _on_popover_focus_out(self, widget, event):
         # This helps with keyboard focus issues
         GLib.timeout_add(100, self.hide_popover)
-        self.hide_popover()
         return False
 
     def hide_popover(self):
-        if self._content_window and self._visible:
-            self._content_window.hide()
-            self.hide()
+        if not self._visible or not self._content_window:
+            return False
 
+        self._content_window.hide()
+        self._manager.overlay.hide()
         self._visible = False
 
         if not self._destroy_timeout:
-            self._destroy_timeout = GLib.timeout_add(1000 * 5, self.destroy_popover)
+            self._destroy_timeout = GLib.timeout_add(1000 * 5, self._destroy_popover)
 
         return False
 
-    def destroy_popover(self):
+    def _destroy_popover(self):
+        """Return resources to the pool and clear references."""
         self._destroy_timeout = None
-        self._visible = None
+        self._visible = False
 
-        self._content_window.hide()
-        self._content_window.destroy()
-        self._content_window = None
+        if self._content_window:
+            # Return window to the pool
+            self._manager.return_popover_window(self._content_window)
+            self._content_window = None
 
-        self.hide()
+        # Allow content to be garbage collected if no longer needed
+        self._content = None
 
         return False
