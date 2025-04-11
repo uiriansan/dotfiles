@@ -15,7 +15,7 @@ from utils.widgets import setup_cursor_hover
 from widgets.active_window import ActiveWindow
 from widgets.datetime import DateTime
 from widgets.icon_button import IconButton
-from widgets.popover import PopoverWindow
+from widgets.popover import Popover
 from widgets.system_tray import SystemTray
 from widgets.toolbar import Toolbar
 
@@ -43,8 +43,6 @@ class StatusBar(Window):
 
         self._main_monitor_id = main_monitor_id
 
-        self._opened_popover = None
-
         self.system_button = IconButton(icon="arch", title="Arch Linux")
         self.layout = setup_cursor_hover(
             Button(
@@ -70,37 +68,12 @@ class StatusBar(Window):
         )
 
         self.datetime = DateTime()
-        self.datetime.connect("button-press-event", self.on_widget_button_press)
-
-        # Create popup window
-        self.popup_window = None
-        self.popup_visible = False
+        self.datetime_popover = Popover(
+            content=Label(label="Just some text!!!"), point_to=self.datetime
+        )
+        self.datetime.connect("button-press-event", self.open_popover)
 
         self.toolbar = Toolbar()
-
-        # self.system_button.connect(
-        #     "clicked",
-        #     lambda *_: popover2.present(),
-        # )
-        #
-        # self.power_button.connect(
-        #     "clicked",
-        #     lambda *_: popover3.present(),
-        # )
-
-        # self.add_events(Gdk.EventMask.BUTTON_PRESS_MASK)
-        # This will be the event handler for mouse presses
-        # self.connect("button-press-event", self.on_gevent)
-
-        # Gdk.Seat.grab(
-        #     Gdk.Display.get_default().get_default_seat(),
-        #     self,
-        #     Gdk.SeatCapabilities.POINTER,
-        #     True,
-        #     None,
-        #     Gdk.EventType.BUTTON_PRESS,
-        #     None,
-        # )
 
         self.children = Box(
             orientation="v",
@@ -146,158 +119,8 @@ class StatusBar(Window):
 
         self.show_all()
 
+    def open_popover(self, _, event):
+        self.datetime_popover.open()
+
     def toggle(self):
         self.set_visible(not self.get_visible())
-
-    #
-    # def get_pointing_to(self, widget: Gtk.Widget) -> Gdk.Rectangle:
-    #     # if not ((toplevel := widget.get_toplevel()) and toplevel.is_toplevel()):
-    #     #     return 0, 0
-    #
-    #     return widget.get_allocation()
-    #     # x, y = widget.translate_coordinates(toplevel, allocation.x, allocation.y) or (
-    #     #     0,
-    #     #     0,
-    #     # )
-    #     # return round(x / 2), round(y / 2)
-    #
-    # def close_opened_popover(self):
-    #     if self._opened_popover:
-    #         return self._opened_popover.close()
-    #
-    # def on_gevent(self, widget, event):
-    #     print(event.type)
-    #     if event.type == Gdk.EventType.BUTTON_PRESS:
-    #         pass
-    #         # self.close_opened_popover()
-
-    def on_widget_button_press(self, widget, event):
-        # Check if it's a right-click (button 3)
-        if event.button == 1:
-            if self.popup_window and self.popup_visible:
-                self.hide_popup()
-            else:
-                self.show_popup_at(event.x_root, event.y_root)
-            return True
-        return False
-
-    def show_popup_at(self, x, y):
-        # Create popup window if it doesn't exist
-        if not self.popup_window:
-            self.popup_window = Gtk.Window(type=Gtk.WindowType.POPUP, name="popup")
-            GtkLayerShell.init_for_window(self.popup_window)
-            GtkLayerShell.set_layer(self.popup_window, GtkLayerShell.Layer.OVERLAY)
-            GtkLayerShell.set_keyboard_interactivity(self.popup_window, True)
-
-            # Make the popup transparent to input except for its widgets
-            self.popup_window.set_app_paintable(True)
-            screen = self.popup_window.get_screen()
-            visual = screen.get_rgba_visual()
-            if visual and screen.is_composited():
-                self.popup_window.set_visual(visual)
-
-            # Add content to popup
-            self.popup_content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-            self.popup_content.set_margin_start(0)
-            self.popup_content.set_margin_end(0)
-            self.popup_content.set_margin_top(0)
-            self.popup_content.set_margin_bottom(0)
-
-            # Add menu items
-            item1 = Gtk.Button(label="Option 1")
-            item2 = Gtk.Button(label="Option 2")
-            item3 = Gtk.Button(label="Option 3")
-
-            self.popup_content.pack_start(item1, False, False, 5)
-            self.popup_content.pack_start(item2, False, False, 5)
-            self.popup_content.pack_start(item3, False, False, 5)
-
-            self.popup_window.add(self.popup_content)
-
-            # Add CSS styling
-            css_provider = Gtk.CssProvider()
-            css = b"""
-            window {
-                background-color: black;
-                background: black;
-                border-radius: 5px;
-                border: 1px solid rgba(255, 255, 255, 0.9);
-            }
-            #popup {
-                background-color: red;
-            }
-            button {
-                background-color: black;
-                background: black;
-                color: green;
-                border-radius: 3px;
-                padding: 8px;
-            }
-            button:hover {
-                background-color: rgba(70, 70, 70, 0.9);
-            }
-            """
-            css_provider.load_from_data(css)
-            Gtk.StyleContext.add_provider_for_screen(
-                Gdk.Screen.get_default(),
-                css_provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
-            )
-
-            # Connect events
-            self.popup_window.connect("button-press-event", self.on_popup_clicked)
-
-            # Connect signal to detect when popup loses focus
-            self.popup_window.connect("focus-out-event", self.on_popup_focus_out)
-
-        # Position the popup
-        GtkLayerShell.set_anchor(self.popup_window, GtkLayerShell.Edge.LEFT, True)
-        GtkLayerShell.set_anchor(self.popup_window, GtkLayerShell.Edge.TOP, True)
-        GtkLayerShell.set_margin(self.popup_window, GtkLayerShell.Edge.LEFT, x)
-        GtkLayerShell.set_margin(self.popup_window, GtkLayerShell.Edge.TOP, y)
-
-        # Create an invisible, full-screen layer shell window below our popup
-        # This window will capture clicks outside our popup
-        self.backdrop = Gtk.Window()
-        GtkLayerShell.init_for_window(self.backdrop)
-        GtkLayerShell.set_layer(self.backdrop, GtkLayerShell.Layer.OVERLAY)
-        self.backdrop.set_app_paintable(True)
-        self.backdrop.connect("button-press-event", self.on_backdrop_clicked)
-
-        # Make backdrop invisible but clickable
-        self.backdrop.set_opacity(0.01)
-        self.backdrop.set_size_request(1, 1)  # Minimal size
-        GtkLayerShell.set_anchor(self.backdrop, GtkLayerShell.Edge.LEFT, True)
-        GtkLayerShell.set_anchor(self.backdrop, GtkLayerShell.Edge.RIGHT, True)
-        GtkLayerShell.set_anchor(self.backdrop, GtkLayerShell.Edge.TOP, True)
-        GtkLayerShell.set_anchor(self.backdrop, GtkLayerShell.Edge.BOTTOM, True)
-
-        # Show our windows
-        self.backdrop.show_all()
-        self.popup_window.show_all()
-        self.popup_visible = True
-
-    def on_popup_clicked(self, widget, event):
-        # Let clicks inside the popup through
-        return False
-
-    def on_backdrop_clicked(self, widget, event):
-        # When clicking outside the popup, hide it
-        self.hide_popup()
-        return True
-
-    def on_popup_focus_out(self, widget, event):
-        # This helps with keyboard focus issues
-        print("focus-out")
-        GLib.timeout_add(100, self.hide_popup)
-        return False
-
-    def hide_popup(self):
-        if self.popup_window and self.popup_visible:
-            self.popup_window.hide()
-            if hasattr(self, "backdrop") and self.backdrop:
-                self.backdrop.hide()
-                self.backdrop.destroy()
-                self.backdrop = None
-            self.popup_visible = False
-        return False

@@ -25,6 +25,9 @@ if __name__ == "__main__":
     icons_dir = get_relative_path("./assets/icons/")
     icon_theme.append_search_path(icons_dir)
 
+    # from plugins.gepeto.plugin import gepeto
+    # print(gepeto("What is your model?"))
+
     launcher = Launcher()
     status_bars = []
 

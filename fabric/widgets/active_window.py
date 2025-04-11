@@ -1,7 +1,7 @@
 import json
 import re
 
-from config import window_pattern_list, workspace_pattern_list
+from config import WORKSPACES_PER_MONITOR, window_pattern_list, workspace_pattern_list
 from fabric.hyprland.service import Hyprland, HyprlandEvent
 from fabric.utils import bulk_connect
 from fabric.widgets.button import Button

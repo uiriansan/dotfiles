@@ -54,7 +54,7 @@ class SystemTrayItem(Button):
 
 
 class SystemTray(Box):
-    def __init__(self, icon_size: int = 24, **kwargs):
+    def __init__(self, icon_size: int = 20, **kwargs):
         super().__init__(**kwargs)
         self._icon_size = icon_size
         self._items: dict[str, SystemTrayItem] = {}

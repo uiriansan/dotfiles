@@ -1,4 +1,5 @@
 MAIN_MONITOR_ID = 1
+WORKSPACES_PER_MONITOR = 5
 
 window_pattern_list = {
     "class:zen$": "Zen Browser",
@@ -16,3 +17,7 @@ workspace_pattern_list = {
     "special:magic": " ",
     "special:browser": " ",
 }
+
+# Google AI Studio API:
+# https://aistudio.google.com/u/2/apikey?pli=1
+GOOGLE_AI_STUDIO_API_FILE = ".gemini_key"

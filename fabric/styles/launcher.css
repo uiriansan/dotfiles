@@ -1,4 +1,4 @@
 #launcher {
-	background-color: alpha(var(--background), 0.9);
+	background-color: alpha(var(--background), 0.5);
 	border-radius: 10px;
 }

@@ -66,3 +66,9 @@ button.icon-button.pressed image.icon {
 .popover {
 	background-color: red;
 }
+
+.popover-content {
+	background-color: red;
+	padding: 10px;
+	border-radius: 10px;
+}
