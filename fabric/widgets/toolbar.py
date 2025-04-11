@@ -6,6 +6,7 @@ from fabric.widgets.image import Image
 from fabric.widgets.label import Label
 from fabric.widgets.overlay import Overlay
 from utils.widgets import setup_cursor_hover
+from widgets.common_button import CommonButton
 from widgets.icon_button import IconButton
 
 
@@ -41,9 +42,10 @@ class Toolbar(Box):
             IconButton(icon="system-monitor", title="System monitor"),
             IconButton(icon="brightness", title="Blue light filter"),
             IconButton(icon="volume-max", title=f"Volume: 100%"),
-            IconButton(
+            CommonButton(
                 icon="ethernet",
                 title=f"Ethernet | IPv4 {socket.gethostbyname(socket.gethostname())}",
+                l_popover_factory=lambda: Label(label="Lorem ipsum dolor sit amet"),
             ),
         ]
 

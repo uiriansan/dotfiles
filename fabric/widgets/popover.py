@@ -160,6 +160,29 @@ class Popover:
             self._content_window.show_all()
             self._visible = True
 
+    def _calculate_margins(self):
+        widget_allocation = self._point_to.get_allocation()
+        popover_size = self._content_window.get_size()
+
+        display = Gdk.Display.get_default()
+        screen = display.get_default()
+        monitor_at_window = screen.get_monitor_at_window(self._point_to.get_window())
+        monitor_geometry = monitor_at_window.get_geometry()
+
+        x = (
+            widget_allocation.x
+            + (widget_allocation.width / 2)
+            - (popover_size.width / 2)
+        )
+        y = widget_allocation.y - 5
+
+        if x <= 0:
+            x = widget_allocation.x
+        elif x + popover_size.width >= monitor_geometry.width:
+            x = widget_allocation.x - popover_size.width + widget_allocation.width
+
+        return [y, 0, 0, x]
+
     def _create_popover(self):
         if not self._content and self._content_factory:
             self._content = self._content_factory()
@@ -172,17 +195,7 @@ class Popover:
             Box(style_classes="popover-content", children=self._content)
         )
 
-        widget_allocation = self._point_to.get_allocation()
-        popover_size = self._content_window.get_size()
-
-        x = (
-            widget_allocation.x
-            + (widget_allocation.width / 2)
-            - (popover_size.width / 2)
-        )
-        y = widget_allocation.y - 5
-
-        self._content_window.set_margin([y, 0, 0, x])
+        self._content_window.set_margin(self._calculate_margins())
 
         self._content_window.connect("focus-out-event", self._on_popover_focus_out)
         self._manager.activate_popover(self)
