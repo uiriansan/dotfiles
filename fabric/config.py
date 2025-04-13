@@ -1,6 +1,11 @@
 MAIN_MONITOR_ID = 1
 WORKSPACES_PER_MONITOR = 5
 
+BACKGROUND_COLOR = "#161617"
+FOREGROUND_COLOR = "#FFFFFF"
+ACCENT_COLOR = ""  # TODO:
+BORDER_RADIUS = 10
+
 window_pattern_list = {
     "class:zen$": "Zen Browser",
     "title:nvim.*$": "Neovim",

@@ -14,6 +14,7 @@ from fabric.widgets.image import Image
 from fabric.widgets.label import Label
 from fabric.widgets.scrolledwindow import ScrolledWindow
 from fabric.widgets.wayland import WaylandWindow as Window
+from widgets.tag_entry import TagEntry
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -42,6 +43,11 @@ class Launcher(Window):
             h_expand=True,
             notify_text=lambda entry, *_: self.arrange_viewport(entry.get_text()),
         )
+
+        self.tag_entry = TagEntry(
+            h_expand=True, placeholder="Tags", available_tags=["tag1", "tag2", "tag3"]
+        )
+
         self.scrolled_window = ScrolledWindow(
             min_content_size=(280, 320),
             max_content_size=(280 * 2, 320),
@@ -67,6 +73,7 @@ class Launcher(Window):
                             ),
                         ],
                     ),
+                    self.tag_entry,
                     # the actual slots holder
                     self.scrolled_window,
                 ],
@@ -86,6 +93,14 @@ class Launcher(Window):
         self.viewport.children = []
 
         # make a new iterator containing the filtered apps
+        if query.startswith("whatever"):
+            # Icon
+            # Title
+            # ...
+            # action_factory (e.g. execute function or show widget inside launcher)
+            # LauncherAction (e.g. function to execute or widget to display)
+            print(query)
+
         filtered_apps_iter = iter(
             [
                 app

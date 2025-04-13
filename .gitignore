@@ -15,4 +15,18 @@ obsidian/
 hydepanel/
 systemd/
 d-feet/
+blender/
+bottom/
+btop/
+galculator/
+inkscape/
+walker/
 
+xsettingsd/
+nwg-look/
+karboncalligraphyrc
+kglobalshortcutsrc
+kwinoutputconfig.json
+kwinrc
+user-dirs.dirs
+user-dirs.locale

@@ -39,8 +39,10 @@ class CommonButton(Button):
         Args:
             label: Button label
             icon: Button icon
+            icon_size: Button icon size
+            title: Text to be rendered as a tooltip
             l_popover_factory: Function that returns the content for the popover that will open with left click
-            l_popover_factory: Function that returns the content for the popover that will open with right click
+            r_popover_factory: Function that returns the content for the popover that will open with right click
             **kwargs: Additional arguments for Button
         """
         super().__init__(

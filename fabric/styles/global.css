@@ -63,10 +63,6 @@ button.common-button.pressed box image.common-button-icon {
 	-gtk-icon-transform: scale(.92);
 }
 
-.popover {
-	background-color: red;
-}
-
 .popover-content {
 	background-color: alpha(var(--background), 0.9);
 	padding: 10px;

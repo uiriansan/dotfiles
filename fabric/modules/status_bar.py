@@ -54,21 +54,6 @@ class StatusBar(Window):
             ),
         )
 
-        self.layout = setup_cursor_hover(
-            Button(
-                child=Box(
-                    orientation="h",
-                    spacing=5,
-                    children=[
-                        Image(
-                            icon_name="layout-dwindle-symbolic",
-                            icon_size=12,
-                        ),
-                        Label(label="Dwindle", style="font-weight: bold;"),
-                    ],
-                ),
-            )
-        )
         self.active_window = ActiveWindow()
 
         self.system_tray = (
@@ -78,10 +63,6 @@ class StatusBar(Window):
         )
 
         self.datetime = DateTime()
-        # self.datetime_popover = Popover(
-        #     content=Label(label="Just some text!!!"), point_to=self.datetime
-        # )
-        # self.datetime.connect("button-press-event", self.open_popover)
 
         self.toolbar = Toolbar()
 
@@ -96,7 +77,6 @@ class StatusBar(Window):
                         orientation="h",
                         children=[
                             self.system_button,
-                            # self.layout,
                             # Gtk.Separator(),
                             self.active_window,
                         ],
