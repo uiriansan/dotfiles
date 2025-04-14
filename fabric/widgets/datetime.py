@@ -39,8 +39,8 @@ class DateTime(CommonButton):
         self.update_time()
 
     def update_time(self):
-        day = time.strftime("%d")
-        ordinal_day = int_to_ordinal(int(day))
+        # day = time.strftime("%d")
+        # ordinal_day = int_to_ordinal(int(day))
 
         self.set_tooltip_text(time.strftime(f"%B %d, %Y - %H:%M:%S"))
         self.set_label(time.strftime(f"%a %d ❘ %H:%M"))

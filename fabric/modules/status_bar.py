@@ -3,21 +3,16 @@ import gi
 from widgets.common_button import CommonButton
 
 gi.require_versions({"Gtk": "3.0", "Gdk": "3.0", "GtkLayerShell": "0.1"})
-import time
 
 from gi.repository import Gdk, GLib, Gtk, GtkLayerShell
 
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
 from fabric.widgets.centerbox import CenterBox
-from fabric.widgets.image import Image
 from fabric.widgets.label import Label
 from fabric.widgets.wayland import WaylandWindow as Window
-from utils.widgets import setup_cursor_hover
 from widgets.active_window import ActiveWindow
 from widgets.datetime import DateTime
-from widgets.icon_button import IconButton
-from widgets.popover import Popover, PopoverButton
 from widgets.system_tray import SystemTray
 from widgets.toolbar import Toolbar
 

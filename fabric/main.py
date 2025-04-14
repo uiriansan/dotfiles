@@ -1,6 +1,7 @@
 import gi
 
 from utils.devices import get_all_monitors
+from utils.shell import Shell
 
 gi.require_version("Gtk", "3.0")
 from multiprocessing import Process
@@ -42,7 +43,7 @@ if __name__ == "__main__":
 
     logger.info(f"Added `launcher`.")
 
-    app = Application("shell", *status_bars, launcher)
+    shell = Shell("fabric-shell", status_bars, launcher)
 
-    app.set_stylesheet_from_file(get_relative_path("./styles/global.css"))
-    app.run()
+    shell.set_stylesheet_from_file(get_relative_path("./styles/global.css"))
+    shell.run()

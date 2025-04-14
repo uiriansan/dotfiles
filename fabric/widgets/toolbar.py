@@ -1,13 +1,19 @@
 import socket
 
+import gi
+
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
 from fabric.widgets.image import Image
 from fabric.widgets.label import Label
 from fabric.widgets.overlay import Overlay
+from utils import widgets
 from utils.widgets import setup_cursor_hover
 from widgets.common_button import CommonButton
 from widgets.icon_button import IconButton
+
+gi.require_versions({"Gtk": "3.0"})
+from gi.repository import Gtk
 
 
 class Tool(Button):
@@ -42,11 +48,14 @@ class Toolbar(Box):
             IconButton(icon="system-monitor", title="System monitor"),
             IconButton(icon="brightness", title="Blue light filter"),
             IconButton(icon="volume-max", title=f"Volume: 100%"),
-            CommonButton(
-                icon="ethernet",
-                title=f"Ethernet | IPv4 {socket.gethostbyname(socket.gethostname())}",
-                l_popover_factory=lambda: Label(label="Lorem ipsum dolor sit amet"),
-            ),
+            # CommonButton(
+            #     icon="ethernet",
+            #     title=f"Ethernet | IPv4 {socket.gethostbyname(socket.gethostname())}",
+            #     l_popover_factory=lambda: Label(label="Lorem ipsum dolor sit amet"),
+            # ),
         ]
 
         self.show_all()
+
+    def add_widget(self, widget: Gtk.Widget):
+        self.add(widget)

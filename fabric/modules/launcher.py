@@ -2,10 +2,7 @@ import operator
 from collections.abc import Iterator
 
 import gi
-from loguru import logger
-from setproctitle import setproctitle
 
-from fabric import Application
 from fabric.utils import DesktopApp, get_desktop_applications, idle_add, remove_handler
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
@@ -18,8 +15,6 @@ from widgets.tag_entry import TagEntry
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-
-from fabric.utils.helpers import get_relative_path
 
 
 class Launcher(Window):
@@ -163,6 +158,9 @@ class Launcher(Window):
             ),
             **kwargs,
         )
+
+    # TODO: ...
+    def _connect(self): ...
 
     def toggle(self):
         self.search_entry.set_text(""),
