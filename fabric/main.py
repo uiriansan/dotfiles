@@ -19,7 +19,7 @@ from modules.status_bar import StatusBar
 if __name__ == "__main__":
     setproctitle("fabric-shell")
 
-    logger.add("fabric_shell.log")
+    logger.add("fabric_shell.log", level="WARNING")
 
     # Set custom `-symbolic.svg` icons' dir
     icon_theme = Gtk.IconTheme.get_default()

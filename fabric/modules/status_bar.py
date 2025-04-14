@@ -109,3 +109,6 @@ class StatusBar(Window):
 
     def toggle(self):
         self.set_visible(not self.get_visible())
+
+    def get_monitor(self):
+        return self.monitor

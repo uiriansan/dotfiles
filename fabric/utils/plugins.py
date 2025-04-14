@@ -18,8 +18,8 @@ from gi.repository import Gtk
 class Plugin(abc.ABC):
     """Base class for all plugins"""
 
-    _name = None
-    _description = None
+    _name: str | None = None
+    _description: str | None = None
 
     @property
     def name(self):
@@ -125,7 +125,7 @@ class PluginManager:
                             self.launcher_commands[command] = plugin_instance.name
 
                     logger.info(
-                        f"Added plugin `{plugin_instance.name}` from `{plugin_entry_path}`."
+                        f"Added plugin `{plugin_instance.name}` from `{plugin_name}`."
                     )
         finally:
             sys.path.pop(0)
@@ -154,7 +154,7 @@ class PluginManager:
 
 
 class ShellContext:
-    """Provides plugins access to the shell components."""
+    """Provides plugins access to shell's components."""
 
     def __init__(self, status_bars, launcher):
         self._status_bars = status_bars
@@ -170,5 +170,5 @@ class ShellContext:
 
     def get_main_status_bar(self):
         for bar in self._status_bars:
-            if bar.monitor == MAIN_MONITOR_ID:
+            if bar.get_monitor() == MAIN_MONITOR_ID:
                 return bar
