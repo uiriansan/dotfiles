@@ -56,4 +56,28 @@ menu menuitem:disabled {
 	font-weight: bold;
 }
 
-#calendar {}
+#calendar .day-header {
+	font-weight: bold;
+	color: var(--accent);
+}
+
+#calendar .day-button label {
+	font-weight: bold;
+}
+
+#calendar .day-button.other-month label {
+	color: #aaa;
+}
+
+#calendar .day-button.today label {
+	color: var(--accent);
+	text-decoration: underline;
+}
+
+#calendar .day-button.selected {
+	background-color: var(--active-background);
+}
+
+#calendar .day-button.selected label {
+	color: var(--accent);
+}

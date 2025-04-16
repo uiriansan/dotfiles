@@ -87,10 +87,18 @@ class PluginManager:
             if not os.path.exists(plugin_entry):
                 continue
 
+            icons_path = os.path.join(plugin_path, "icons")
+            if os.path.exists(icons_path) and os.path.isdir(icons_path):
+                self._append_icons_path(icons_path)
+
             try:
                 self._load_plugin_from_file(plugin_entry, dir_name)
             except Exception as e:
                 logger.warning(f"Error loading plugin `{dir_name}`: {e}")
+
+    def _append_icons_path(self, icons_path):
+        icon_theme = Gtk.IconTheme.get_default()
+        icon_theme.append_search_path(icons_path)
 
     def _load_plugin_from_file(self, plugin_entry_path: str, plugin_name: str):
         # Add plugin directory to sys.path temporarily
@@ -112,8 +120,6 @@ class PluginManager:
                     and issubclass(attr, Plugin)
                     and attr not in (Plugin, ToolbarPlugin, LauncherPlugin)
                 ):
-                    # TODO: Load custom CSS and icons
-
                     plugin_instance = attr()
                     self.plugins[plugin_instance.name] = plugin_instance
 

@@ -33,13 +33,11 @@ class Shell(Application):
         self._connect_launcher()
 
     def _load_toolbar_widgets(self):
-        widgets = self.plugin_manager.get_toolbar_widgets()
+        for bar in self.status_bars:
+            widgets = self.plugin_manager.get_toolbar_widgets()
+            toolbar = bar.toolbar
 
-        # FIX: Add the widget to both bars
-        # Gtk-WARNING **: 17:55:57.693: Attempting to add a widget with type widgets+common_button+CommonButton to a container of type widgets+toolbar+Toolbar, but the widget is already inside a container of type widgets+toolbar+Toolbar, please remove the widget from its existing container first.
-        for _, widget in widgets.items():
-            for bar in self.status_bars:
-                toolbar = bar.toolbar
+            for _, widget in widgets.items():
                 toolbar.add_widget(widget)
 
     def _connect_launcher(self):

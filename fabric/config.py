@@ -24,6 +24,17 @@ workspace_pattern_list = {
     "special:browser": " ",
 }
 
+toolbar_plugin_order = [
+    "media",
+    "color_picker",
+    "magnifier",
+    "screenshot",
+    "screen_record",
+    "brightness",
+    "volume",
+    "internet_status",
+]
+
 # Google AI Studio API:
 # https://aistudio.google.com/u/2/apikey?pli=1
 GOOGLE_AI_STUDIO_API_FILE = ".gemini_key"
