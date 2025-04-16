@@ -191,6 +191,17 @@ class Popover:
 
         return [y, 0, 0, x]
 
+    def set_position(self, position: tuple[int, int, int, int] | None = None):
+        if position is None:
+            self._content_window.set_margin(self._calculate_margins())
+            return False
+
+        self._content_window.set_margin(position)
+        return False
+
+    def _on_content_ready(self, widget, event):
+        self.set_position()
+
     def _create_popover(self):
         if not self._content and self._content_factory:
             self._content = self._content_factory()
@@ -198,12 +209,13 @@ class Popover:
         # Get a window from the pool
         self._content_window = self._manager.get_popover_window()
 
+        # This is a hack to fix wrong positioning for widgets that are not rendered immediately (e.g., Gtk.Calendar())
+        self._content.connect("draw", self._on_content_ready)
+
         # Add content to window
         self._content_window.add(
             Box(style_classes="popover-content", children=self._content)
         )
-
-        self._content_window.set_margin(self._calculate_margins())
 
         self._content_window.connect("focus-out-event", self._on_popover_focus_out)
         self._content_window.connect("key-press-event", self._on_key_press)

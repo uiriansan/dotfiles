@@ -51,9 +51,9 @@ class Launcher(Window):
 
         self.add(
             Box(
+                name="launcher-contents",
                 spacing=2,
                 orientation="v",
-                style="margin: 2px",
                 children=[
                     # the header with the search entry
                     Box(

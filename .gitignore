@@ -1,4 +1,5 @@
 yay/
+emacs/
 tmux/tmux_weather.json
 tmux/cron.log
 go/
@@ -21,6 +22,7 @@ btop/
 galculator/
 inkscape/
 walker/
+scripts/weather.json
 
 xsettingsd/
 nwg-look/

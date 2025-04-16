@@ -31,6 +31,7 @@ discord
 dmidecode
 efibootmgr
 egl-wayland
+emacs
 eza
 fabric-cli-git
 fasm
@@ -163,5 +164,6 @@ xdg-desktop-portal-wlr
 yay
 yay-debug
 yazi
+zed
 zen-browser-bin
 zoxide

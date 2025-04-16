@@ -13,4 +13,6 @@ class InternetStatus(ToolbarPlugin):
         self.shell_context = shell_context
 
     def register_toolbar_widget(self):
-        return CommonButton(icon="ethernet", label="Internet status")
+        return CommonButton(
+            name="internet-status-button", icon="ethernet-off", label="No internet"
+        )

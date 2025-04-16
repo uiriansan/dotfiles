@@ -1,0 +1,22 @@
+{
+  "workspace": [
+    {
+      "path": "/home/uirian",
+      "mainwin": {
+        "x": 300,
+        "y": 234,
+        "w": 1580,
+        "h": 846,
+        "state": "Normal",
+        "BackgroundComposition": "none",
+        "CustomTitleBar": false,
+        "NoTitleBar": false
+      }
+    }
+  ],
+  "Logging": null,
+  "Default": {
+    "w": 800,
+    "h": 600
+  }
+}

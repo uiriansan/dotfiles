@@ -1,3 +1,5 @@
+from typing import Callable
+
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
 from fabric.widgets.image import Image
@@ -29,8 +31,9 @@ class CommonButton(Button):
         icon: str | None = None,
         icon_size=14,
         title: str | None = None,
-        l_popover_factory=None,
-        r_popover_factory=None,
+        l_popover_factory: Callable | None = None,
+        r_popover_factory: Callable | None = None,
+        on_click: Callable | None = None,
         **kwargs,
     ):
         """
@@ -55,6 +58,7 @@ class CommonButton(Button):
         self._label = label
         self._l_popover_factory = l_popover_factory
         self._r_popover_factory = r_popover_factory
+        self._on_click = on_click
 
         self._icon_widget = None
         self._label_widget = None
@@ -75,7 +79,11 @@ class CommonButton(Button):
         if title is not None:
             self.set_tooltip_text(title)
 
-        if self._l_popover_factory is not None or self._r_popover_factory is not None:
+        if (
+            self._on_click is not None
+            or self._l_popover_factory is not None
+            or self._r_popover_factory is not None
+        ):
             self.connect("button-press-event", self._on_button_press)
 
         setup_cursor_hover(self)
@@ -84,10 +92,13 @@ class CommonButton(Button):
 
     def _on_button_press(self, widget, event):
         # Left click
-        if event.button == 1 and self._l_popover_factory is not None:
-            if not self._l_popover:
-                self._l_popover = Popover(self._l_popover_factory, self)
-            self._l_popover.open()
+        if event.button == 1:
+            if self._on_click is not None:
+                return self._on_click()
+            elif self._l_popover_factory is not None:
+                if not self._l_popover:
+                    self._l_popover = Popover(self._l_popover_factory, self)
+                self._l_popover.open()
 
         # Right click
         if event.button == 3 and self._r_popover_factory is not None:

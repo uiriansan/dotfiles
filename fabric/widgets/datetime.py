@@ -7,6 +7,7 @@ from fabric.utils.helpers import invoke_repeater
 from fabric.widgets.label import Label
 from utils.styling import int_to_ordinal
 from utils.widgets import setup_cursor_hover
+from widgets.calendar import Calendar
 from widgets.common_button import CommonButton
 
 
@@ -26,7 +27,7 @@ class DateTime(CommonButton):
 
     def __init__(self, interval: int = 1000, **kwargs):
         super().__init__(
-            name="datetime", l_popover_factory=lambda: Label(label="CALENDAR"), **kwargs
+            name="datetime", l_popover_factory=lambda: Calendar(), **kwargs
         )
 
         self._interval: int = interval

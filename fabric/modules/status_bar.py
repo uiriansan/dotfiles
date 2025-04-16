@@ -25,7 +25,7 @@ from widgets.toolbar import Toolbar
 
 
 class StatusBar(Window):
-    def __init__(self, monitor, main_monitor_id):
+    def __init__(self, monitor, main_monitor_id, **kwargs):
         super().__init__(
             name="status-bar",
             layer="top",
@@ -36,14 +36,15 @@ class StatusBar(Window):
             # keyboard_mode="on-demand",
             visible=False,
             all_visible=False,
+            **kwargs,
         )
 
         self._main_monitor_id = main_monitor_id
 
         self.system_button = CommonButton(
             icon="arch",
-            title="Arch Linux",
-            l_popover_factory=lambda: Button(child=Label(label="This is a label!!")),
+            title="Launcher",
+            on_click=lambda: print("click"),
             r_popover_factory=lambda: Button(
                 child=Label(label="This is a label on the right click!!")
             ),

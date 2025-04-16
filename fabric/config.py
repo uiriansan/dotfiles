@@ -9,6 +9,7 @@ BORDER_RADIUS = 10
 window_pattern_list = {
     "class:zen$": "Zen Browser",
     "title:nvim.*$": "Neovim",
+    "class:Emacs": "Emacs",
     "title:Yazi.*$": "Yazi",
     "class:com.mitchellh.ghostty$": "Ghostty",
     "ititle:Spotify Premium$": "Spotify",

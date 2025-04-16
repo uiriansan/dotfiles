@@ -24,13 +24,13 @@ class Plugin(abc.ABC):
     @property
     def name(self):
         if self._name is None:
-            raise NotImplementedError("Subclasses must define _name")
+            raise NotImplementedError("Plugins must define _name")
         return self._name
 
     @property
     def description(self):
         if self._description is None:
-            raise NotImplementedError("Subclasses must define _description")
+            raise NotImplementedError("Plugins must define _description")
         return self._description
 
     @abc.abstractmethod
@@ -112,6 +112,8 @@ class PluginManager:
                     and issubclass(attr, Plugin)
                     and attr not in (Plugin, ToolbarPlugin, LauncherPlugin)
                 ):
+                    # TODO: Load custom CSS and icons
+
                     plugin_instance = attr()
                     self.plugins[plugin_instance.name] = plugin_instance
 
