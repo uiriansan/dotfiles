@@ -26,19 +26,22 @@ class Shell(Application):
         self.context = ShellContext(self.status_bars, self.launcher)
 
         self.plugin_manager = PluginManager()
-        self.plugin_manager.get_plugins()
-        self.plugin_manager.initialize_plugins(self.context)
 
-        self._load_toolbar_widgets()
+        # Create a reference of the plugins for each status bar. Not the best idea, but make plugins a lot easier to work with.
+        for bar in self.status_bars:
+            self.plugin_manager.get_plugins()
+            self.plugin_manager.initialize_plugins(self.context)
+
+            self._load_toolbar_widgets(bar)
+
         self._connect_launcher()
 
-    def _load_toolbar_widgets(self):
-        for bar in self.status_bars:
-            widgets = self.plugin_manager.get_toolbar_widgets()
-            toolbar = bar.toolbar
+    def _load_toolbar_widgets(self, bar):
+        widgets = self.plugin_manager.get_toolbar_widgets()
+        toolbar = bar.toolbar
 
-            for _, widget in widgets.items():
-                toolbar.add_widget(widget)
+        for _, widget in widgets.items():
+            toolbar.add_widget(widget)
 
     def _connect_launcher(self):
         self.launcher._connect()
