@@ -3,7 +3,7 @@ import abc
 import gi
 from loguru import logger
 
-from config import MAIN_MONITOR_ID
+from config import MAIN_MONITOR_ID, toolbar_plugin_order
 from fabric.utils import get_relative_path
 
 gi.require_versions({"Gtk": "3.0"})
@@ -146,8 +146,18 @@ class PluginManager:
                 logger.warning(f"Error initializing plugin `{plugin.name}`: {e}")
 
     def get_toolbar_widgets(self) -> Dict[str, Gtk.Widget]:
+        if toolbar_plugin_order and len(toolbar_plugin_order) > 0:
+            complete_order = [
+                key for key in toolbar_plugin_order if key in self.toolbar_plugins
+            ] + list(set(self.toolbar_plugins) - set(toolbar_plugin_order))
+            plugins_in_order = {
+                key: self.toolbar_plugins[key] for key in complete_order
+            }
+        else:
+            plugins_in_order = self.toolbar_plugins
+
         widgets = {}
-        for name, plugin in self.toolbar_plugins.items():
+        for name, plugin in plugins_in_order.items():
             try:
                 widget = plugin.register_toolbar_widget()
                 widgets[name] = widget

@@ -61,12 +61,17 @@ menu menuitem:disabled {
 	color: var(--accent);
 }
 
+#calendar .day-button {
+	transition: all 0;
+}
+
 #calendar .day-button label {
 	font-weight: bold;
+	transition: all 0;
 }
 
 #calendar .day-button.other-month label {
-	color: #aaa;
+	color: alpha(var(--foreground), .5);
 }
 
 #calendar .day-button.today label {

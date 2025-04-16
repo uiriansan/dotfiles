@@ -25,14 +25,14 @@ workspace_pattern_list = {
 }
 
 toolbar_plugin_order = [
-    "media",
-    "color_picker",
-    "magnifier",
-    "screenshot",
-    "screen_record",
-    "brightness",
-    "volume",
-    "internet_status",
+    "Media",
+    "Color picker",
+    "Magnifier",
+    "Screenshot",
+    "Screen record",
+    "Brightness",
+    "Volume",
+    "Internet Status",
 ]
 
 # Google AI Studio API:

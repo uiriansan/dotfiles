@@ -4,6 +4,7 @@ from fabric.widgets.box import Box
 from fabric.widgets.button import Button
 from fabric.widgets.image import Image
 from fabric.widgets.label import Label
+from fabric.widgets.revealer import Revealer
 from utils.widgets import setup_cursor_hover
 from widgets.popover import Popover
 
@@ -34,19 +35,25 @@ class CommonButton(Button):
         l_popover_factory: Callable | None = None,
         r_popover_factory: Callable | None = None,
         on_click: Callable | None = None,
+        revealed: bool = True,
         **kwargs,
     ):
         """
         Initialize the common button.
 
-        Args:
-            label: Button label
-            icon: Button icon
-            icon_size: Button icon size
-            title: Text to be rendered as a tooltip
-            l_popover_factory: Function that returns the content for the popover that will open with left click
-            r_popover_factory: Function that returns the content for the popover that will open with right click
-            **kwargs: Additional arguments for Button
+        :param label: Button label
+        :type label: str
+        :param icon: Button icon
+        :type icon: str
+        :param icon_size: Button icon size
+        :type icon_size: int
+        :param title: Text to be rendered as a tooltip
+        :type title: str
+        :param l_popover_factory: Function that returns the content for the popover that will open with left click
+        :type l_popover_factory: Callable[Gtk.Widget]
+        :param r_popover_factory: Function that returns the content for the popover that will open with right click
+        :type r_popover_factory: Callable[Gtk.Widget]
+        **kwargs: Additional arguments for Button
         """
         super().__init__(
             style_classes="common-button",
@@ -59,6 +66,7 @@ class CommonButton(Button):
         self._l_popover_factory = l_popover_factory
         self._r_popover_factory = r_popover_factory
         self._on_click = on_click
+        self._revealed = revealed
 
         self._icon_widget = None
         self._label_widget = None
@@ -67,7 +75,13 @@ class CommonButton(Button):
 
         self._content_box = Box(
             orientation="h",
-            spacing=5,
+            spacing=5 if self._revealed else 0,
+        )
+
+        self._revealer = Revealer(
+            transition_type="slide-right",
+            transition_duration=200,
+            child_revealed=self._revealed,
         )
 
         if self._icon is not None:
@@ -117,7 +131,8 @@ class CommonButton(Button):
                 label=label,
                 style_classes="common-button-label",
             )
-            self._content_box.add(self._label_widget)
+            self._revealer.add(self._label_widget)
+            self._content_box.pack_end(self._revealer, False, False, 0)
         else:
             self._label_widget.set_label(label)
 
@@ -133,8 +148,16 @@ class CommonButton(Button):
                 style_classes="common-button-icon",
                 icon_name=f"{icon}-symbolic",
             )
-            self._content_box.add(self._icon_widget)
+            self._content_box.pack_start(self._icon_widget, False, False, 0)
         else:
             self._icon_widget.set_from_icon_name(icon, self._icon_size)
 
         return True
+
+    def reveal(self):
+        self._content_box.set_spacing(5)
+        return self._revealer.reveal()
+
+    def unreveal(self):
+        self._content_box.set_spacing(0)
+        return self._revealer.unreveal()
