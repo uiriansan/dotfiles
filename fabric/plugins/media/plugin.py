@@ -4,7 +4,7 @@ from widgets.common_button import CommonButton
 
 class InternetStatus(ToolbarPlugin):
     def __init__(self):
-        self._name = "Media"
+        self._name = "media"
         self._description = "Show media button."
 
         self.shell_context = None

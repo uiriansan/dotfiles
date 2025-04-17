@@ -4,7 +4,7 @@ from widgets.common_button import CommonButton
 
 class InternetStatus(ToolbarPlugin):
     def __init__(self):
-        self._name = "Brightness"
+        self._name = "brightness"
         self._description = "Show brightness button."
 
         self.shell_context = None

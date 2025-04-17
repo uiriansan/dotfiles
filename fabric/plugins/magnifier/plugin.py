@@ -4,7 +4,7 @@ from widgets.common_button import CommonButton
 
 class InternetStatus(ToolbarPlugin):
     def __init__(self):
-        self._name = "Magnifier"
+        self._name = "magnifier"
         self._description = "Show magnifier button."
 
         self.shell_context = None

@@ -8,6 +8,7 @@ BORDER_RADIUS = 10
 
 window_pattern_list = {
     "class:zen$": "Zen Browser",
+    "class:dev.zed.Zed$": "Zed Editor",
     "title:nvim.*$": "Neovim",
     "class:Emacs": "Emacs",
     "title:Yazi.*$": "Yazi",
@@ -25,14 +26,14 @@ workspace_pattern_list = {
 }
 
 toolbar_plugin_order = [
-    "Media",
-    "Color picker",
-    "Magnifier",
-    "Screenshot",
-    "Screen record",
-    "Brightness",
-    "Volume",
-    "Internet Status",
+    "media",
+    "color_picker",
+    "magnifier",
+    "screenshot",
+    "screen_record",
+    "brightness",
+    "volume",
+    "internet_status",
 ]
 
 # Google AI Studio API:

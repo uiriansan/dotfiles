@@ -1,7 +1,8 @@
 from pathlib import Path
-
 from config import GOOGLE_AI_STUDIO_API_FILE
 
+# from plugins.gepeto.plugin import gepeto
+# print(gepeto("What is your model?"))
 
 def get_gemini_api_key():
     key_file = open(f"{Path.home()}/{GOOGLE_AI_STUDIO_API_FILE}", "r")

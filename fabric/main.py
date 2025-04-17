@@ -1,17 +1,11 @@
-import gi
-
-from utils.devices import get_all_monitors
-from utils.shell import Shell
-
+import gi, sys
 gi.require_version("Gtk", "3.0")
-from multiprocessing import Process
-
 from gi.repository import Gtk
+from modules.shell import Shell
+from utils.devices import get_all_monitors
 from loguru import logger
 from setproctitle import setproctitle
-
 from config import MAIN_MONITOR_ID
-from fabric import Application
 from fabric.utils import get_relative_path
 from modules.launcher import Launcher
 from modules.status_bar import StatusBar
@@ -19,15 +13,16 @@ from modules.status_bar import StatusBar
 if __name__ == "__main__":
     setproctitle("fabric-shell")
 
-    logger.add("fabric_shell.log", level="WARNING")
+    logger.configure(
+        handlers=[{"sink": sys.stderr, "format":"<level>{level}</level> -> <level>{message}</level>"}],
+        extra={"reqid": "-", "ip": "-", "user":"-"}
+    )
+    logger.add("fabric_shell.log", level="WARNING", format="<level>{level}</level>::<green>{time:DD-MM-YYYY | HH:mm:ss}</green> -> {message}")
 
     # Set custom `-symbolic.svg` icons' dir
     icon_theme = Gtk.IconTheme.get_default()
     icons_dir = get_relative_path("./assets/icons/")
     icon_theme.append_search_path(icons_dir)
-
-    # from plugins.gepeto.plugin import gepeto
-    # print(gepeto("What is your model?"))
 
     launcher = Launcher()
     status_bars = []
@@ -37,11 +32,11 @@ if __name__ == "__main__":
         status_bar = StatusBar(monitor["id"], MAIN_MONITOR_ID)
         status_bars.append(status_bar)
 
-        logger.info(
-            f"Added `status-bar` for monitor {monitor['id']} ({monitor['name']})."
+        logger.debug(
+            f"[Shell] Added `status-bar` for monitor {monitor['id']} ({monitor['name']})."
         )
 
-    logger.info(f"Added `launcher`.")
+    logger.debug("[Shell] Added `launcher`.")
 
     shell = Shell("fabric-shell", status_bars, launcher)
 

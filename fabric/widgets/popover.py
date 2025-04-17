@@ -1,18 +1,10 @@
 # Claude.ai's so called "memory-efficient" popover. I don't fully understand this code, but it works :)
-
 import gi
-
-from fabric.widgets.wayland import WaylandWindow
-
 gi.require_versions({"Gtk": "3.0", "Gdk": "3.0", "GtkLayerShell": "0.1"})
-import weakref
-
-from gi.repository import Gdk, GLib, Gtk, GtkLayerShell
-
-from fabric.hyprland.service import Hyprland
+from gi.repository import Gdk, GLib,GtkLayerShell
+from fabric.widgets.wayland import WaylandWindow
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
-from fabric.widgets.wayland import WaylandWindow
 
 
 class PopoverManager:

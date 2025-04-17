@@ -8,11 +8,86 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "relative_line_numbers": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "Mellow"
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+    "selections_menu": false
+  },
+  "scrollbar": {
+    "show": "never",
+    "cursors": true,
+    "git_diff": false,
+    "search_results": true,
+    "selected_text": true,
+    "selected_symbol": true,
+    "diagnostics": "all",
+    "axes": {
+      "horizontal": true,
+      "vertical": true
+    }
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": false
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": true
+  },
+  "git": {
+    "git_gutter": "hide",
+    "inline_blame": {
+      "enabled": false
+    },
+    "hunk_style": "staged_hollow"
+  },
+  "gutter": {
+    "line_numbers": true,
+    "code_actions": false,
+    "runnables": false,
+    "folds": false
+  },
+  // Clean up status bar a bit
+  "features": {
+    "copilot": false
+  },
+  "project_panel": {
+    "button": false,
+    "indent_size": 24
+  },
+  "outline_panel": {
+    "button": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "diagnostics": {
+    "include_warnings": true
+  },
+  "assistant": {
+    "enabled": false,
+    "button": false,
+    "version": "1"
+  },
+  "edit_predictions": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": "never"
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "language_models": {
+    "copilot_chat": null
   }
 }

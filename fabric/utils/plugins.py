@@ -15,6 +15,27 @@ from typing import Callable, Dict, List, Tuple
 from gi.repository import Gtk
 
 
+class ShellContext:
+    """Provides plugins access to shell's components."""
+
+    def __init__(self, status_bars, launcher):
+        self._status_bars = status_bars
+        self._main_status_bar = self.get_main_status_bar()
+        self.launcher = launcher
+        self.main_toolbar = self._main_status_bar.toolbar
+
+    def get_launcher(self):
+        return self.launcher
+
+    def get_toolbar(self):
+        return self.main_toolbar
+
+    def get_main_status_bar(self):
+        for bar in self._status_bars:
+            if bar.get_monitor() == MAIN_MONITOR_ID:
+                return bar
+
+
 class Plugin(abc.ABC):
     """Base class for all plugins"""
 
@@ -34,7 +55,7 @@ class Plugin(abc.ABC):
         return self._description
 
     @abc.abstractmethod
-    def initialize(self, shell_context) -> None: ...
+    def initialize(self, shell_context: ShellContext) -> None: ...
 
 
 class ToolbarPlugin(Plugin):
@@ -70,7 +91,7 @@ class PluginManager:
     def get_plugins(self):
         if not os.path.exists(self.plugins_path):
             logger.error(
-                f"Plugins path could not be resolved. Path: {self.plugins_path}"
+                f"[Shell] Plugins path could not be resolved. Path: {self.plugins_path}"
             )
             return
 
@@ -94,7 +115,7 @@ class PluginManager:
             try:
                 self._load_plugin_from_file(plugin_entry, dir_name)
             except Exception as e:
-                logger.warning(f"Error loading plugin `{dir_name}`: {e}")
+                logger.warning(f"[Shell] Error loading plugin `{dir_name}`: {e}")
 
     def _append_icons_path(self, icons_path):
         icon_theme = Gtk.IconTheme.get_default()
@@ -132,20 +153,23 @@ class PluginManager:
                         for command in plugin_instance.get_commands():
                             self.launcher_commands[command] = plugin_instance.name
 
-                    logger.info(
-                        f"Added plugin `{plugin_instance.name}` from `{plugin_name}`."
-                    )
+
         finally:
             sys.path.pop(0)
 
-    def initialize_plugins(self, shell_context):
-        for plugin in self.plugins.values():
+    def initialize_plugins(self, shell_context: ShellContext):
+        loaded_plugins = []
+        for name, plugin in self.plugins.items():
             try:
                 plugin.initialize(shell_context)
+                loaded_plugins.append(name)
             except Exception as e:
-                logger.warning(f"Error initializing plugin `{plugin.name}`: {e}")
+                logger.warning(f"[Shell] Error initializing plugin `{plugin.name}`: {e}")
+
+        logger.debug(f"[Shell] Loaded {len(loaded_plugins)} plugins: ({', '.join(loaded_plugins)})")
 
     def get_toolbar_widgets(self) -> Dict[str, Gtk.Widget]:
+        # Sort toolbar widgets to follow the order defined in config.py
         if toolbar_plugin_order and len(toolbar_plugin_order) > 0:
             complete_order = [
                 key for key in toolbar_plugin_order if key in self.toolbar_plugins
@@ -163,30 +187,9 @@ class PluginManager:
                 widgets[name] = widget
             except Exception as e:
                 logger.warning(
-                    f"Failed to register toolbar widget for plugin `{name}`: {e}"
+                    f"[Shell] Failed to register toolbar widget for plugin `{name}`: {e}"
                 )
 
         return widgets
 
     # TODO: Launcher stuff
-
-
-class ShellContext:
-    """Provides plugins access to shell's components."""
-
-    def __init__(self, status_bars, launcher):
-        self._status_bars = status_bars
-        self._main_status_bar = self.get_main_status_bar()
-        self.launcher = launcher
-        self.main_toolbar = self._main_status_bar.toolbar
-
-    def get_launcher(self):
-        return self.launcher
-
-    def get_toolbar(self):
-        return self.main_toolbar
-
-    def get_main_status_bar(self):
-        for bar in self._status_bars:
-            if bar.get_monitor() == MAIN_MONITOR_ID:
-                return bar

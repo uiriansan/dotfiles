@@ -17,5 +17,5 @@ mouse_events   = [ "click", "scroll" ]
 
 [opener]
 edit = [
-	{ run = 'fish -c "nvim_open_file $@"', block = true, for = "unix" },
+	{ run = 'fish -c "zeditor $@"', block = true, for = "unix" },
 ]

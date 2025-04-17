@@ -1,22 +1,53 @@
-import gi
-
-from utils.plugins import LauncherOptions, Plugin
-
-from .utils import print_msg
-
-gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from fabric.widgets.box import Box
+from fabric.widgets.label import Label
+from utils.plugins import LauncherPlugin, ToolbarPlugin
+from widgets.common_button import CommonButton
 
 
-class MyPlugin(Plugin):
-    def __init__(
-        self,
-        plugin_name: str,
-        plugin_icon: str,
-        popover: Gtk.Widget,
-        launcher_menu: Gtk.Widget,
-        launcher_options: LauncherOptions,
-    ):
-        super().__init__()
+class MyPlugin(ToolbarPlugin):
+    def __init__(self):
+        self._name = "example_plugin"
+        self._description = (
+            "Add a button to the toolbar that toggles the launcher on click."
+        )
 
-        print_msg("Hello from MyPlugin")
+        self.shell_context = None
+
+        self.popover_content = Box(
+            orientation="v",
+            children=[
+                Label(label="This is a label inside a popover."),
+                Label(label="Now try left clicking the button!"),
+            ],
+        )
+
+    def initialize(self, shell_context):
+        # This function is only called once
+        self.shell_context = shell_context
+
+    def register_toolbar_widget(self):
+        # This function is called for each status bar and must return a Gtk.Widget()
+        button = CommonButton(
+            name="example-plugin-button",
+            icon="arch",
+            title="Right click me!",
+            label="Launcher opened!",
+            revealed=False,  # initialize button with the label hidden
+            r_popover_factory=lambda: self.popover_content,
+            on_click=lambda: self._on_click(button),
+        )
+
+        return button
+
+    def _on_click(self, button):
+        launcher = self.shell_context.get_launcher()
+        launcher.toggle()
+
+        if launcher.get_visible():
+            button.add_style_class("pressed")
+            button.reveal()
+        else:
+            button.remove_style_class("pressed")
+            button.unreveal()
+
+        return False

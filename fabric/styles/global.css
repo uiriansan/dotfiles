@@ -4,7 +4,6 @@
 
 * {
 	all: unset;
-	color: var(--foreground);
 	font-family: Inter, "Ubuntu Nerd Font";
 	font-size: 10px;
 	padding: 0px;
@@ -31,6 +30,7 @@ tooltip>* {
 }
 
 button {
+	color: var(--foreground);
 	padding: 5px 6px;
 	border-radius: 5px;
 	background-color: transparent;

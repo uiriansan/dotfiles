@@ -27,11 +27,12 @@ class Shell(Application):
 
         self.plugin_manager = PluginManager()
 
-        # Create a reference of the plugins for each status bar. Not the best idea, but make plugins a lot easier to work with.
-        for bar in self.status_bars:
-            self.plugin_manager.get_plugins()
-            self.plugin_manager.initialize_plugins(self.context)
+        self.plugin_manager.get_plugins()
+        self.plugin_manager.initialize_plugins(self.context)
 
+        # Create a reference of the plugins for each status bar. Not the best idea, but make plugins a lot easier to work with.
+        # TODO: REALLY GOTTA FIX THIS
+        for bar in self.status_bars:
             self._load_toolbar_widgets(bar)
 
         self._connect_launcher()

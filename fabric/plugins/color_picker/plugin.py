@@ -4,7 +4,7 @@ from widgets.common_button import CommonButton
 
 class InternetStatus(ToolbarPlugin):
     def __init__(self):
-        self._name = "Color picker"
+        self._name = "color_picker"
         self._description = "Show color picker button."
 
         self.shell_context = None

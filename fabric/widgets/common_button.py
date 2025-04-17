@@ -1,5 +1,7 @@
 from typing import Callable
 
+from gi.repository import GLib
+
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
 from fabric.widgets.image import Image
@@ -67,6 +69,8 @@ class CommonButton(Button):
         self._r_popover_factory = r_popover_factory
         self._on_click = on_click
         self._revealed = revealed
+
+        self._label_revealer_clear_delay = None
 
         self._icon_widget = None
         self._label_widget = None
@@ -138,6 +142,18 @@ class CommonButton(Button):
 
         return True
 
+    def set_label_and_reveal(self, label: str | None, reveal_duration: int = 1000 * 5):
+        self.set_label(label)
+        self.reveal()
+
+        if self._label_revealer_clear_delay is not None:
+            GLib.source_remove(self._label_revealer_clear_delay)
+            self._label_revealer_clear_delay = None
+
+        self._label_revealer_clear_delay = GLib.timeout_add(
+            reveal_duration, self._unreveal_and_clear_delay
+        )
+
     def set_icon(self, icon: str | None = "", size: int | None = None):
         if size is not None:
             self._icon_size = size
@@ -161,3 +177,10 @@ class CommonButton(Button):
     def unreveal(self):
         self._content_box.set_spacing(0)
         return self._revealer.unreveal()
+
+    def _unreveal_and_clear_delay(self):
+        if self._label_revealer_clear_delay is not None:
+            GLib.source_remove(self._label_revealer_clear_delay)
+            self._label_revealer_clear_delay = None
+
+        self.unreveal()

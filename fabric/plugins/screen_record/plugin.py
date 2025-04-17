@@ -4,7 +4,7 @@ from widgets.common_button import CommonButton
 
 class InternetStatus(ToolbarPlugin):
     def __init__(self):
-        self._name = "Screen record"
+        self._name = "screen_record"
         self._description = "Show screen record button."
 
         self.shell_context = None
