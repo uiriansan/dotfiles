@@ -31,7 +31,6 @@ discord
 dmidecode
 efibootmgr
 egl-wayland
-emacs
 eza
 fabric-cli-git
 fasm
