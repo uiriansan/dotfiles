@@ -25,6 +25,9 @@ class MyPlugin(ToolbarPlugin):
         # This function is only called once
         self.shell_context = shell_context
 
+    def get_button_popover(self):
+        return self.popover_content
+
     def register_toolbar_widget(self):
         # This function is called for each status bar and must return a Gtk.Widget()
         button = CommonButton(
@@ -33,7 +36,8 @@ class MyPlugin(ToolbarPlugin):
             title="Right click me!",
             label="Launcher opened!",
             revealed=False,  # initialize button with the label hidden
-            r_popover_factory=lambda: self.popover_content,
+            # Do not use lambda to retrive `*_popover_factory`s! It creates a weak reference that can cause a seg fault.
+            r_popover_factory=self.get_button_popover,
             on_click=lambda: self._on_click(button),
         )
 

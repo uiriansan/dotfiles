@@ -1,11 +1,11 @@
 # Claude.ai's so called "memory-efficient" popover. I don't fully understand this code, but it works :)
 import gi
+from loguru import logger
 gi.require_versions({"Gtk": "3.0", "Gdk": "3.0", "GtkLayerShell": "0.1"})
 from gi.repository import Gdk, GLib,GtkLayerShell
 from fabric.widgets.wayland import WaylandWindow
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
-
 
 class PopoverManager:
     """Singleton manager to handle shared resources for popovers."""
@@ -88,7 +88,6 @@ class PopoverManager:
         self.active_popover = popover
         self.overlay.show_all()
 
-
 class PopoverButton(Button):
     """A button that manages its own popover with lazy initialization."""
 
@@ -121,7 +120,6 @@ class PopoverButton(Button):
             self._popover = Popover(self._content_factory, self)
         return self._popover
 
-
 class Popover:
     """Memory-efficient popover implementation."""
 
@@ -153,7 +151,10 @@ class Popover:
             self._destroy_timeout = None
 
         if not self._content_window:
-            self._create_popover()
+            try:
+                self._create_popover()
+            except Exception as e:
+                logger.error(f"Could not create popover! Error: {e}")
         else:
             self._manager.activate_popover(self)
             self._content_window.show_all()
@@ -197,6 +198,8 @@ class Popover:
     def _create_popover(self):
         if not self._content and self._content_factory:
             self._content = self._content_factory()
+        else:
+            return
 
         # Get a window from the pool
         self._content_window = self._manager.get_popover_window()
@@ -210,6 +213,7 @@ class Popover:
         )
 
         self._content_window.connect("focus-out-event", self._on_popover_focus_out)
+
         self._content_window.connect("key-press-event", self._on_key_press)
         self._manager.activate_popover(self)
         self._content_window.show_all()

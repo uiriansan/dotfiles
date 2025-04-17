@@ -1,7 +1,5 @@
 import time
-
 from gi.repository import GLib
-
 from fabric.core.service import Property
 from fabric.utils.helpers import invoke_repeater
 from fabric.widgets.label import Label
@@ -25,9 +23,10 @@ class DateTime(CommonButton):
         self.update_time()
         return
 
+
     def __init__(self, interval: int = 1000, **kwargs):
         super().__init__(
-            name="datetime", l_popover_factory=lambda: Calendar(), **kwargs
+            name="datetime", l_popover_factory=self.get_calendar_contents, **kwargs
         )
 
         self._interval: int = interval
@@ -46,3 +45,6 @@ class DateTime(CommonButton):
         self.set_tooltip_text(time.strftime(f"%B %d, %Y - %H:%M:%S"))
         self.set_label(time.strftime(f"%a %d ❘ %H:%M"))
         return True
+
+    def get_calendar_contents(self):
+        return Calendar()

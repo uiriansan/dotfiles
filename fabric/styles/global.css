@@ -3,69 +3,99 @@
 @import url("./launcher.css");
 
 * {
-	all: unset;
-	font-family: Inter, "Ubuntu Nerd Font";
-	font-size: 10px;
-	padding: 0px;
-	min-width: 0px;
-	min-height: 0px;
-	margin: 0px;
-	-gtk-icon-style: symbolic;
+    all: unset;
+    font-family: Inter, "Ubuntu Nerd Font";
+    font-size: 10px;
+    padding: 0px;
+    min-width: 0px;
+    min-height: 0px;
+    margin: 0px;
+    -gtk-icon-style: symbolic;
 }
 
 separator {
-	margin: 0 5px;
-	padding: 0;
-	border-right: .5px solid alpha(var(--foreground), .5);
+    margin: 0 5px;
+    padding: 0;
+    border-right: 0.5px solid alpha(var(--foreground), 0.5);
 }
 
 tooltip {
-	border: .5px solid alpha(var(--foreground), .5);
-	border-radius: 10px;
-	background-color: var(--background);
+    border: 0.5px solid alpha(var(--foreground), 0.5);
+    border-radius: 10px;
+    background-color: var(--background);
 }
 
-tooltip>* {
-	padding: 2px 4px
+tooltip > * {
+    padding: 2px 4px;
 }
 
 button {
-	color: var(--foreground);
-	padding: 5px 6px;
-	border-radius: 5px;
-	background-color: transparent;
-	transition: background-color .5s;
+    color: var(--foreground);
+    padding: 5px 6px;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: background-color 0.5s;
 }
 
 label {
-	padding-top: 1px;
-	transition: color .5s;
+    padding-top: 1px;
+    transition: color 0.5s;
 }
 
 button:hover,
 button.pressed {
-	background-color: var(--active-background);
+    background-color: var(--active-background);
 }
 
 button:hover label,
 button.pressed label {
-	color: var(--accent);
+    color: var(--accent);
 }
 
 button.common-button box image.common-button-icon {
-	transition: color .5s, -gtk-icon-transform .5s;
-	-gtk-icon-transform: scale(1);
+    transition:
+        color 0.5s,
+        -gtk-icon-transform 0.5s;
+    -gtk-icon-transform: scale(1);
 }
 
 button.common-button:hover box image.common-button-icon,
 button.common-button.pressed box image.common-button-icon {
-	color: var(--accent);
-	-gtk-icon-transform: scale(.92);
+    color: var(--accent);
+    -gtk-icon-transform: scale(0.92);
 }
 
 .popover-content {
-	background-color: alpha(var(--background), 0.9);
-	padding: 10px;
-	border-radius: 10px;
-	border: .5px solid alpha(var(--foreground), .5);
+    background-color: alpha(var(--background), 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    border: 0.5px solid alpha(var(--foreground), 0.5);
+}
+
+scale {
+    background-color: lightblue;
+    padding: 10px;
+    min-width: 200px;
+}
+
+scale slider {
+    background-color: darkblue;
+    border-radius: 10px; /* Make it rounded */
+    min-width: 10px;
+    min-height: 10px;
+}
+
+scale trough {
+    background-color: gray;
+    border-radius: 3px;
+    min-height: 8px;
+}
+
+scale highlight {
+    background-color: green;
+    border-radius: 3px;
+}
+
+scale marks {
+    color: black;
 }

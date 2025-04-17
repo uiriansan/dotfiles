@@ -1,15 +1,13 @@
 from typing import Callable
-
 from gi.repository import GLib
-
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
 from fabric.widgets.image import Image
 from fabric.widgets.label import Label
 from fabric.widgets.revealer import Revealer
+from loguru import logger
 from utils.widgets import setup_cursor_hover
 from widgets.popover import Popover
-
 
 class CommonButton(Button):
     """A common button to be used with the Status Bar"""
@@ -65,8 +63,21 @@ class CommonButton(Button):
         self._icon = icon
         self._icon_size = icon_size
         self._label = label
+
         self._l_popover_factory = l_popover_factory
         self._r_popover_factory = r_popover_factory
+
+        # Make sure *_popover_factory is not a lambda expression
+        # Lambda creates a weak reference that will end up being destroyed by the garbage collector along with the popover window.
+        if l_popover_factory is not None:
+            if (callable(l_popover_factory) and l_popover_factory.__name__ == '<lambda>'):
+                logger.warning(f"`popover_factory` cannot be a lambda expression. Skipping popover for button `{self.get_name()}`")
+                self._l_popover_factory = None
+        if r_popover_factory is not None:
+            if (callable(r_popover_factory) and r_popover_factory.__name__ == '<lambda>'):
+                logger.warning(f"`popover_factory` cannot be a lambda expression. Skipping popover for button `{self.get_name()}`")
+                self._r_popover_factory = None
+
         self._on_click = on_click
         self._revealed = revealed
 
@@ -104,6 +115,8 @@ class CommonButton(Button):
         ):
             self.connect("button-press-event", self._on_button_press)
 
+
+
         setup_cursor_hover(self)
         self.add(self._content_box)
         self.show_all()
@@ -128,7 +141,7 @@ class CommonButton(Button):
 
     def set_label(self, label: str | None):
         if not label:
-            return False
+            return
 
         if not self._label_widget:
             self._label_widget = Label(
@@ -139,8 +152,6 @@ class CommonButton(Button):
             self._content_box.pack_end(self._revealer, False, False, 0)
         else:
             self._label_widget.set_label(label)
-
-        return True
 
     def set_label_and_reveal(self, label: str | None, reveal_duration: int = 1000 * 5):
         self.set_label(label)

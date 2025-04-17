@@ -7,7 +7,7 @@ function fish_greeting
 	starship init fish | source
 
 	sleep 0.1 # Gotta sleep here, otherwise fastfetch logo won't display properly
-	
+
 	nf #Run Fastfetch
 end
 
@@ -24,15 +24,14 @@ alias nf="fastfetch"
 alias ff="fastfetch"
 alias neofetch="fastfetch"
 
-alias ls="lsd -A"
-
-alias v=nvim_open_file
-alias vi=nvim_open_file
-alias neovim=nvim_open_file
-alias nvim=nvim_open_file
+alias ls="lsd -A --hyperlink auto"
 
 alias mansearch=search_man_pages
 
+alias rg="rg --no-heading --hyperlink-format kitty"
+alias grep=rg
+
+set -U VISUAL /usr/bin/zeditor
 set -U EDITOR /usr/bin/nvim
 
 fish_add_path /home/uirian/.local/bin/

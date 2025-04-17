@@ -6,6 +6,8 @@ from loguru import logger
 from config import MAIN_MONITOR_ID, toolbar_plugin_order
 from fabric.utils import get_relative_path
 
+from modules.status_bar import StatusBar
+
 gi.require_versions({"Gtk": "3.0"})
 import importlib.util
 import os
@@ -20,7 +22,7 @@ class ShellContext:
 
     def __init__(self, status_bars, launcher):
         self._status_bars = status_bars
-        self._main_status_bar = self.get_main_status_bar()
+        self._main_status_bar: StatusBar = self._get_main_status_bar()
         self.launcher = launcher
         self.main_toolbar = self._main_status_bar.toolbar
 
@@ -30,10 +32,12 @@ class ShellContext:
     def get_toolbar(self):
         return self.main_toolbar
 
-    def get_main_status_bar(self):
+    def _get_main_status_bar(self) -> StatusBar:
         for bar in self._status_bars:
             if bar.get_monitor() == MAIN_MONITOR_ID:
                 return bar
+
+        return self._status_bars[0]
 
 
 class Plugin(abc.ABC):

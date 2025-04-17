@@ -23,6 +23,10 @@ from widgets.toolbar import Toolbar
 #                                                                                          #
 ############################################################################################
 
+def get_power_menu_popover():
+    return Button(
+        child=Label(label="This is a label on the right click!!")
+    )
 
 class StatusBar(Window):
     def __init__(self, monitor, main_monitor_id, **kwargs):
@@ -45,9 +49,7 @@ class StatusBar(Window):
             icon="arch",
             title="Launcher",
             on_click=lambda: print("click"),
-            r_popover_factory=lambda: Button(
-                child=Label(label="This is a label on the right click!!")
-            ),
+            r_popover_factory=get_power_menu_popover
         )
 
         self.active_window = ActiveWindow()

@@ -14,8 +14,6 @@ from fabric.widgets.wayland import WaylandWindow as Window
 from widgets.tag_entry import TagEntry
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
-
 
 class Launcher(Window):
     def __init__(self, **kwargs):
@@ -166,3 +164,6 @@ class Launcher(Window):
         self.search_entry.set_text(""),
         self.search_entry.grab_focus_without_selecting()
         return self.set_visible(not self.get_visible())
+
+    def launch(self, command: str):
+        self.search_entry.set_text(command)

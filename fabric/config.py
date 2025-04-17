@@ -1,3 +1,5 @@
+SHELL_NAME = "fabric-shell"
+
 MAIN_MONITOR_ID = 1
 WORKSPACES_PER_MONITOR = 5
 
@@ -9,11 +11,11 @@ BORDER_RADIUS = 10
 window_pattern_list = {
     "class:zen$": "Zen Browser",
     "class:dev.zed.Zed$": "Zed Editor",
+    "class:kitty": "Kitty",
     "title:nvim.*$": "Neovim",
-    "class:Emacs": "Emacs",
     "title:Yazi.*$": "Yazi",
-    "class:com.mitchellh.ghostty$": "Ghostty",
     "ititle:Spotify Premium$": "Spotify",
+    "class:com.mitchellh.ghostty$": "Ghostty",
     "class:discord$": "Discord",
     "class:obsidian$": "Obsidian",
     # extract groups with $*. Won't match because the line above returns
