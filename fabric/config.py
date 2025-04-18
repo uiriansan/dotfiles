@@ -11,9 +11,9 @@ BORDER_RADIUS = 10
 window_pattern_list = {
     "class:zen$": "Zen Browser",
     "class:dev.zed.Zed$": "Zed Editor",
-    "class:kitty": "Kitty",
-    "title:nvim.*$": "Neovim",
     "title:Yazi.*$": "Yazi",
+    "title:nvim.*$": "Neovim",
+    "class:kitty": "Kitty",
     "ititle:Spotify Premium$": "Spotify",
     "class:com.mitchellh.ghostty$": "Ghostty",
     "class:discord$": "Discord",
@@ -33,10 +33,14 @@ toolbar_plugin_order = [
     "magnifier",
     "screenshot",
     "screen_record",
-    "brightness",
+    "screen_filters",
     "volume",
     "internet_status",
 ]
+
+HYPRSHADE_SHADER_PATH = "~/.config/hypr/utils/blue-light-filter-with-brightness.glsl.mustache"
+DEFAULT_BLUE_LIGHT_FILTER_VALUE: float = 6000.0
+DEFAULT_BRIGHTNESS_VALUE: float = 1.0
 
 # Google AI Studio API:
 # https://aistudio.google.com/u/2/apikey?pli=1

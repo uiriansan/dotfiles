@@ -115,8 +115,6 @@ class CommonButton(Button):
         ):
             self.connect("button-press-event", self._on_button_press)
 
-
-
         setup_cursor_hover(self)
         self.add(self._content_box)
         self.show_all()
@@ -129,13 +127,17 @@ class CommonButton(Button):
             elif self._l_popover_factory is not None:
                 if not self._l_popover:
                     self._l_popover = Popover(self._l_popover_factory, self)
+                    self._l_popover.connect("popover-closed", lambda _: self.remove_style_class("pressed"))
                 self._l_popover.open()
+                self.add_style_class("pressed")
 
         # Right click
         if event.button == 3 and self._r_popover_factory is not None:
             if not self._r_popover:
                 self._r_popover = Popover(self._r_popover_factory, self)
+                self._r_popover.connect("popover-closed", lambda _: self.remove_style_class("pressed"))
             self._r_popover.open()
+            self.add_style_class("pressed")
 
         return True
 

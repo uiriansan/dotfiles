@@ -1,11 +1,14 @@
 # Claude.ai's so called "memory-efficient" popover. I don't fully understand this code, but it works :)
+from fabric.widgets.widget import Widget
 import gi
 from loguru import logger
-gi.require_versions({"Gtk": "3.0", "Gdk": "3.0", "GtkLayerShell": "0.1"})
-from gi.repository import Gdk, GLib,GtkLayerShell
+gi.require_versions({"Gtk": "3.0", "Gdk": "3.0", "GtkLayerShell": "0.1", "GObject": "2.0"})
+from gi.repository import Gdk, GLib,GtkLayerShell, GObject
+from fabric.hyprland.service import HyprlandEvent
 from fabric.widgets.wayland import WaylandWindow
 from fabric.widgets.box import Box
 from fabric.widgets.button import Button
+from utils.services import get_hyprland_connection
 
 class PopoverManager:
     """Singleton manager to handle shared resources for popovers."""
@@ -43,6 +46,13 @@ class PopoverManager:
 
         # Close popover when clicking overlay
         self.overlay.connect("button-press-event", self._on_overlay_clicked)
+        self._hyprland_connection = get_hyprland_connection()
+        self._hyprland_connection.connect("event::focusedmonv2", self._on_monitor_change)
+
+    def _on_monitor_change(self,_, event: HyprlandEvent):
+        if self.active_popover:
+            self.active_popover.hide_popover()
+        return True
 
     def _on_overlay_clicked(self, widget, event):
         if self.active_popover:
@@ -120,10 +130,23 @@ class PopoverButton(Button):
             self._popover = Popover(self._content_factory, self)
         return self._popover
 
-class Popover:
+@GObject.Signal(flags=GObject.SignalFlags.RUN_LAST, return_type=GObject.TYPE_NONE, arg_types=())
+def popover_opened(widget: Widget): ...
+
+@GObject.Signal(flags=GObject.SignalFlags.RUN_LAST, return_type=GObject.TYPE_NONE, arg_types=())
+def popover_closed(widget: Widget): ...
+
+@GObject.type_register
+class Popover(Widget):
     """Memory-efficient popover implementation."""
 
+    __gsignals__ = {
+        "popover-opened": (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ()),
+        "popover-closed": (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, ()),
+    }
+
     def __init__(self, content_factory, point_to):
+        super().__init__()
         """
         Initialize a popover.
 
@@ -160,6 +183,8 @@ class Popover:
             self._content_window.show_all()
             self._content_window.steal_input()
             self._visible = True
+
+        self.emit("popover-opened")
 
     def _calculate_margins(self):
         widget_allocation = self._point_to.get_allocation()
@@ -235,6 +260,8 @@ class Popover:
 
         if not self._destroy_timeout:
             self._destroy_timeout = GLib.timeout_add(1000 * 5, self._destroy_popover)
+
+        self.emit("popover-closed")
 
         return False
 

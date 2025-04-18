@@ -1,23 +1,12 @@
 import json
 import re
 
-from config import WORKSPACES_PER_MONITOR, window_pattern_list, workspace_pattern_list
-from fabric.hyprland.service import Hyprland, HyprlandEvent
+from config import window_pattern_list, workspace_pattern_list
+from fabric.hyprland.service import HyprlandEvent
 from fabric.utils import bulk_connect
 from fabric.widgets.button import Button
-from fabric.widgets.label import Label
 from utils.widgets import setup_cursor_hover
-
-connection: Hyprland | None = None
-
-
-def get_hyprland_connection() -> Hyprland:
-    global connection
-    if not connection:
-        connection = Hyprland()
-
-    return connection
-
+from utils.services import get_hyprland_connection
 
 class ActiveWindow(Button):
     def __init__(self, **kwargs):
@@ -91,4 +80,4 @@ class ActiveWindow(Button):
 
                 return final_title.strip()
 
-        return win_title.split(" ", 1)[0] if win_title is not None else "Desktop"
+        return ((win_title[:40] + "...") if len(win_title) > 40 else win_title) if win_title is not None else "Desktop"

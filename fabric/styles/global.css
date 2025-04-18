@@ -14,9 +14,29 @@
 }
 
 separator {
+    margin: 0px;
+    padding: 0px;
+    min-height: 0px;
+    min-width: 0px;
+}
+separator.vertical {
     margin: 0 5px;
     padding: 0;
     border-right: 0.5px solid alpha(var(--foreground), 0.5);
+}
+separator.horizontal {
+    margin: 5px 0;
+    padding: 0;
+    border-bottom: 0.5px solid alpha(var(--foreground), 0.5);
+}
+separator.no-margins {
+    margin: 0px;
+}
+.padding-10 {
+    padding: 10px;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px;
 }
 
 tooltip {
@@ -41,13 +61,21 @@ label {
     padding-top: 1px;
     transition: color 0.5s;
 }
+label.title {
+    font-weight: bold;
+    font-size: 12px;
+}
 
 button:hover,
+button:focus,
+button:active,
 button.pressed {
     background-color: var(--active-background);
 }
 
 button:hover label,
+button:focus label,
+button:active label,
 button.pressed label {
     color: var(--accent);
 }
@@ -67,35 +95,74 @@ button.common-button.pressed box image.common-button-icon {
 
 .popover-content {
     background-color: alpha(var(--background), 0.9);
-    padding: 10px;
     border-radius: 10px;
     border: 0.5px solid alpha(var(--foreground), 0.5);
 }
 
 scale {
-    background-color: lightblue;
-    padding: 10px;
     min-width: 200px;
 }
-
-scale slider {
-    background-color: darkblue;
-    border-radius: 10px; /* Make it rounded */
+scale:disabled highlight {
+    background-color: var(--active-background);
+}
+/* scale slider {
+    background-color: var(--accent);
+    border: 1px solid var(--background);
+    border-radius: 10px;
     min-width: 10px;
     min-height: 10px;
-}
-
+} */
 scale trough {
-    background-color: gray;
-    border-radius: 3px;
-    min-height: 8px;
+    background-color: var(--active-background);
+    border-radius: 10px;
+    min-height: 15px;
 }
-
 scale highlight {
-    background-color: green;
-    border-radius: 3px;
+    background-color: var(--accent);
+    border-radius: 10px;
+    min-height: 15px;
+}
+scale marks {
+    color: var(--foreground);
 }
 
-scale marks {
-    color: black;
+switch {
+    border-radius: 20px;
+    min-width: 30px;
+    min-height: 15px;
+    margin: 4px;
+    background-color: var(--active-background);
+    background-clip: padding-box;
+    /* border: 1px solid #babdb6; */
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    background-image: none;
+    -gtk-icon-source: none;
+    color: transparent;
+}
+
+switch:checked {
+    background-color: var(--accent);
+    background-image: none;
+    -gtk-icon-source: none;
+    /* border-color: #1c71d8; */
+}
+
+switch slider {
+    border-radius: 100%;
+    min-width: 10px;
+    min-height: 10px;
+    margin: 1px;
+    background-color: #ffffff;
+    border: 1px solid var(--active-background);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+switch:checked slider {
+    /* transform: translate(24px, 0); */
+}
+
+/* Disabled states */
+switch:disabled {
+    opacity: 0.5;
 }

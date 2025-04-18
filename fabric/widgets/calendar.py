@@ -1,12 +1,9 @@
 import gi
-
 from utils.widgets import setup_cursor_hover
-
 gi.require_version("Gtk", "3.0")
 import calendar
 import datetime
-
-from gi.repository import Gdk, GLib, Gtk
+from gi.repository import Gdk, Gtk
 
 
 class Calendar(Gtk.Grid):
@@ -22,8 +19,12 @@ class Calendar(Gtk.Grid):
         self.current_date = datetime.datetime.now()
         self.selected_date = self.current_date
 
+        css_context = self.get_style_context()
+        css_context.add_class("padding-10")
+
         # Header with month/year and navigation
         self.header = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+
         self.prev_button = Gtk.Button.new_from_icon_name(
             "go-previous-symbolic", Gtk.IconSize.BUTTON
         )
@@ -42,6 +43,8 @@ class Calendar(Gtk.Grid):
         self.header.pack_start(self.next_button, False, False, 0)
 
         self.attach(self.header, 0, 0, 7, 1)
+
+        # TODO: Fix arrow button going to the wrong month after clicking on a out-day
 
         # Day labels (Mon, Tue, etc.)
         days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -75,8 +78,6 @@ class Calendar(Gtk.Grid):
             if selected
             else self.current_date.strftime("%B %Y")
         )
-
-        cal = calendar.monthcalendar(year, month)
 
         # Get current day for highlighting
         today = datetime.datetime.now()
@@ -167,22 +168,22 @@ class Calendar(Gtk.Grid):
             day_index += 1
 
     def _previous_month(self, button):
-        year = self.current_date.year
-        month = self.current_date.month - 1
+        year = self.selected_date.year
+        month = self.selected_date.month - 1
         if month < 1:
             month = 12
             year -= 1
-        self.current_date = datetime.datetime(year, month, 1)
-        self._update_calendar()
+        self.selected_date = datetime.datetime(year, month, 1)
+        self._update_calendar(True)
 
     def _next_month(self, button):
-        year = self.current_date.year
-        month = self.current_date.month + 1
+        year = self.selected_date.year
+        month = self.selected_date.month + 1
         if month > 12:
             month = 1
             year += 1
-        self.current_date = datetime.datetime(year, month, 1)
-        self._update_calendar()
+        self.selected_date = datetime.datetime(year, month, 1)
+        self._update_calendar(True)
 
     def _on_day_clicked(self, button):
         if hasattr(button, "date"):
@@ -192,24 +193,3 @@ class Calendar(Gtk.Grid):
 
     def get_date(self):
         return self.selected_date
-
-
-# Example usage in a window
-class CalendarWindow(Gtk.Window):
-    def __init__(self):
-        super().__init__(title="Custom Calendar")
-        self.set_border_width(10)
-
-        # Apply custom CSS
-        css_provider = Gtk.CssProvider()
-
-        css_provider.load_from_data(css)
-
-        context = Gtk.StyleContext()
-        screen = Gdk.Screen.get_default()
-        context.add_provider_for_screen(
-            screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
-
-        self.calendar = CustomCalendar()
-        self.add(self.calendar)
