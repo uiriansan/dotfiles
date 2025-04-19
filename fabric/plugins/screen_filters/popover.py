@@ -39,15 +39,42 @@ class ScreenFiltersPopover(Box):
         self.on_off_switch.set_tooltip_text("Disable filters" if self.filter_service.enabled else "Enable filters")
         setup_cursor_hover(self.on_off_switch)
 
-        self.filter_service.connect("blue-light-changed", lambda _, value: self.blf_scale.set_value(value))
-        self.filter_service.connect("brightness-changed", lambda _, value: self.brightness_scale.set_value(value))
-        self.blf_scale.connect("value-changed", self.update_blf_label)
-        self.brightness_scale.connect("value-changed", self.update_brightness_label)
-        self.blf_scale.connect("button-release-event", self.set_blf_value)
-        self.brightness_scale.connect("button-release-event", self.set_brightness_value)
-        self.on_off_switch.connect("state-set", self.on_off_switch_changed)
+        # Store the signals to disconnect when the popover is destroyed!
+        self.signal_handlers = []
+        self.signal_handlers.extend([
+            (
+                self.filter_service,
+                self.filter_service.connect("blue-light-changed", lambda _, value: self.blf_scale.set_value(value))
+            ),
+            (
+                self.filter_service,
+                self.filter_service.connect("brightness-changed", lambda _, value: self.brightness_scale.set_value(value))
+            ),
+            (
+                self.blf_scale,
+                self.blf_scale.connect("value-changed", self.update_blf_label)
+            ),
+            (
+                self.brightness_scale,
+                self.brightness_scale.connect("value-changed", self.update_brightness_label)
+            ),
+            (
+                self.blf_scale,
+                self.blf_scale.connect("button-release-event", self.set_blf_value)
+            ),
+            (
+                self.brightness_scale,
+                self.brightness_scale.connect("button-release-event", self.set_brightness_value)
+            ),
+            (
+                self.on_off_switch,
+                self.on_off_switch.connect("state-set", self.on_off_switch_changed)
+            )
+        ])
+        # Disconnect the signals
+        self.connect("destroy", self.on_destroy)
 
-        self.popover_content = [
+        self.children = [
             CenterBox(
                 orientation="h",
                 spacing=10,
@@ -87,8 +114,6 @@ class ScreenFiltersPopover(Box):
             ),
         ]
 
-        self.children = self.popover_content
-
     def reset_filters(self):
         if self.filter_service.brightness == DEFAULT_BRIGHTNESS_VALUE and self.filter_service.blue_light == DEFAULT_BLUE_LIGHT_FILTER_VALUE:
             return
@@ -123,3 +148,9 @@ class ScreenFiltersPopover(Box):
         value = scale.get_value()
         self.filter_service.brightness = value
         self.filter_service.shader_on()
+
+    def on_destroy(self, widget):
+        for obj, handler_id in self.signal_handlers:
+            if obj and hasattr(obj, 'handler_disconnect'):
+                obj.handler_disconnect(handler_id)
+        self.signal_handlers = []
