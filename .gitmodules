@@ -1,3 +1,6 @@
+[submodule "fabric-shell"]
+	path = fabric
+	url = git@github.com:uiriansan/fabric-shell.git
 [submodule "SilentSDDM"]
 	path = sddm
 	url = git@github.com:uiriansan/SilentSDDM.git
