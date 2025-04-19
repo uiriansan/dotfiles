@@ -107,6 +107,7 @@ class ScreenFilters(ToolbarPlugin):
             return
         self._filter_service.brightness = DEFAULT_BRIGHTNESS_VALUE
         self._filter_service.blue_light = DEFAULT_BLUE_LIGHT_FILTER_VALUE
+        self.set_shader()
 
     def on_off_switch_changed(self, switch, state, brightness_scale, blf_scale):
         self._filters_enabled = state

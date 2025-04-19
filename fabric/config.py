@@ -38,9 +38,10 @@ toolbar_plugin_order = [
     "internet_status",
 ]
 
+########## HYPRSHADE SCREEN FILTERS (SHADERS) ###########
 HYPRSHADE_SHADER_PATH = "~/.config/hypr/utils/blue-light-filter-with-brightness.glsl.mustache"
-DEFAULT_BLUE_LIGHT_FILTER_VALUE: float = 6000.0
-DEFAULT_BRIGHTNESS_VALUE: float = 1.0
+DEFAULT_BLUE_LIGHT_FILTER_VALUE: float = 6000.0 # 6000 Kelvin  | min: 2000, max: 25000
+DEFAULT_BRIGHTNESS_VALUE: float = 0.8 # 80% | min: 0.5, max: 1.0
 
 # Google AI Studio API:
 # https://aistudio.google.com/u/2/apikey?pli=1

@@ -1,10 +1,17 @@
 #launcher {
-	background-color: alpha(var(--background), 0.9);
-	border-radius: 10px;
-	border: .5px solid alpha(var(--foreground), .5);
+    background-color: alpha(var(--background), 0.9);
+    border-radius: 10px;
+    border: 0.5px solid alpha(var(--foreground), 0.5);
 }
 
 #launcher-contents {
-	padding: 10px;
-	min-width: 600px;
+    padding: 10px;
+    min-width: 600px;
+}
+
+button.launcher-button:focus {
+    background-color: var(--active-background);
+}
+button.launcher-button:focus label {
+    color: var(--accent);
 }

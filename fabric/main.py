@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     # Set custom `-symbolic.svg` icons' dir
     icon_theme = Gtk.IconTheme.get_default()
-    icons_dir = get_relative_path("./assets/icons/")
+    icons_dir = get_relative_path("./data/icons/")
     icon_theme.append_search_path(icons_dir)
 
     shell = Shell(SHELL_NAME)

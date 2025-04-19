@@ -16,7 +16,6 @@ from typing import Callable, Dict, List, Tuple
 
 from gi.repository import Gtk
 
-
 class ShellContext:
     """Provides plugins access to shell's components."""
 
@@ -39,7 +38,6 @@ class ShellContext:
 
         return self._status_bars[0]
 
-
 class Plugin(abc.ABC):
     """Base class for all plugins"""
 
@@ -61,16 +59,25 @@ class Plugin(abc.ABC):
     @abc.abstractmethod
     def initialize(self, shell_context: ShellContext) -> None: ...
 
+    # TODO: Make these part of ShellContext
+    # ShellContext.NotificationManager.notify(notification: Widget)
+    # ShellContext.Calendar.add_event(event: Event)
+    # ShellContext.JobManager.create_job(job: Job)
 
 class ToolbarPlugin(Plugin):
-    """Interface for toolbar plugins"""
+    """
+        Interface for toolbar plugins.
+        Toolbar plugins can add interactive Gtk.Widgets to the toolbar (i.e., status bar far right)
+    """
 
     @abc.abstractmethod
     def register_toolbar_widget(self) -> Gtk.Widget: ...
 
-
 class LauncherPlugin(Plugin):
-    """Interface for launcher plugins"""
+    """
+        Interface for launcher plugins.
+        Launcher plugins can register commands and add widgets and actions to them.
+    """
 
     @abc.abstractmethod
     def get_commands(self) -> List[str]: ...
@@ -156,8 +163,6 @@ class PluginManager:
 
                         for command in plugin_instance.get_commands():
                             self.launcher_commands[command] = plugin_instance.name
-
-
         finally:
             sys.path.pop(0)
 
@@ -195,5 +200,3 @@ class PluginManager:
                 )
 
         return widgets
-
-    # TODO: Launcher stuff

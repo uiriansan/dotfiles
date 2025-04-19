@@ -136,6 +136,7 @@ class Launcher(Window):
 
     def bake_application_slot(self, app: DesktopApp, **kwargs) -> Button:
         return Button(
+            style_classes="launcher-button",
             child=Box(
                 orientation="h",
                 spacing=12,

@@ -67,15 +67,11 @@ label.title {
 }
 
 button:hover,
-button:focus,
-button:active,
 button.pressed {
     background-color: var(--active-background);
 }
 
 button:hover label,
-button:focus label,
-button:active label,
 button.pressed label {
     color: var(--accent);
 }
