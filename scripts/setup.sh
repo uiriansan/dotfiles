@@ -136,6 +136,7 @@
 #
 # # sudo pacman -S ttf-jetbrains-mono-nerd ttf-ubuntu-mono-nerd ttf-ubuntu-nerd
 # # sudo pacman -S adobe-source-han-sans-cn-fonts adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts adobe-source-han-sans-otc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-cn-fonts adobe-source-han-serif-jp-fonts adobe-source-han-serif-kr-fonts adobe-source-han-serif-otc-fonts adobe-source-han-serif-tw-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji inter-font
+# yay -S redhat-fonts
 #
 # ssh-keygen -t ed25519 -C "uiriansan@gmail.com"
 #
@@ -146,7 +147,7 @@
 # git remote set-url origin git@github.com:uiriansan/hyprdots.git
 #
 # sudo cp -r ~/.config/sddm/themes/deepin/ /usr/share/sddm/themes/
-# sudo sed -i "s/^Current=.*/Current=deepin/g" /usr/lib/sddm/sddm.conf.d/default.conf
+# sudo sed -i "s/^Current=.*/Current=deepin/g" /usr/lib/sddm/sddm.conf
 # # SDDM user avatar (gotta be .png)
 # # Convert with $ magick convert <image.jpg> <image.png>
 # # Print its size with $ magick /usr/share/sddm/faces/uirian.face.icon -print "Size: %wx%h\n" /dev/null

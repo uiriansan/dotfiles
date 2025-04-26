@@ -31,6 +31,8 @@ discord
 dmidecode
 efibootmgr
 egl-wayland
+exif
+exif-debug
 eza
 fabric-cli-git
 fasm
@@ -68,6 +70,7 @@ intel-ucode
 inter-font
 jq
 kitty
+kservice5
 kwin
 lazygit
 libastal-git
@@ -104,6 +107,7 @@ openssh
 os-prober
 pacman-contrib
 pipewire
+plasma-framework5
 playerctl
 power-profiles-daemon
 pulseaudio
@@ -123,6 +127,7 @@ qt5-quickcontrols2
 qt5-svg
 qt5-wayland
 qt6-wayland
+redhat-fonts
 reflector
 ripgrep
 rose-pine-hyprcursor
@@ -160,6 +165,7 @@ xclip
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-wlr
+xp-pen-tablet
 yay
 yay-debug
 yazi
