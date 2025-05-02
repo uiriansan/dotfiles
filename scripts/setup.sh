@@ -6,6 +6,35 @@
 # #															#
 # #############################################################
 #
+reset="\033[0m"
+black='\033[0;30m'
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+purple='\033[0;35m'
+cyan='\033[0;36m'
+white='\033[0;37m'
+# Bold
+bblack='\033[1;30m'
+bred='\033[1;31m'
+bgreen='\033[1;32m'
+byellow='\033[1;33m'
+bblue='\033[1;34m'
+bpurple='\033[1;35m'
+bcyan='\033[1;36m'
+bwhite='\033[1;37m'
+# underline
+ublack='\033[4;30m'
+ured='\033[4;31m'
+ugreen='\033[4;32m'
+uyellow='\033[4;33m'
+ublue='\033[4;34m'
+upurple='\033[4;35m'
+ucyan='\033[4;36m'
+uwhite='\033[4;37m'
+
+echo -e "${bred}TODO...${reset}"
 #
 # # 1. Create directories
 # mkdir -p ~/.config ~/Pictures/Screenshots ~/Documents ~/Code ~/Sources
@@ -22,7 +51,7 @@
 # # 4. Install essentials
 # echo -e "\e[34m\e[1mInstalling essentials...\e[0m"
 #
-# sudo pacman --noconfirm -S --needed grub ntfs-3g bottom cpio gtk-engine-murrine meson pkg-config obsidian chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel fd bat wget lua luarocks dart-sass cava zed wf-recorder hypridle slurp lazygit man-db man-pages nasm qemu-desktop npm inkscape blender openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree xdg-desktop-portal-gtk xdg-desktop-portal-hyprland hyprpolkitagent weston hyprwayland-scanner unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland zenity hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative uwsm pipewire wireplumber qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick zoxide sbctl xdg-desktop-portal-wlr bluez-utils linux-headers
+# sudo pacman --noconfirm -S --needed grub ntfs-3g bottom cpio gtk-engine-murrine meson pkg-config obsidian chafa jq clang cmake cronie eza fasm fastfetch feh fish fzf gdb git glfw htop libsixel fd bat wget lua luarocks dart-sass cava zed wf-recorder hypridle slurp lazygit man-db man-pages nasm qemu-desktop npm inkscape blender openssh python-pip python-pipx ripgrep rust-analyzer rustup starship neovim tmux tree xdg-desktop-portal-gtk xdg-desktop-portal-hyprland hyprpolkitagent weston hyprwayland-scanner unzip xclip yazi nvidia-dkms nvidia-utils egl-wayland zenity hyprland xdg-desktop-portal-hyprland hyprpaper kitty ghostty firefox spotify-launcher sddm qt5-declarative qt5-virtualkeyboard uwsm pipewire wireplumber qt5-wayland qt6-wayland qt5-svg qt5-quickcontrols2 hyprpolkitagent lxappearance nwg-look pulseaudio playerctl qt5-graphicaleffects wl-clipboard fzy imagemagick zoxide sbctl xdg-desktop-portal-wlr bluez-utils linux-headers
 #
 # # Fabric
 # sudo pacman -S --noconfirm --needed pipewire playerctl dart-sass power-profiles-daemon networkmanager brightnessctl pkgconf wf-recorder kitty python pacman-contrib gtk3 cairo gtk-layer-shell libgirepository gobject-introspection gobject-introspection-runtime python-pip python-gobject python-psutil python-dbus python-cairo python-loguru python-setproctitle

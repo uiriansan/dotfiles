@@ -74,6 +74,7 @@ fd
 feh
 ffmpegthumbs
 filelight
+firefox
 fish
 flatpak-kcm
 francis
@@ -212,7 +213,6 @@ kgamma
 kgeography
 kget
 kgoldrunner
-kgpg
 kgraphviewer
 khangman
 khelpcenter
@@ -268,6 +268,7 @@ krdp
 krecorder
 kreversi
 krfb
+krita
 kruler
 kscreen
 kservice5
@@ -350,10 +351,12 @@ pacman-contrib
 palapeli
 parley
 partitionmanager
+pavucontrol
 picmi
 pim-data-exporter
 pim-sieve-editor
 pipewire
+pipewire-media-session
 plasma-activities-stats
 plasma-browser-integration
 plasma-desktop
@@ -396,7 +399,21 @@ qt5-declarative
 qt5-graphicaleffects
 qt5-quickcontrols2
 qt5-svg
+qt5-virtualkeyboard
 qt5-wayland
+qt6-3d
+qt6-datavis3d
+qt6-doc
+qt6-examples
+qt6-graphs
+qt6-grpc
+qt6-languageserver
+qt6-lottie
+qt6-quick3dphysics
+qt6-quickeffectmaker
+qt6-remoteobjects
+qt6-serialbus
+qt6-serialport
 qt6-wayland
 redhat-fonts
 reflector
@@ -451,7 +468,6 @@ waybar
 weston
 wf-recorder
 wget
-wireplumber
 wl-clipboard
 xclip
 xdg-desktop-portal-gnome
