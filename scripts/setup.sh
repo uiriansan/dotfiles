@@ -79,9 +79,9 @@ echo -e "${bred}TODO...${reset}"
 # yay -S rose-pine-hyprcursor
 # yay -S hyprshot
 # yay -S hyprshade-git
-# yay -S hyprsunset
 # yay -S hyprswitch
 # yay -S hyprmag-git
+# yay -S hyprpicker-git
 #
 # GTK Cursor:
 # wget -O ~/Downloads/BreezeXDark.tar.xz "https://github.com/ful1e5/BreezeX_Cursor/releases/latest/download/BreezeX-Dark.tar.xz" | tar -xvf BreezeX-Dark.tar.xz

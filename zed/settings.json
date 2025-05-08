@@ -11,10 +11,11 @@
   "vim_mode": true,
   "relative_line_numbers": true,
   "ui_font_size": 14,
+  "soft_wrap": "none",
   "buffer_font_size": 14,
   "theme": {
     "mode": "system",
-    "light": "One Light",
+    "light": "Mellow",
     "dark": "Mellow"
   },
   "toolbar": {
