@@ -240,3 +240,17 @@ echo -e "${bred}TODO...${reset}"
     # For GTK4 applications it is only necessary to have moved the assets, gtk.css and gtk-dark.css files to the ~/.config/gtk-4.0 path, and if you notice that the theme has not been applied, just close and reopen the application.
     #
 # https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme?tab=readme-ov-file
+
+
+
+
+
+# FIX SDDM MONITORS:
+# Put the following in /usr/share/sddm/scripts/Xsetup:
+# xrandr --output DVI-D-0 --off
+# xrandr --output HDMI-0 --primary --mode 1920x1080
+# xrandr --output DVI-D-0 --mode 1600x900 --noprimary --left-of HDMI-0
+# redshift -P -O 5000 -b 0.8
+
+
+# sudo pacman -S xbindkeys xsel xdotool

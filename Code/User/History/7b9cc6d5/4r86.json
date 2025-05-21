@@ -1,0 +1,17 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-editor.action.toggleScreenReaderAccessibilityMode",
+        "when": "accessibilityHelpIsShown"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    }
+]

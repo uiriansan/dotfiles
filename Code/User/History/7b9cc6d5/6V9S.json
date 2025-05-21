@@ -1,0 +1,48 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-editor.action.toggleScreenReaderAccessibilityMode",
+        "when": "accessibilityHelpIsShown"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    { // Move focus to the SideBar if not (!) there
+        "key": "ctrl+e",
+        "when": "!sideBarFocus",
+        "command": "workbench.action.focusSideBar"
+    },
+    { // Move focus to the Editor, if currently in the SideBar
+        "key": "ctrl+e",
+        "when": "sideBarFocus",
+        "command": "workbench.action.focusActiveEditorGroup"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "// Move focus to the SideBar if not (!) there"
+                {
+                    "command": "",
+                    "when": ""
+                }
+            ]
+        }
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    }
+]
