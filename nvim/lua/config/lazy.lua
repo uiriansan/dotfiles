@@ -34,16 +34,13 @@ require("lazy").setup({
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "mellow" } },
+	install = { colorscheme = { "kanso" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
 
 -- Set colorscheme
-vim.cmd([[ colorscheme mellow ]])
+vim.cmd([[ colorscheme kanso ]])
 
 -- Fix some highlight groups
 vim.cmd([[ hi CursorLineNR guifg=#ffffff gui=bold ]])
-
--- Transparent background
-vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })

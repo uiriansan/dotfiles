@@ -65,6 +65,7 @@
   "niri/window": {
     "format": "{title}",
     "separate-outputs": true,
+	"max-length": 30
   },
 
   "clock": {

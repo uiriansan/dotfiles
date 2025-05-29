@@ -12,10 +12,16 @@ input {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
 
-            // For example:
-            // layout "us,ru"
+            layout "us,br,jp"
+            variant "altgr-intl,,kana"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            // model ""
+            // rules ""
+
+            // file "~/.config/keymap.xkb"
         }
+        track-layout "global"
+        numlock
     }
 
     // Next sections include libinput settings.
@@ -56,7 +62,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse // max-scroll-amount="0%"
 }
 
 // You can configure outputs by their name, which you can find

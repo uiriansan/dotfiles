@@ -40,11 +40,14 @@ return {
 	{ "sho-87/kanagawa-paper.nvim" },
 	{ "kvrohit/mellow.nvim", },
 	{ "rktjmp/lush.nvim", },
-	-- {
-	-- 	-- "uiriansan/silent.nvim",
-	-- 	dir = "~/Code/silent.nvim",
-	-- 	opts = {
-	--
-	-- 	}
-	-- },
+	{
+		"webhooked/kanso.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("kanso").setup({
+				theme = "zen",
+			})
+		end,
+	},
 }
