@@ -1,0 +1,20 @@
+# ZETTLR DEFAULTS FILE
+# ====================
+# Conversion: Markdown --> Microsoft Word
+# More info: https://pandoc.org/MANUAL.html
+reader: markdown
+writer: docx
+self-contained: true
+variables: {}
+metadata-files: []
+bibliography: []
+filters:
+- type: citeproc
+dpi: 72
+toc: false
+toc-depth: 2
+eol: lf
+strip-comments: false
+default-image-extension: .jpg
+tab-stop: 4
+fail-if-warnings: false

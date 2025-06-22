@@ -40,6 +40,7 @@ fish_add_path /home/uirian/.spicetify
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+set --export GIT_EDITOR zeditor
 
 # zoxide
 zoxide init fish | source
