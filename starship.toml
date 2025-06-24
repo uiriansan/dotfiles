@@ -1,0 +1,31 @@
+command_timeout = 2000
+
+format = """$git_branch$directory(bold white) """
+
+[username]
+style_user = 'yellow bold'
+style_root = 'black bold'
+format = '[$user](red bold) '
+disabled = false
+show_always = true
+
+# Shows current directory
+[directory]
+truncation_length = 0
+truncation_symbol = ''
+truncate_to_repo = false
+home_symbol = 'Home'
+# read_only_style = '197'
+read_only = '  '
+format = '[$path]($style)[$read_only]($read_only_style) '
+style = 'red bold' # yellow bold
+
+
+# Shows current git branch
+[git_branch]
+# symbol = ' '
+symbol = ''
+format = '[$symbol\[$branch\]]($style) [󰁥](gray bold) '
+# truncation_length = 0
+# truncation_symbol = '…/'
+style = 'italic green'

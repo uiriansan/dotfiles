@@ -1,0 +1,5 @@
+[Shortcuts]
+decrease_opacity=none
+increase_opacity=none
+rotate_canvas_left=Ctrl+[
+rotate_canvas_right=Ctrl+]
