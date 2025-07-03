@@ -259,7 +259,8 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
-spawn-at-startup "hyprpaper" "--no-fractional" "-c" "/home/uirian/.config/niri/hyprpaper.conf"
+spawn-at-startup "swww-daemon"
+// spawn-at-startup "swww" "img" "/home/uirian/.config/niri/wallpapers/smoky.webp"
 
 // Screen filters
 spawn-at-startup "wl-gammarelay"
@@ -358,6 +359,7 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "kitty"; }
@@ -574,8 +576,7 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+Shift+S { screenshot; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
