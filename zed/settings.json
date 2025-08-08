@@ -9,6 +9,7 @@
 {
   "icon_theme": "Bearded Icon Theme",
   "vim_mode": true,
+  "disable_ai": true,
   "relative_line_numbers": true,
   "ui_font_size": 14,
   "format_on_save": "on",
@@ -79,8 +80,7 @@
   },
   "agent": {
     "enabled": false,
-    "button": false,
-    "version": "1"
+    "button": false
   },
   "edit_predictions": {
     "button": false
@@ -101,6 +101,13 @@
   "languages": {
     "Markdown": {
       "format_on_save": "off"
+    },
+    "Rust": {
+      "format_on_save": "on",
+      "ensure_final_newline_on_save": false,
+      "code_actions_on_format": {
+        "source.organizeImports": false
+      }
     }
   }
 }

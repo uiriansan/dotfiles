@@ -260,7 +260,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 spawn-at-startup "swww-daemon"
-// spawn-at-startup "swww" "img" "/home/uirian/.config/niri/wallpapers/smoky.webp"
+spawn-at-startup "swww" "img" ".config/niri/wallpapers/smoky.webp" "--transition-type" "none"
 
 // Screen filters
 spawn-at-startup "wl-gammarelay"
@@ -268,6 +268,17 @@ spawn-at-startup "/home/uirian/.config/niri/filters.sh"
 
 // Waybar
 spawn-at-startup "waybar"
+
+// XWayland:
+spawn-at-startup "xwayland-satellite"
+environment {
+    DISPLAY ":1"
+	QT_QPA_PLATFORM "wayland"
+}
+
+spawn-at-startup "qs" "-c" "DankMaterialShell"
+
+
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -307,6 +318,14 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+}
+
+window-rule {
+	match app-id="github.uiriansan.fiapo"
+	open-floating true
+
+	min-width 800
+	min-height 600
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
@@ -364,7 +383,6 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "kitty"; }
     Mod+Grave { spawn "sherlock"; }
-    Super+Alt+L { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -595,4 +613,37 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+
+	// Dank keybinds
+   // Mod+Space hotkey-overlay-title="Application Launcher" {
+   //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "spotlight" "toggle";
+   // }
+   // // Mod+V hotkey-overlay-title="Clipboard Manager" {
+   // //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "clipboard" "toggle";
+   // // }
+   // Mod+M hotkey-overlay-title="Task Manager" {
+   //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "processlist" "toggle";
+   // }
+   // // Mod+Comma hotkey-overlay-title="Settings" {
+   // //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "settings" "toggle";
+   // // }
+   // Super+Alt+L hotkey-overlay-title="Lock Screen" {
+   //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "lock" "lock";
+   // }
+   // XF86AudioRaiseVolume allow-when-locked=true {
+   //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "increment" "3";
+   // }
+   // XF86AudioLowerVolume allow-when-locked=true {
+   //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "decrement" "3";
+   // }
+   // XF86AudioMute allow-when-locked=true {
+   //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "mute";
+   // }
+   // XF86AudioMicMute allow-when-locked=true {
+   //    spawn "qs" "-c" "DankMaterialShell" "ipc" "call" "audio" "micmute";
+   // }
+}
+
+overview {
+	backdrop-color "#161617"
 }

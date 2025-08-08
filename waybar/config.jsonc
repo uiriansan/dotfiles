@@ -29,8 +29,8 @@
   },
 
   "custom/lock_screen": {
-    "format": "",
-    "on-click": "swaylock",
+    "format": "󰉦",
+    "on-click": "hyprpicker -a",
     "tooltip": false,
   },
 
