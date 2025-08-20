@@ -24,7 +24,7 @@
 
   "custom/launch_wofi": {
     "format": "",
-    "on-click": "sherlock",
+    "on-click": "vicinae vicinae://toggle",
     "tooltip": false,
   },
 

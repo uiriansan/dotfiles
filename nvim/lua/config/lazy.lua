@@ -40,7 +40,7 @@ require("lazy").setup({
 })
 
 -- Set colorscheme
-vim.cmd([[ colorscheme kanso ]])
+vim.cmd([[ colorscheme mellow ]])
 
 -- Fix some highlight groups
 vim.cmd([[ hi CursorLineNR guifg=#ffffff gui=bold ]])

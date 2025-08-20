@@ -1,0 +1,20 @@
+{
+    "faviconService": "google",
+    "font": {
+        "normal": "Red Hat Display",
+        "size": 10
+    },
+    "popToRootOnClose": true,
+    "rootSearch": {
+        "searchFiles": false
+    },
+    "theme": {
+        "iconTheme": "Adwaita",
+        "name": "vicinae-dark"
+    },
+    "window": {
+        "csd": true,
+        "opacity": 0.95,
+        "rounding": 10
+    }
+}
