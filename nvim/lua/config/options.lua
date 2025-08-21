@@ -1,9 +1,16 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
+
 vim.g.tpipeline_autoembed = 1
 vim.g.tpipeline_fillcentre = 1
 vim.g.tpipeline_restore = 1
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- disable netrw
 vim.g.loaded_netrw = 1
@@ -106,7 +113,5 @@ vim.diagnostic.config({
 	underline = false,
 })
 
--- These will used by lualine to dynamically display content
-vim.g["neo_tree_opened"] = false
-
-vim.g.mkdp_open_to_the_world = 1
+-- Hide status line
+vim.opt.laststatus = 0
