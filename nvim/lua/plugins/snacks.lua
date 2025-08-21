@@ -29,7 +29,7 @@ return {
 						box = "vertical",
 						backdrop = false,
 						width = 0,
-						height = 0.4,
+						height = 0.5,
 						position = "bottom",
 						border = "top",
 						title = " {title} {live} {flags}",
@@ -37,7 +37,7 @@ return {
 						{ win = "input", height = 1, border = "bottom" },
 						{
 							box = "horizontal",
-							{ win = "list", border = "none" },
+							{ win = "list",    border = "none" },
 							{ win = "preview", title = "{preview}", width = 0.6, border = "left" },
 						},
 					},
@@ -141,7 +141,6 @@ return {
 					format = "git_log",
 					preview = "git_show",
 					confirm = "git_checkout",
-					layout = "vertical",
 				})
 			end,
 			desc = "Git log",

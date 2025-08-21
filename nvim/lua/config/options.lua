@@ -111,7 +111,19 @@ vim.diagnostic.config({
 	-- virtual_text = false,
 	signs = false,
 	underline = false,
+	float = {
+		border = "rounded",
+		source = true,
+	},
+	severity_sort = true,
+	update_in_insert = true,
 })
 
 -- Hide status line
 vim.opt.laststatus = 0
+
+-- Disable swap files
+vim.opt.swapfile = false
+
+-- border for all floating windows
+vim.o.winborder = "rounded"

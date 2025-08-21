@@ -1,7 +1,29 @@
+local lsp_list = {
+	"lua_ls",
+	"clangd",
+	"pyright",
+	"rust-analyzer",
+	"html",
+	"cssls",
+	"ts_ls",
+	"jsonls",
+	"svelte",
+	"tailwindcss",
+	"gopls",
+}
+
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
+		{
+			"neovim/nvim-lspconfig",
+			config = function()
+				vim.lsp.config("*", {})
+
+				vim.lsp.enable(lsp_list)
+			end,
+		},
 	},
 	config = function()
 		local mason = require("mason")
@@ -18,17 +40,7 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			ensure_installed = {
-				"clangd",
-				"pyright",
-				"rust_analyzer",
-				"ts_ls",
-				"html",
-				"cssls",
-				"svelte",
-				"tailwindcss",
-				"lua_ls",
-			},
+			ensure_installed = lsp_list,
 			automatic_installation = true, -- install servers locally automatically
 		})
 	end,
