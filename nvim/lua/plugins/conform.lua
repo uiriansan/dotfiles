@@ -4,16 +4,6 @@ return {
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
-		keys = {
-			-- {
-			--   '<leader>f',
-			--   function()
-			--     require('conform').format { async = true, lsp_fallback = true }
-			--   end,
-			--   mode = '',
-			--   desc = '[F]ormat buffer',
-			-- },
-		},
 		opts = {
 			notify_on_error = false,
 			format_on_save = function(bufnr)
@@ -31,10 +21,7 @@ return {
 				python = { "isort", "black" },
 				rust = { "rustfmt", lsp_format = "fallback" },
 				javascript = { "prettierd", "prettier", stop_after_first = true },
-				c = { "clang_format" },
-				h = { "clang_format" },
-				cpp = { "clang_format" },
-				hpp = { "clang_format" },
+				typescript = { 'prettier', name = 'dprint', timeout_ms = 500, lsp_format = 'fallback' },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--

@@ -127,3 +127,5 @@ vim.opt.swapfile = false
 
 -- border for all floating windows
 vim.o.winborder = "rounded"
+
+vim.g.lazygit_floating_window_scaling_factor = 1

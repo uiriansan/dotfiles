@@ -3,10 +3,12 @@ return {
 	priority = 1000,
 	lazy = false,
 	dependencies = {
-		"folke/todo-comments.nvim",
-		config = function()
-			require("todo-comments").setup({})
-		end,
+		{
+			"folke/todo-comments.nvim",
+			config = function()
+				require("todo-comments").setup({})
+			end,
+		},
 	},
 	---@type snacks.Config
 	opts = {
@@ -18,6 +20,7 @@ return {
 		explorer = { enabled = false },
 		indent = { enabled = true },
 		input = { enabled = true },
+		image = { enabled = true },
 		picker = {
 			enabled = true,
 			layout = {
@@ -90,6 +93,14 @@ return {
 					unloaded = true,
 					current = true,
 					sort_lastused = true,
+					win = {
+						input = {
+							keys = {
+								["<c-x>"] = { "bufdelete", mode = { "n", "i" } },
+							},
+						},
+						list = { keys = { ["dd"] = { "bufdelete", mode = { "n" } } } },
+					},
 				})
 			end,
 			desc = "Navigate opened buffers",
@@ -143,8 +154,16 @@ return {
 					confirm = "git_checkout",
 				})
 			end,
-			desc = "Git log",
+			desc = "Browse Git logs",
 		},
+		{
+			"<leader>;",
+			function()
+				Snacks.picker.diagnostics()
+			end,
+			desc = "Open diagnostics",
+		},
+
 		{
 			"<leader>?",
 			function()
@@ -153,6 +172,20 @@ return {
 				})
 			end,
 			desc = "Show keymaps",
+		},
+		{
+			"<leader>m",
+			function()
+				Snacks.picker.man({})
+			end,
+			desc = "Browse ManPages",
+		},
+		{
+			"<leader>y",
+			function()
+				Snacks.picker.cliphist()
+			end,
+			desc = "Browse clipboard history",
 		},
 		{
 			"<leader>td",
