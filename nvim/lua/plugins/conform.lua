@@ -5,7 +5,7 @@ return {
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
 		opts = {
-			notify_on_error = false,
+			notify_on_error = true,
 			format_on_save = function(bufnr)
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
@@ -22,13 +22,21 @@ return {
 				rust = { "rustfmt", lsp_format = "fallback" },
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				typescript = { 'prettier', name = 'dprint', timeout_ms = 500, lsp_format = 'fallback' },
+				c = { "clang_format" },
+				cpp = { "clang_format" },
+				h = { "clang_format" },
+				hpp = { "clang_format" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				-- javascript = { "prettierd", "prettier", stop_after_first = true },
 			},
-			formatters = {},
+			formatters = {
+				clang_format = {
+					prepend_args = { '--style=file', '--fallback-style=LLVM' },
+				},
+			},
 		},
 	},
 }

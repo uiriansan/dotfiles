@@ -16,3 +16,6 @@ map("v", "<Right>", ":<C-u>echoe 'Get off my lawn!'<CR>")
 
 -- Disable command history
 map("n", "q:", "<nop>", { desc = "Disable command history" })
+
+map("n", "<leader>L", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
+map("n", "<leader>M", "<cmd>Mason<CR>", { desc = "Open Mason" })
