@@ -21,6 +21,10 @@ return {
 		indent = { enabled = true },
 		input = { enabled = true },
 		image = { enabled = true },
+		lazygit = {
+			enabled = true,
+			configure = true,
+		},
 		picker = {
 			enabled = true,
 			layout = {
@@ -80,6 +84,54 @@ return {
 		scroll = { enabled = true },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
+		terminal = {
+			enabled = true,
+			shell = "fish",
+			start_insert = false,
+			win = {
+				{
+					bo = {
+						filetype = "snacks_terminal",
+					},
+					wo = {},
+					keys = {
+						q = "hide",
+						["<leader>`"] = "hide",
+						gf = function(self)
+							local f = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
+							if f == "" then
+								Snacks.notify.warn("No file under cursor")
+							else
+								self:hide()
+								vim.schedule(function()
+									vim.cmd("e " .. f)
+								end)
+							end
+						end,
+						term_normal = {
+							"<esc>",
+							function(self)
+								if vim.fn.mode() == "i" then
+
+								end
+								self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+								if self.esc_timer:is_active() then
+									self.esc_timer:stop()
+									vim.cmd("stopinsert")
+								else
+									self.esc_timer:start(200, 0, function() end)
+									Snacks.terminal.hide()
+									return "<esc>"
+								end
+							end,
+							mode = "t",
+							expr = true,
+							desc = "Double escape to normal mode",
+						},
+					},
+				}
+			}
+		}
 	},
 	keys = {
 		{
@@ -130,14 +182,14 @@ return {
 			desc = "Browse recent projects",
 		},
 		{
-			"<leader>g",
+			"<leader>s",
 			function()
 				Snacks.picker.grep({})
 			end,
 			desc = "Grep",
 		},
 		{
-			"<leader>G",
+			"<leader>S",
 			function()
 				Snacks.picker.grep_word({})
 			end,
@@ -145,7 +197,7 @@ return {
 			mode = { "n", "v" },
 		},
 		{
-			"<leader>gl",
+			"<leader>gL",
 			function()
 				Snacks.picker.git_log({
 					finder = "git_log",
@@ -188,7 +240,7 @@ return {
 			desc = "Browse clipboard history",
 		},
 		{
-			"<leader>td",
+			"<leader>t",
 			function()
 				Snacks.picker.todo_comments({
 					keywords = { "TODO", "WARNING", "WARN", "BUG", "NOTE", "INFO", "FIX", "FIXME", "ERROR" },
@@ -208,5 +260,12 @@ return {
 			end,
 			desc = "Browse TODOs",
 		},
+		-- {
+		-- 	"<leader>`",
+		-- 	function()
+		-- 		Snacks.terminal.toggle()
+		-- 	end,
+		-- 	desc = "Toggle terminal"
+		-- }
 	},
 }
