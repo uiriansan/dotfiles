@@ -1,4 +1,4 @@
-import requests, time, sqlite3, json
+import requests, time, sqlite3, json, sys
 from calendar import monthrange
 from pathlib import Path
 
@@ -18,9 +18,9 @@ def get_facts_from_day(i_day, i_month, con, cur):
                 
                 for key, facts in data.items():
                     for i in range(len(facts)):
-                        text = facts[i].get('text')
-                        year = facts[i].get('year') or 'NULL'
-                        pages_raw = facts[i].get('pages')
+                        text = facts[i].get("text")
+                        year = facts[i].get("year") or "NULL"
+                        pages_raw = facts[i].get("pages")
                         pages = [
                             {
                                 "title": page.get("title"),
@@ -42,23 +42,36 @@ def get_facts_from_day(i_day, i_month, con, cur):
                     time.sleep(10)
                     return get_facts_from_day(day, month, con, cur)
 
+            # Reset day so it wraps to the first day of the next month correctly in case we specify a initial date
+            i_day = 1
             time.sleep(5)
 
 if __name__ == "__main__":
+    i_day = 1 # 1st
+    i_month = 1 # January
+
+    # Use `python scraper.py <day> <month>` to start fetching from a specific date
+    if len(sys.argv) > 1:
+        if d := sys.argv[1]:
+            i_day = int(d) if int(d) >= 1 and int(d) <= 31 else 1
+        if m := sys.argv[2]:
+            i_month = int(m) if int(m) >= 1 and int(m) <= 12 else 1
+
     resolved_db_path = Path(DB_PATH).resolve()
-    if resolved_db_path.is_file():
+
+    # Delete DB if we're not resuming the process
+    if i_day == 1 and i_month == 1 and resolved_db_path.is_file():
         try:
-            # Delete DB if exists
             resolved_db_path.unlink()
         except Exception as e:
             print(f"Error: {e}")
 
-    con = sqlite3.connect(DB_PATH)
+    con = sqlite3.connect(resolved_db_path)
     cur = con.cursor()
 
     # Create DB
     cur.execute("""
-        CREATE TABLE Facts(
+        CREATE TABLE IF NOT EXISTS Facts(
             text TEXT NOT NULL,
             type TEXT NOT NULL,
             day INT NOT NULL, 
@@ -68,6 +81,6 @@ if __name__ == "__main__":
         )
     """)
 
-    get_facts_from_day(1, 1, con, cur)
+    get_facts_from_day(i_day, i_month, con, cur)
 
     con.close()

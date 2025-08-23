@@ -2,9 +2,39 @@ if status is-interactive
 	# Start TMux Session
 end
 
+function day_suffix
+	switch $(date +%-d)
+		case 1 21 31
+			echo "st"
+		case 2 22
+			echo "nd"
+		case 3 23
+			echo "rd"
+		case '*'
+			echo "th"
+	end
+end
+
 function fish_greeting
 	# starship
 	starship init fish | source
+
+	set QUERY_RES (sqlite3 -json ~/.config/fish/facts/facts.db "SELECT text, year, pages FROM Facts WHERE type LIKE 'selected' AND day LIKE $(date +%-d) AND month LIKE $(date +%-m) ORDER BY RANDOM() LIMIT 1;" | jq 'first')
+
+	set_color -b green -o black
+	echo -n " $(date "+%B %-d$(day_suffix)") "
+	set_color -b brblack -o white
+	echo " in history: "
+	set_color normal; echo
+
+	set THUMB_URL (echo $QUERY_RES | jq -r '.pages | fromjson | .[0].thumb')
+	if test -n $THUMB_URL
+		echo -n (curl -s $THUMB_URL | chafa --size=30x10 --align="top,left")
+	end
+
+	echo -n 
+	set_color normal;
+	echo $QUERY_RES | jq -r '.text'
 end
 
 function countlines
