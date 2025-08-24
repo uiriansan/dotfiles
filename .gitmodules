@@ -7,3 +7,7 @@
 [submodule "LainGrubTheme"]
 	path = grub
 	url = git@github.com:uiriansan/LainGrubTheme.git
+[submodule "shell-facts"]
+	path = fish/shell-facts
+	url = git@github.com:uiriansan/shell-facts.git
+
