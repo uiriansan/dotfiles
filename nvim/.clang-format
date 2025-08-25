@@ -1,0 +1,5 @@
+# Create a link to this file in $HOME so that clangd-formatter defaults to it in case a project level file is not provided.
+BasedOnStyle: LLVM
+IndentWidth: 4
+AlwaysBreakTemplateDeclarations: Yes
+ColumnLimit: 0

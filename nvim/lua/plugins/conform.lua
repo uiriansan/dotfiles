@@ -34,6 +34,7 @@ return {
 			},
 			formatters = {
 				clang_format = {
+					-- Create a link of ~/.config/nvim/.clang-format in $HOME so that clangd-formatter fallsback to it in case a project-level format file isn't provided
 					prepend_args = { '--style=file', '--fallback-style=LLVM' },
 				},
 			},

@@ -39,8 +39,10 @@ return {
 			},
 			matcher = {
 				filename_bonus = true, -- give bonus for matching file names (last part of the path)
-				cwd_bonus = false, -- give bonus for matching files in the cwd
+				cwd_bonus = true, -- give bonus for matching files in the cwd
 				frecency = true,
+				sort_empty = true,
+				history_bonus = true,
 			},
 			previewers = {
 				diff = {
@@ -97,6 +99,7 @@ return {
 					show_empty = true,
 					hidden = true,
 					supports_live = true,
+					ignored = true,
 				})
 			end,
 			desc = "Find files",
