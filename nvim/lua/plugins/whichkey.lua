@@ -21,12 +21,14 @@ return {
 			{
 				"<leader>c",
 				"",
-				desc = "LSP"
+				desc = "LSP",
+				mode = "n",
 			},
 			{
 				"<leader>T",
 				"",
-				desc = "Trouble"
+				desc = "Trouble",
+				mode = "n",
 			},
 
 			-- Window maps
@@ -34,21 +36,25 @@ return {
 				"g<Right>",
 				"",
 				desc = "Move focus to the right",
+				mode = "n",
 			},
 			{
 				"g<Down>",
 				"",
 				desc = "Move focus down",
+				mode = "n",
 			},
 			{
 				"g<Left>",
 				"",
 				desc = "Move focus to the left",
+				mode = "n",
 			},
 			{
 				"g<Up>",
 				"",
 				desc = "Move focus up",
+				mode = "n",
 			},
 		},
 	}

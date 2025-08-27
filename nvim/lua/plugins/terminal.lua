@@ -20,6 +20,7 @@ return {
 					return vim.o.lines * 0.5
 				end,
 				shade_terminals = true,
+				insert_mappings = false,
 			})
 		end
 	},

@@ -53,8 +53,6 @@ vim.opt.undofile = true
 vim.opt.ignorecase = false
 vim.opt.smartcase = false
 
-vim.opt.signcolumn = "no" -- "yes" | "number"
-
 -- Decrease update time
 vim.opt.updatetime = 250
 
@@ -90,34 +88,22 @@ vim.o.cmdheight = 0
 -- Show diagnostics signs on the right
 -- :h vim.diagnostic.config()
 vim.diagnostic.config({
-	virtual_text = {
-		suffix = "",
-		prefix = "",
-		virt_text_pos = "right_align",
-		format = function(diagnostic)
-			if diagnostic.severity == vim.diagnostic.severity.ERROR then
-				return ""
-			elseif diagnostic.severity == vim.diagnostic.severity.WARN then
-				return ""
-			elseif diagnostic.severity == vim.diagnostic.severity.HINT then
-				return ""
-			elseif diagnostic.severity == vim.diagnostic.severity.INFO then
-				return ""
-			end
-
-			return ""
-		end,
+	virtual_text = false,
+	signs = {
+		severity = vim.diagnostic.severity.WARN,
+		text     = {
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.ERROR] = "",
+		}
 	},
-	-- virtual_text = false,
-	signs = false,
-	underline = false,
-	float = {
-		border = "rounded",
-		source = true,
+	underline = {
+		severity = vim.diagnostic.severity.ERROR,
 	},
 	severity_sort = true,
 	update_in_insert = true,
 })
+vim.opt.signcolumn = "yes" -- "yes" | "number"
+vim.o.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 
 -- Hide status line
 vim.opt.laststatus = 0

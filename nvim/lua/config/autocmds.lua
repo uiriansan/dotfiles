@@ -9,12 +9,42 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Let LSP know when a file has been renamed with Oil
+-- turn Snacks off while the cmp menu is open, turn it back on afterward
+local group = vim.api.nvim_create_augroup("BlinkCmpSnacksToggle", { clear = true })
+
 vim.api.nvim_create_autocmd("User", {
-	pattern = "OilActionsPost",
-	callback = function(event)
-		if event.data.actions.type == "move" then
-			Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
-		end
+	group = group,
+	pattern = "BlinkCmpMenuOpen",
+	callback = function() vim.g.snacks_animate = false end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	group = group,
+	pattern = "BlinkCmpMenuClose",
+	callback = function() vim.g.snacks_animate = true end,
+})
+
+-- Explicitly start TS highlighting in markdown buffers
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown" },
+	callback = function()
+		vim.treesitter.start(0, "markdown")
 	end,
+})
+
+-- Set Git branch name:
+local function branch_name()
+	local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
+	if branch ~= "" then
+		return branch
+	else
+		return ""
+	end
+end
+
+
+vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "FocusGained" }, {
+	callback = function()
+		vim.b.branch_name = branch_name()
+	end
 })

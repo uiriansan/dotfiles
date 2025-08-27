@@ -2,7 +2,7 @@ local lsp_list = {
 	"lua_ls",
 	"clangd",
 	"pyright",
-	"rust-analyzer",
+	"rust_analyzer",
 	"html",
 	"cssls",
 	"ts_ls",

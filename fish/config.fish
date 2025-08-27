@@ -6,7 +6,7 @@ function fish_greeting
 	# starship
 	starship init fish | source
 
-	~/.config/fish/shell-facts/shell_facts
+	~/.config/fish/shell-facts/shell-facts
 end
 
 function countlines

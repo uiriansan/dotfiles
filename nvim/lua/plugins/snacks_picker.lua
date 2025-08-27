@@ -72,25 +72,30 @@ return {
 		{
 			"<leader><space>",
 			function()
-				Snacks.picker.buffers({
-					on_show = function()
-						vim.cmd.stopinsert()
-					end,
-					hidden = false,
-					unloaded = true,
-					current = true,
-					sort_lastused = true,
+				Snacks.picker.smart({
+					-- on_show = function()
+					-- 	vim.cmd.stopinsert()
+					-- end,
+					multi = {
+						{
+							source = "buffers",
+							current = false,
+						},
+					},
+					matcher = {
+						sort_empty = false,
+					},
 					win = {
 						input = {
 							keys = {
 								["<c-x>"] = { "bufdelete", mode = { "n", "i" } },
 							},
 						},
-						list = { keys = { ["dd"] = { "bufdelete", mode = { "n" } } } },
 					},
 				})
 			end,
 			desc = "Navigate opened buffers",
+			mode = "n",
 		},
 		{
 			"<leader>f",
@@ -103,6 +108,7 @@ return {
 				})
 			end,
 			desc = "Find files",
+			mode = "n",
 		},
 		{
 			"<leader>r",
@@ -110,6 +116,7 @@ return {
 				Snacks.picker.recent({})
 			end,
 			desc = "Browse recent files",
+			mode = "n",
 		},
 		{
 			"<leader>p",
@@ -117,6 +124,7 @@ return {
 				Snacks.picker.projects({})
 			end,
 			desc = "Browse recent projects",
+			mode = "n",
 		},
 		{
 			"<leader>s",
@@ -124,6 +132,7 @@ return {
 				Snacks.picker.grep({})
 			end,
 			desc = "Grep",
+			mode = "n",
 		},
 		{
 			"<leader>S",
@@ -132,6 +141,7 @@ return {
 			end,
 			desc = "Grep selection or word",
 			mode = { "n", "v" },
+			mode = "n",
 		},
 		{
 			"<leader>gL",
@@ -144,6 +154,7 @@ return {
 				})
 			end,
 			desc = "Browse Git logs",
+			mode = "n",
 		},
 		{
 			"<leader>;",
@@ -151,16 +162,18 @@ return {
 				Snacks.picker.diagnostics()
 			end,
 			desc = "Open diagnostics",
+			mode = "n",
 		},
 
 		{
 			"<leader>?",
 			function()
 				Snacks.picker.keymaps({
-					layout = "vertical",
+					layout = "select",
 				})
 			end,
 			desc = "Show keymaps",
+			mode = "n",
 		},
 		{
 			"<leader>m",
@@ -168,13 +181,17 @@ return {
 				Snacks.picker.man({})
 			end,
 			desc = "Browse ManPages",
+			mode = "n",
 		},
 		{
-			"<leader>y",
+			"\"",
 			function()
-				Snacks.picker.cliphist()
+				Snacks.picker.cliphist({
+					layout = "select"
+				})
 			end,
 			desc = "Browse clipboard history",
+			mode = "n",
 		},
 		{
 			"<leader>t",
@@ -183,19 +200,20 @@ return {
 					keywords = { "TODO", "WARNING", "WARN", "BUG", "NOTE", "INFO", "FIX", "FIXME", "ERROR" },
 					no_status = true,
 				})
-				vim.schedule(function()
-					local input = require("snacks.picker.core.input")
-					local statuscolumn = input.statuscolumn
-					input.statuscolumn = function(self)
-						if self.picker.opts.no_status == true then
-							return " "
-						else
-							return statuscolumn(self)
-						end
-					end
-				end)
+				-- vim.schedule(function()
+				-- 	local input = require("snacks.picker.core.input")
+				-- 	local statuscolumn = input.statuscolumn
+				-- 	input.statuscolumn = function(self)
+				-- 		if self.picker.opts.no_status == true then
+				-- 			return " "
+				-- 		else
+				-- 			return statuscolumn(self)
+				-- 		end
+				-- 	end
+				-- end)
 			end,
 			desc = "Browse TODOs",
+			mode = "n",
 		},
 	},
 }

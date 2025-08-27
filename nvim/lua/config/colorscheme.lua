@@ -1,1 +1,1 @@
-vim.cmd [[colorscheme kanso-ink]]
+vim.cmd [[colorscheme kanso-zen]]

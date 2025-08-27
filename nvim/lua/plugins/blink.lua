@@ -23,10 +23,12 @@ return {
 				preset = "default",
 			},
 			signature = { enabled = true },
+			cmdline = {
+				enabled = false,
+			},
 			appearance = {
 				nerd_font_variant = "mono",
 			},
-
 			completion = {
 				documentation = {
 					auto_show = true,
