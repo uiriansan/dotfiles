@@ -13,10 +13,6 @@ function countlines
 	find . -name "*.$argv" | xargs wc -l
 end
 
-alias nf="fastfetch"
-alias ff="fastfetch"
-alias neofetch="fastfetch"
-
 alias ls="lsd -A --hyperlink auto"
 alias rg="rg --no-heading --hyperlink-format kitty"
 alias wiki=wikiman

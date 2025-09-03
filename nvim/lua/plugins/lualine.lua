@@ -124,6 +124,7 @@ insert_left({
 		return c > 1 and "[" .. c .. "]" or ""
 	end,
 	padding = { right = 0, left = 1 },
+	color = { fg = colors.gray },
 	draw_empty = false,
 })
 
@@ -177,6 +178,19 @@ insert_left({
 -- 		return "%="
 -- 	end,
 -- })
+
+insert_right({
+	function()
+		if vim.fn.reg_recording() ~= "" then
+			return "Recording @" .. vim.fn.reg_recording()
+		else
+			return ""
+		end
+	end,
+	padding = { right = 1 },
+	color = { fg = colors.red },
+	draw_empty = false,
+})
 
 insert_right({
 	function()
@@ -278,6 +292,23 @@ insert_right({
 	padding = { right = 1, left = 0 },
 	draw_empty = false,
 })
+
+
+-- Update lualine on macro recording
+vim.api.nvim_create_autocmd("RecordingEnter", {
+	pattern = "*",
+	callback = function()
+		require("lualine").refresh()
+	end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+	pattern = "*",
+	callback = function()
+		require("lualine").refresh()
+	end,
+})
+
 
 return {
 	{

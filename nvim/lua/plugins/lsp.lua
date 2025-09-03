@@ -22,6 +22,7 @@ return {
 				vim.lsp.config("*", {})
 
 				vim.lsp.enable(lsp_list)
+				vim.lsp.inlay_hint.enable()
 			end,
 		},
 	},
