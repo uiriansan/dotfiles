@@ -23,6 +23,13 @@ return {
 
 				vim.lsp.enable(lsp_list)
 				vim.lsp.inlay_hint.enable()
+
+				vim.lsp.config("rust_analyzer", {
+					cargo = {
+						-- Load code generated at runtime from OUT_DIR
+						loadOutDirsFromCheck = true,
+					},
+				})
 			end,
 		},
 	},

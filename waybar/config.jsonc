@@ -1,127 +1,155 @@
 {
-  "layer": "top",
-  "position": "top",
-  "mod": "dock",
-  "exclusive": true,
-  "passthrough": false,
-  "gtk-layer-shell": true,
-  "modules-left": [
-    "custom/launch_wofi",
-    "wlr/taskbar",
-    "niri/workspaces",
-    "niri/window",
-  ],
-  "modules-center": ["clock"],
-  "modules-right": [
-    "tray",
-    "battery",
-    "backlight",
-    "pulseaudio",
-    "pulseaudio#microphone",
-    "custom/lock_screen",
-    "custom/power_btn",
-  ],
-
-  "custom/launch_wofi": {
-    "format": "",
-    "on-click": "vicinae vicinae://toggle",
-    "tooltip": false,
-  },
-
-  "custom/lock_screen": {
-    "format": "󰉦",
-    "on-click": "hyprpicker -a",
-    "tooltip": false,
-  },
-
-  "custom/power_btn": {
-    "format": "",
-    "on-click": "wlogout",
-    "tooltip": false,
-  },
-
-  "tray": {
-    "icon-size": 14,
-    "spacing": 10,
-  },
-
-  "niri/workspaces": {
-    "format": "{output}:{value}",
-    "current-only": true,
-  },
-
-  "wlr/taskbar": {
-    // "all-outputs": true,
-    "format": "{icon}",
-    "tooltip-format": "{app_id} | {title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "on-click-right": "fullscreen",
-    "height": "10",
-    "icon-size": 14,
-    "spacing": 10,
-  },
-
-  "niri/window": {
-    "format": "{title}",
-    "separate-outputs": true,
-	"max-length": 30
-  },
-
-  "clock": {
-    "format": "{:%B %d ❘ %H:%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-  },
-
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
-    "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
-    "min-length": 6,
-  },
-
-  "battery": {
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 20,
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-  },
-
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "",
-    "on-click": "~/.config/waybar/scripts/volume --toggle",
-    "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
-    "on-scroll-down": "~/.config/waybar/scripts/volume --dec",
-    "scroll-step": 5,
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""],
-    },
-  },
-
-  "pulseaudio#microphone": {
-    "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": "",
-    "on-click": "~/.config/waybar/scripts/volume --toggle-mic",
-    "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/waybar/scripts/volume --mic-inc",
-    "on-scroll-down": "~/.config/waybar/scripts/volume --mic-dec",
-    "scroll-step": 5,
-  },
+	"layer": "top",
+	"position": "top",
+	"mod": "dock",
+	"exclusive": true,
+	"passthrough": false,
+	"gtk-layer-shell": true,
+	"modules-left": [
+		"custom/launch_wofi",
+		"wlr/taskbar",
+		"niri/workspaces",
+		"niri/window",
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+		"tray",
+		"battery",
+		"backlight",
+		"pulseaudio",
+		"pulseaudio#microphone",
+		"custom/filters",
+		"custom/color_picker",
+		"custom/power_btn",
+	],
+	"custom/launch_wofi": {
+		"format": "",
+		"on-click": "vicinae vicinae://toggle",
+		"tooltip": false,
+	},
+	"custom/filters": {
+		"on-click": "sunsetr preset doff",
+		"tooltip": true,
+		"exec": "sunsetr status --json --follow | jq -r --unbuffered --compact-output 'if .active_preset == \"default\" then {alt: \"don\", text: \"Temperature: \\(.current_temp)K • Gamma: \\(.current_gamma | trunc)%\"} else {alt: \"doff\", text: \"\\(.current_temp)K • \\(.current_gamma | trunc)%\"} end'",
+		"return-type": "json",
+		"tooltip-format": "{text}",
+		"format-icons": {
+			"don": "󰋷",
+			"doff": "󱃓",
+			"default": "󰋷"
+		},
+		"format": "{icon}",
+		"on-scroll-up": "sunsetr set static_temp=$(($(sunsetr get static_temp) + 500))",
+		"on-scroll-down": "sunsetr set static_temp=$(($(sunsetr get static_temp) - 500))",
+		"on-click-middle": "sunsetr set static_gamma=$(($(sunsetr get static_gamma) + 10))",
+		"on-click-right": "sunsetr set static_gamma=$(($(sunsetr get static_gamma) - 10))"
+	},
+	"custom/color_picker": {
+		"format": "󰉦",
+		"on-click": "hyprpicker -a",
+		"tooltip": false,
+	},
+	"custom/power_btn": {
+		"format": "",
+		"on-click": "wlogout",
+		"tooltip": false,
+	},
+	"tray": {
+		"icon-size": 14,
+		"spacing": 10,
+	},
+	"niri/workspaces": {
+		"format": "{output}:{value}",
+		"current-only": true,
+	},
+	"wlr/taskbar": {
+		// "all-outputs": true,
+		"format": "{icon}",
+		"tooltip-format": "{app_id} | {title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"on-click-right": "fullscreen",
+		"height": "10",
+		"icon-size": 14,
+		"spacing": 10,
+	},
+	"niri/window": {
+		"format": "{title}",
+		"separate-outputs": true,
+		"max-length": 30
+	},
+	"clock": {
+		"format": "{:%B %d ❘ %H:%M}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+	},
+	"backlight": {
+		"device": "intel_backlight",
+		"format": "{icon} {percent}%",
+		"format-icons": [
+			"󰃞",
+			"󰃟",
+			"󰃠"
+		],
+		"on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
+		"on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
+		"min-length": 6,
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 20,
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": " {capacity}%",
+		"format-plugged": " {capacity}%",
+		"format-alt": "{time} {icon}",
+		"format-icons": [
+			"󰂎",
+			"󰁺",
+			"󰁻",
+			"󰁼",
+			"󰁽",
+			"󰁾",
+			"󰁿",
+			"󰂀",
+			"󰂁",
+			"󰂂",
+			"󰁹"
+		],
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-muted": "",
+		"on-click": "~/.config/waybar/scripts/volume --toggle",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "~/.config/waybar/scripts/volume --inc",
+		"on-scroll-down": "~/.config/waybar/scripts/volume --dec",
+		"scroll-step": 5,
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"",
+				"",
+				""
+			],
+		},
+	},
+	"pulseaudio#microphone": {
+		"format": "{format_source}",
+		"format-source": " {volume}%",
+		"format-source-muted": "",
+		"on-click": "~/.config/waybar/scripts/volume --toggle-mic",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "~/.config/waybar/scripts/volume --mic-inc",
+		"on-scroll-down": "~/.config/waybar/scripts/volume --mic-dec",
+		"scroll-step": 5,
+	},
 }

@@ -17,7 +17,7 @@ alias ls="lsd -A --hyperlink auto"
 alias rg="rg --no-heading --hyperlink-format kitty"
 alias wiki=wikiman
 
-set --export VISUAL /usr/bin/zeditor
+set --export VISUAL /usr/bin/nvim
 set --export EDITOR /usr/bin/nvim
 
 fish_add_path /home/uirian/.local/bin/

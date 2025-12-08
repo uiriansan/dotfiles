@@ -157,7 +157,7 @@ return {
 			mode = "n",
 		},
 		{
-			"<leader>;",
+			"<leader><Tab>",
 			function()
 				Snacks.picker.diagnostics()
 			end,

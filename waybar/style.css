@@ -1,17 +1,18 @@
 * {
-    font-family: "JetbrainsMono Nerd Font";
-    font-weight: bold;
-    font-size: 12px;
+	font-family: "JetbrainsMono Nerd Font";
+	font-weight: bold;
+	font-size: 12px;
 }
 
 window#waybar {
-    background: #161617;
-    color: white;
+	background: #161617;
+	color: white;
 }
 
 #custom-launch_wofi,
 #custom-power_btn,
-#custom-lock_screen,
+#custom-color_picker,
+#custom-filters,
 #clock,
 #battery,
 #pulseaudio,
@@ -19,65 +20,64 @@ window#waybar {
 #taskbar,
 #workspaces,
 #tray {
-    background: #161617;
-    padding: 0.5em 0.75em;
-    opacity: 0.75;
+	background: #161617;
+	padding: 0.5em 0.75em;
+	opacity: 0.75;
 }
 
 #taskbar {
-    padding: 0;
+	padding: 0;
 }
 
 #workspaces button {
-    all: unset;
-    color: white;
-    margin-right: 0.75em;
+	all: unset;
+	color: white;
+	margin-right: 0.75em;
 }
+
 #workspaces button:hover {
-    color: white;
-    background: #161617;
+	color: white;
+	background: #161617;
 }
 
 #taskbar button {
-    padding: 0 0.5em;
-    border: 0;
-    transition: 0.2s ease;
+	padding: 0 0.5em;
+	border: 0;
+	transition: 0.2s ease;
 }
 
 #taskbar button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    opacity: 1;
+	background: rgba(255, 255, 255, 0.1);
+	opacity: 1;
 }
 
 #taskbar button.active {
-    background: rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.2);
 }
 
 #custom-launch_wofi {
-    padding-right: 1.15em;
-    margin-right: 0.5em;
+	padding-right: 1.15em;
+	margin-right: 0.5em;
 }
 
 #custom-power_btn {
-    padding-right: 1.15em;
+	padding-right: 1.15em;
 }
 
-#custom-lock_screen {
-    margin-left: 0.5em;
+#custom-color_picker {
+	margin-left: 0.5em;
 }
 
 #tray {
-    margin-right: 0.5em;
-    padding-right: 0.9em;
+	margin-right: 0.5em;
+	padding-right: 0.9em;
 }
 
-#battery {
-}
+#battery {}
 
 #pulseaudio,
 #backlight {
-    border-radius: 0;
+	border-radius: 0;
 }
 
-#pulseaudio.microphone {
-}
+#pulseaudio.microphone {}
