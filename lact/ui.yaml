@@ -1,0 +1,14 @@
+selected_gpu: 10DE:1C82-1043:8613-0000:01:00.0
+plots_time_period: 60
+plots_per_row: 2
+stats_poll_interval_ms: 500
+gpus:
+  10DE:1C82-1043:8613-0000:01:00.0:
+    plots:
+    - - !Temperature GPU
+      - !Temperature GPU Hotspot
+    - - GpuClock
+      - VramClock
+    - - FanRpm
+      - FanPwm
+    - - PowerCap

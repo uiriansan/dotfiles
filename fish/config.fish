@@ -30,5 +30,8 @@ set --export GIT_EDITOR nvim
 
 set --export MANPAGER "less -R --use-color -Dd+r -Du+b"
 
+set --export LD_PRELOAD ""
+set --erase LD_PRELOAD
+
 # zoxide
 zoxide init fish | source
